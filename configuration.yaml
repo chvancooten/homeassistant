@@ -77,7 +77,6 @@ input_select:
     - "Night"
 
 sensor: !include sensors.yaml
-
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -114,6 +113,8 @@ media_player:
   - platform: spotify
     client_id: !secret spotifyid
     client_secret: !secret spotifysecret
+  - platform: ps4
+    host: 10.0.0.56
 
 light:
   - platform: yeelight
