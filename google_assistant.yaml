@@ -1,0 +1,3 @@
+  project_id: home-assistant-991e4
+  api_key: !secret google_api_key 
+  expose_by_default: true

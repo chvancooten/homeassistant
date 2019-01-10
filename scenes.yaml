@@ -1,0 +1,121 @@
+#Scenes included in modes (automation controllers)
+- name: Day
+  entities: 
+    input_select.scene: 
+      option: Day
+    light.livingroom:
+      state: on
+      color_temp: 333
+      brightness: 255
+      transition: 1
+    light.livingroom_spot1:
+      state: on
+      color_temp: 300
+      brightness: 100
+    light.livingroom_spot2:
+      state: on
+      color_temp: 300
+      brightness: 100
+    light.livingroom_spot3: off
+    light.livingroom_spot4: off
+    light.aurora:
+      state: on
+      brightness: 200
+      effect: Rain
+    #light.bedroom: off
+    #light.hallwayceiling: off
+    #light.hallwaystanding: off
+    #light.toilet: off
+      
+- name: Evening
+  entities: 
+    input_select.scene: 
+      option: Evening
+    light.livingroom:
+      state: on
+      color_temp: 370
+      brightness: 60
+      transition: 3
+    light.livingroom_spot1: off
+    light.livingroom_spot2:
+      state: on
+      color_temp: 413
+      brightness: 58
+      transition: 3
+    light.livingroom_spot3:
+      state: on
+      color_temp: 413
+      brightness: 10
+      transition: 3
+    light.livingroom_spot4: off
+    light.aurora:
+      state: on
+      brightness: 66
+      effect: 'Vintage Modern'
+    #light.bedroom: off
+    #light.hallwayceiling: off
+    #light.hallwaystanding: off
+    #light.toilet: off
+    
+- name: Night
+  entities:
+    input_select.scene: 
+      option: Night
+    group.all_lights: off
+
+#Extra scenes (activate through voice)
+- name: Atmospheric mode
+  entities: 
+    light.livingroom:
+      state: on
+      color_name: orange
+      brightness: 3
+      transition: 5
+    light.aurora:
+      state: on
+      brightness: 50
+      effect: Flames
+    light.livingroom_spot1:
+      state: on
+      color_temp: 454
+      brightness: 50
+    light.livingroom_spot2:
+      state: off
+    light.livingroom_spot3:
+      state: off
+    light.livingroom_spot4:
+      state: off
+    #light.bedroom: off
+    #light.hallwayceiling: off
+    #light.hallwaystanding: off
+    #light.toilet: off
+
+- name: Party mode
+  entities: 
+    group.all_lights: off
+    light.livingroom:
+      state: on
+      brightness: 255
+      transition: 0
+      effect: 'Random Loop'
+    light.toilet: 
+      state: on
+      brightness: 255
+      transition: 0
+      effect: 'Random Loop'
+    light.aurora:
+      state: on
+      brightness: 255
+      effect: 'Dancing Duo'
+    #light.living_room_spots: off
+    #light.bedroom: off
+    #light.hallwayceiling: off
+    #light.hallwaystanding: off
+
+
+- name: Cleaning mode
+  entities:
+    group.all_lights:
+      state: on
+      color_temp: 270
+      brightness: 255

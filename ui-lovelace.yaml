@@ -1,0 +1,322 @@
+title: Home Cassistant
+resources:
+  - url: /local/mini-media-player-bundle.js?v=0.9.8
+    type: module
+views:
+############### PAGE 1: HOME
+  - icon: mdi:home-assistant
+    title: Home
+    path: home
+    panel: true
+    cards:
+      - type: vertical-stack
+        cards: 
+        - type: entity-filter
+          entities:
+          - group.tracker_cas
+          - group.tracker_debby
+          state_filter:
+          - home
+          show_empty: false
+          card: 
+            type: glance
+            title: People at home
+            
+        - type: entities
+          entities:
+          - entity: input_select.scene 
+
+        - type: picture-elements
+          image: /local/floorplan_gs.jpg
+          elements:
+          - type: state-icon
+            entity: switch.soundbar
+            title: Soundbar
+            style:
+              left: 21%
+              top: 24%
+          - type: state-icon
+            entity: switch.tv_samsung
+            title: TV
+            style:
+              left: 21%
+              top: 14%
+          - type: state-icon
+            entity: light.livingroom
+            title: Living room light
+            style:
+              left: 30%
+              top: 30%
+          - type: state-icon
+            entity: light.aurora
+            title: Nanoleaf
+            style:
+              left: 30%
+              top: 84%
+          - type: state-icon
+            entity: light.livingroom_spot4
+            title: Living room spot 4
+            style:
+              left: 30%
+              top: 47%
+          - type: state-icon
+            entity: light.livingroom_spot3
+            title: Living room spot 3
+            style:
+              left: 30%
+              top: 56%
+          - type: state-icon
+            entity: light.livingroom_spot2
+            title: Living room spot 2
+            style:
+              left: 30%
+              top: 65%
+          - type: state-icon
+            entity: light.livingroom_spot1
+            title: Living room spot 1
+            style:
+              left: 30%
+              top: 74%
+          - type: state-icon
+            entity: switch.vacuum
+            title: Deebot
+            style:
+              left: 21%
+              top: 84%
+          - type: state-icon
+            entity: light.toilet
+            title: Toilet light
+            style:
+              left: 58.5%
+              top: 12%
+          - type: state-icon
+            entity: binary_sensor.motionsensor_toilet_occupancy
+            title: Toilet motion
+            style:
+              left: 58.5%
+              top: 23%
+          - type: state-icon
+            entity: light.hallwayceiling
+            title: Hallway ceiling light
+            style:
+              left: 80%
+              top: 37%
+          - type: state-icon
+            entity: binary_sensor.motionsensor_hallway_occupancy
+            title: Hallway motion
+            style:
+              left: 74%
+              top: 37%
+          - type: state-icon
+            entity: light.hallwaystanding
+            title: Hallway motion
+            style:
+              left: 86%
+              top: 37%
+          - type: state-icon
+            entity: light.bedroom
+            title: Bedroom light
+            style:
+              left: 78%
+              top: 69%
+              
+          - type: state-label
+            entity: sensor.climatesensor_temperature
+            title: Inside temperature
+            style:
+              left: 40%
+              top: 14%
+          - type: state-label
+            entity: sensor.buienradar_temperature
+            title: Outside temperature
+            style:
+              left: 6.5%
+              top: 14%
+          - type: state-label
+            entity:  sensor.waqi_de_jongweg_utrecht
+            title: Air quality
+            style:
+              left: 6.5%
+              top: 21%
+                
+        - type: custom:mini-media-player
+          entity: media_player.tonecas
+          artwork: cover
+          show_progress: true
+          power_color: true
+        
+############### PAGE 2: LIGHTS
+  - icon: mdi:lightbulb
+    title: Lights
+    path: lights
+    cards:    
+      - type: entities
+        title: Lights
+        entities:
+          - entity: light.living_room_spots
+          - entity: light.livingroom
+          - entity: light.aurora
+          - entity: light.hallwayceiling
+          - entity: light.hallwaystanding
+          - entity: light.bedroom
+          - entity: light.toilet
+          
+      - type: entities
+        title: Spots
+        entities:
+          - entity: light.livingroom_spot1
+          - entity: light.livingroom_spot2
+          - entity: light.livingroom_spot3
+          - entity: light.livingroom_spot4
+          
+      - type: glance
+        title: Illuminance
+        entities:
+        - entity: sensor.motionsensor_hallway_illuminance
+        - entity: sensor.motionsensor_toilet_illuminance
+
+############### PAGE 3: MEDIA
+  - icon: mdi:play-box-outline
+    title: Media
+    path: media
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.spotify
+        artwork: cover
+        show_source: full
+        show_progress: true
+        show_shuffle: true
+        power_color: true
+        media_buttons:
+        - name: Release Radar
+          type: playlist
+          url: spotify:user:spotify:playlist:37i9dQZEVXbt00olLhj6c6
+        - name: Discover Weekly
+          type: playlist
+          url: spotify:user:spotify:playlist:37i9dQZEVXcQg2aDzCNHrV
+        - name: Peaceful Piano
+          type: playlist
+          url: spotify:user:spotify:playlist:37i9dQZF1DX4sWSpwq3LiO
+        - name: Jazz Vibes
+          type: playlist
+          url: spotify:user:spotify:playlist:37i9dQZF1DX0SM0LYsmbMT
+        - name: Background & Chill
+          type: playlist
+          url: spotify:user:chvancooten:playlist:3iMf0W5ZWN7yEBpzKO9gTv
+
+      - type: custom:mini-media-player
+        entity: media_player.chromecas
+        artwork: cover
+        show_progress: true
+        power_color: true
+        
+      - type: custom:mini-media-player
+        entity: media_player.tonecas
+        artwork: cover
+        show_progress: true
+        power_color: true
+      
+      - type: entities
+        title: Assistants
+        entities:
+          - entity: media_player.homecas
+          - entity: media_player.homecasjr
+          
+      - type: entities
+        title: Devices
+        entities:
+          - entity: switch.tv_samsung
+          - entity: script.tv_next_source
+          - entity: script.tv_ok
+          - entity: switch.soundbar
+          - entity: script.soundbar_next_source
+
+############### PAGE 4: SENSORS
+  - icon: mdi:access-point
+    title: Sensors
+    path: sensors
+    cards:
+    - type: glance
+      title: Presence
+      entities:
+      - entity: group.tracker_cas
+      - entity: group.tracker_debby
+      
+    - type: glance
+      title: Power usage
+      entities:
+      - entity: sensor.power_consumption
+      - entity: sensor.power_consumption_normal
+      - entity: sensor.power_consumption_low
+      - entity: sensor.power_tariff
+      
+    - type: history-graph
+      title: Power use
+      entities:
+        - entity: sensor.power_consumption
+      
+    - type: glance
+      title: Climate
+      entities:
+      - entity: sensor.climatesensor_temperature
+      - entity: sensor.climatesensor_humidity
+      - entity: sensor.climatesensor_pressure
+      - entity: sensor.waqi_de_jongweg_utrecht
+      
+    - type: history-graph
+      title: Temperature
+      entities: 
+      - entity: sensor.climatesensor_temperature
+        name: Living room
+      - entity: sensor.buienradar_temperature
+        name: Outside
+    
+    - type: glance
+      title: Motion
+      entities:
+      - entity: binary_sensor.motionsensor_hallway_occupancy
+      - entity: binary_sensor.motionsensor_toilet_occupancy
+
+    - type: history-graph
+      title: Motion history
+      entities:
+        - entity: binary_sensor.motionsensor_hallway_occupancy
+          name: Hallway
+        - entity: binary_sensor.motionsensor_toilet_occupancy
+          name: Toilet
+
+    - type: weather-forecast
+      entity: weather.buienradar
+
+############### PAGE 5: SYSTEM
+  - icon: mdi:chip
+    title: System
+    path: system
+    cards:
+    - type: glance
+      title: System performance
+      entities:
+      - entity: sensor.processor_use
+      - entity: sensor.load_5m
+      - entity: sensor.memory_use_percent
+      - entity: sensor.disk_use_percent_
+      - entity: sensor.last_boot
+      
+    - type: history-graph
+      title: Performance history
+      entities: 
+      - entity: sensor.processor_use
+        name: Processor
+      - entity: sensor.memory_use_percent
+        name: Memory
+      - entity: sensor.disk_use_percent_
+        name: Disk
+        
+    - type: glance
+      title: Zigbee sensor battery levels
+      entities:
+      - entity: sensor.climatesensor_battery
+      - entity: sensor.motionsensor_hallway_battery
+      - entity: sensor.motionsensor_toilet_battery
+      - entity: sensor.xiaomibutton_battery
+      - entity: sensor.xiaomiswitch_battery

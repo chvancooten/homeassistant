@@ -1,0 +1,46 @@
+- platform: dsmr
+  port: /dev/ttyUSB0
+  dsmr_version: 5
+
+- platform: waqi
+  token: !secret aqitoken
+  locations:
+  - 'utrecht'
+  stations:
+  - 'de Jongweg, Utrecht'
+  
+- platform: systemmonitor
+  resources:
+  - type: disk_use_percent
+    arg: /
+  - type: memory_use_percent
+  - type: load_5m
+  - type: processor_use
+  - type: last_boot
+  
+- platform: template
+  sensors:
+    buienradar_temperature:
+      value_template: '{{ states.weather.buienradar.attributes.temperature }}'
+      unit_of_measurement: '°C'
+      friendly_name: Outside temperature
+    climatesensor_battery:
+      value_template: '{{ states.sensor.climatesensor_temperature.attributes.battery }}'
+      device_class: battery
+      friendly_name: Climate sensor battery
+    motionsensor_hallway_battery:
+      value_template: '{{ states.sensor.motionsensor_hallway_illuminance.attributes.battery }}'
+      device_class: battery
+      friendly_name: Hallway motion sensor battery
+    motionsensor_toilet_battery:
+      value_template: '{{ states.sensor.motionsensor_toilet_illuminance.attributes.battery }}'
+      device_class: battery
+      friendly_name: Toilet motion sensor battery
+    xiaomibutton_battery:
+      value_template: '{{ states.sensor.xiaomibutton.attributes.battery }}'
+      device_class: battery
+      friendly_name: Xiaomi button battery
+    xiaomiswitch_battery:
+      value_template: '{{ states.sensor.xiaomiswitch1_2.attributes.battery }}'
+      device_class: battery
+      friendly_name: Xiaomi switch battery

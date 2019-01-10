@@ -1,0 +1,279 @@
+### STARTUP
+
+- alias: Set theme at startup
+  id: automation_startup_theme
+  initial_state: 'on'
+  trigger:
+  - platform: homeassistant
+    event: start
+  action:
+  - data:
+      name: Light - Navy Blue
+    service: frontend.set_theme
+
+### SCENES
+
+- id: automation_sceneselect
+  alias: Scene select update
+  trigger:
+    platform: state
+    entity_id: input_select.scene
+  action:
+    service: scene.turn_on
+    data_template:
+      entity_id: scene.{{trigger.to_state.state}}
+
+### INPUT BASED
+
+- alias: Switch to TV
+  id: automation_switchtoTV
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'media_player.chromecas'
+    to: 'playing'
+  condition:
+  - condition: state
+    entity_id: 'media_player.tonecas'
+    state: 'playing'
+  action:
+  - service: media_player.media_stop
+    entity_id: 'media_player.tonecas'
+  - service: switch.broadlink_send_packet_192_168_1_202
+    data:
+      packet: # "Optical next" for soundbar
+      - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
+ 
+- alias: Switch to soundbar
+  id: automation_switchtoSB
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'media_player.tonecas'
+    to: 'playing'
+  condition:
+    # Only trigger if the chromecast is not playing AND the tv is on, to prevent input switching when only pausing music
+    condition: and
+    conditions:
+    - condition: template
+      value_template: "{{ not is_state('media_player.chromecas', 'playing') }}"
+    - condition: state
+      entity_id: 'switch.tv_samsung'
+      state: 'on'
+  action:
+  - service: switch.broadlink_send_packet_192_168_1_202
+    data:
+      packet: # "Optical next" for soundbar
+      - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
+ 
+### TIME BASED
+
+## Wakeup does not work due to yeelight >60 second transition bug (https://github.com/home-assistant/home-assistant/issues/11371)
+#- alias: Wakeup Light
+#  id: automation_wakeuplight
+#  initial_state: 'on'
+#  trigger: #TODO read alarm clock
+#  - platform: sun
+#    event: sunrise
+#  condition:
+#    condition: or
+#    conditions:
+#    - condition: state
+#      entity_id: 'input_select.scene'
+#      state: 'Night'
+#  action:
+#    - service: light.turn_on
+#      data:
+#        brightness_pct: 1
+#        entity_id: light.bedroom
+#        color_name: red
+#    - service: light.turn_on
+#      data:
+#        brightness_pct: 80
+#        entity_id: light.bedroom
+#        color_name: orange
+#        transition: 900
+
+### PRESENCE DETECTION
+
+- alias: DebbyDetectie
+  id: automation_debbydetectie
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'group.tracker_debby'
+    to: 'home'
+  condition:
+  - condition: state
+    entity_id: 'group.tracker_cas'
+    state: 'not_home'
+    ## AND automation has not been triggered for 12 hours (prevent spam when reconnecting)
+  - condition: template
+    value_template: '{{(as_timestamp(now())-as_timestamp(states.automation.debbydetectie.attributes["last_triggered"])) > 43200}}'
+  action:
+  - service: notify.ios_iphone_cas
+    data:
+      title: "DebbyDetectie alert"
+      message: "Debby is thuis!"
+
+- alias: Welcome home
+  id: automation_welcomehome
+  initial_state: 'on'
+  trigger:
+  # Trigger on bluetooth to get closest to the actual 'home-entry'
+  - platform: state
+    entity_id: device_tracker.iphone_cas_bt, device_tracker.galaxys8_debby_bt
+    to: 'home'
+    for: 
+      seconds: 30 
+  action:
+  # Get the first word of the friendly name of the person arriving ('Cas' rather than 'Cas BT')
+  - service: tts.google_say
+    entity_id: media_player.homecas
+    data_template:
+      message: >
+        'Welcome home, {{ trigger.from_state.attributes.friendly_name.split(' ', 1)[0] }}'
+
+### MOTION SENSING
+
+- alias: Motion sensor security
+  id: automation_mss
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motionsensor_hallway_occupancy, binary_sensor.motionsensor_toilet_occupancy
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+    - condition: state
+      entity_id: 'group.tracker_cas'
+      state: 'not_home'
+    - condition: state
+      entity_id: 'group.tracker_debby'
+      state: 'not_home'
+  action:
+  - service: notify.ios_iphone_cas
+    data:
+      title: "Security alert"
+      message: "Motion sensor was triggered but no one is home!"
+
+- alias: Hallway motion light (on)
+  id: automation_motionlighton_hallway
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motionsensor_hallway_occupancy
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.hallwayceiling
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data_template:
+      entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling {% else %} light.hallwayceiling, light.hallwaystanding {% endif %}'
+      transition: '{% if is_state("input_select.scene", "Night") %} 5 {% else %} 2 {% endif %}'
+      brightness: '{% if is_state("input_select.scene", "Night") %} 5 {% else %} 100 {% endif %}'
+      kelvin: '{% if is_state("input_select.scene", "Night") %} 1850 {% else %} 2500 {% endif %}'
+  - service: homeassistant.turn_on
+    entity_id: automation.hallway_motion_light_off
+
+- alias: Hallway motion light (off)
+  id: automation_motionlightoff_hallway
+  initial_state: 'off'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motionsensor_hallway_occupancy
+    to: 'off'
+    for:
+      minutes: 2
+  action:
+  - service: light.turn_off
+    data_template:
+      entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling {% else %} light.hallwayceiling, light.hallwaystanding {% endif %}'
+      transition: 2
+  - service: homeassistant.turn_off
+    entity_id: automation.hallway_motion_light_off
+
+- alias: Toilet motion light (on)
+  id: automation_motionlighton_toilet
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motionsensor_toilet_occupancy
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: light.toilet
+    state: 'off'
+  action:
+  - service: light.turn_on
+    data_template:
+      entity_id: light.toilet
+      transition: '{% if is_state("input_select.scene", "Night") %} 5 {% else %} 1 {% endif %}'
+      brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100 {% endif %}'
+      kelvin: '{% if is_state("input_select.scene", "Night") %} 1850 {% else %} 2700 {% endif %}'
+  - service: homeassistant.turn_on
+    entity_id: automation.toilet_motion_light_off
+
+- alias: Toilet motion light (off)
+  id: automation_motionlightoff_toilet
+  initial_state: 'off'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motionsensor_toilet_occupancy
+    to: 'off'
+    for:
+      minutes: 1
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.toilet
+      transition: 2
+  - service: homeassistant.turn_off
+    entity_id: automation.toilet_motion_light_off
+
+### BUTTONS
+
+- alias: Scene next button
+  id: automation_button_scenenext
+  initial_state: 'on'
+  trigger:
+  - platform: mqtt
+    topic: zigbee2mqtt/xiaomibutton
+  condition:
+  - condition: template
+    value_template: '{{ trigger.payload_json.click == "single" }}' # or trigger.payload_json.action == "shake" }}'
+  action:
+  - service: input_select.select_next
+    data_template:
+      entity_id: input_select.scene
+
+- alias: Scene previous button
+  id: automation_button_sceneprev
+  initial_state: 'on'
+  trigger:
+  - platform: mqtt
+    topic: zigbee2mqtt/xiaomibutton
+  condition:
+  - condition: template
+    value_template: '{{ trigger.payload_json.click == "double" }}' # or trigger.payload_json.action == "shake" }}'
+  action:
+  - service: input_select.select_previous
+    data_template:
+      entity_id: input_select.scene
+
+- alias: Light switch
+  id: automation_lightswitch
+  initial_state: 'on'
+  trigger:
+  - platform: mqtt
+    topic: zigbee2mqtt/xiaomiswitch1
+  condition:
+  - condition: template
+    value_template: '{{ trigger.payload_json.click == "left" or trigger.payload_json.click == "right" or trigger.payload_json.click == "both" }}'
+  action:
+  - service: light.toggle
+    data_template:
+      entity_id: '{% if trigger.payload_json.click == "left" %} light.living_room_spots {% elif trigger.payload_json.click == "right" %} light.livingroom {% elif trigger.payload_json.click == "both" %} group.all_lights {% endif %}'

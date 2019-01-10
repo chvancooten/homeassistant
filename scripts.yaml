@@ -1,0 +1,66 @@
+tv_next_source:
+  alias: TV next source
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_202
+      data:
+        packet:
+          - 'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNRQSExITERQRFBEUNhQRFBEUERQRFBEUERQRFBEUNhQ2FDYUNhQ2FDYUNhQABgaXkRY2FDYUNhQRFBETEhMSExEUNhQ2FDYUERQRFBEUERQRFDYUERQRFBEUERQRFBEUERQRFDYUNhQ2FDYUNhQ1FDYUAA0FAAAAAAAAAAAAAAAA'
+tv_ok:
+  alias: TV OK
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_202
+      data:
+        packet:
+          - 'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhQRFBETEhMSExITERQRFBEUNhQRFDYUNhQRFDYUNhQ2FBEUNhQRFBETNhQABgeXkxQ2EzYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUERQRFDYUERQ2FDYUERQ1FDYUNhQRFDYUERQRFDYUAA0FAAAAAAAAAAAAAAAA'
+    
+soundbar_next_source:
+  alias: Soundbar next source
+  sequence:
+  - service: switch.broadlink_send_packet_192_168_1_202
+    data:
+      packet:
+      ## Switch between optical 1 and 2
+      - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
+      ## ALTERNATIVELY: Switch through all inputs
+      #- 'JgBGAJWTFBEUERQ2FDYUERQ1FRAVEBUQFBEUNhQ2FBEUNhQRFBAVEBU1FRAUNhQRFBEUERQ2FDUVEBU1FBEUNhQ2FDYUERQADQUAAA=='
+
+party_mode:
+  alias: Party in the 90s!
+  sequence:
+    - service: media_player.play_media
+      data:
+        entity_id: "media_player.tonecas"
+    - service: light.turn_off
+    - delay:
+        seconds: 2
+    - service: media_player.play_media
+      data:
+        entity_id: "media_player.tonecas"
+        media_content_id: "http://192.168.1.100:8123/local/audio/running.mp3"
+        media_content_type: "music"
+    - service: light.turn_on
+      data:
+        entity_id: light.aurora
+        brightness: 255
+        effect: '80s Burst Synth'
+    - delay:
+        seconds: 1.7
+    - service: light.turn_on
+      data:
+        entity_id: light.livingroom
+        brightness: 255
+        effect: 'Fast Random Loop'
+    - service: light.turn_on
+      data:
+        entity_id: light.toilet
+        brightness: 255
+        effect: 'Fast Random Loop'
+    - delay:
+        seconds: 58
+    - delay:
+        seconds: 0.2
+    - service: scene.turn_on
+      entity_id: scene.day
+    - service: light.turn_off
+      data:
+        entity_id: light.toilet

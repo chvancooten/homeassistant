@@ -1,0 +1,182 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret home_lat
+  longitude: !secret home_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: CET
+  # Customization file
+  customize: !include customize.yaml
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+  
+panel_iframe:
+  configurator:
+    title: 'Configurator'
+    url: 'https://homecas.vancooten.com:1337/'
+    icon: mdi:wrench
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  base_url: !secret baseurl
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - yeelight
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google
+    cache: false
+
+scene: !include scenes.yaml
+
+input_select:
+  scene:
+    name: 'Scene'
+    icon: mdi:theme-light-dark
+    options:
+    - "Day"
+    - "Evening"
+    - "Night"
+
+sensor: !include sensors.yaml
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+google_assistant: !include google_assistant.yaml
+
+weather:
+  - platform: buienradar
+    name: buienradar
+
+zone:
+  - name: Work
+    latitude: 52.336963
+    longitude: 4.861719
+    radius: 100
+    icon: mdi:briefcase
+  - name: Home
+    latitude: !secret home_lat
+    longitude: !secret home_long
+    radius: 50
+    icon: mdi:home
+
+device_tracker:
+  - platform: bluetooth_tracker
+    track_new_devices: false
+  - platform: nmap_tracker
+    hosts: 192.168.1.1-255
+    track_new_devices: false
+    consider_home: 300
+
+ios:
+
+media_player:
+  - platform: spotify
+    client_id: !secret spotifyid
+    client_secret: !secret spotifysecret
+
+light:
+  - platform: yeelight
+    devices:
+      192.168.1.200:
+        name: HallwayCeiling
+        model: color2
+        save_on_change: true
+      192.168.1.201:
+        name: Livingroom
+        model: color2
+        save_on_change: true
+      192.168.1.203:
+        name: Bedroom
+        model: color1
+        save_on_change: true
+      192.168.1.204:
+        name: Toilet
+        model: color1
+        save_on_change: true
+  - platform: nanoleaf_aurora
+    host: 192.168.1.55
+    token: !secret nanoleaftoken
+  - platform: group
+    name: Living room spots
+    entities:
+      - light.livingroom_spot1
+      - light.livingroom_spot2
+      - light.livingroom_spot3
+      - light.livingroom_spot4
+
+mqtt:
+  discovery: true
+  broker: 127.0.0.1
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
+
+switch:
+  - platform: broadlink
+    host: 192.168.1.202
+    mac: '78:0F:77:5A:B5:02'
+    friendly_name: Universal Remote
+    type: rm_mini
+    switches:
+      soundbar:
+        friendly_name: "LG Sound Bar"
+        command_on:
+          'JgBWAJeSFBEUERQ1FDYUERQ2FBEUERQRFBEUNhQ2FBETNhQRFBEUERQ2FDYUNhQ1FREUERMSEzYUERQRFBEUERQ2FDYUNhQABgaXkhQ2FAAMX5aTFDYUAA0FAAA='
+        command_off:
+          'JgBWAJeSFBEUERQ1FDYUERQ2FBEUERQRFBEUNhQ2FBETNhQRFBEUERQ2FDYUNhQ1FREUERMSEzYUERQRFBEUERQ2FDYUNhQABgaXkhQ2FAAMX5aTFDYUAA0FAAA='
+      tv_samsung:
+        friendly_name: "Samsung TV"
+        command_on:
+          'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhMSExITEhMSExITEhM2FBITEhMSExITEhMSEzYUERQ2FDYUNhQ2FDYUNhQABgeWkxQ2FDYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUNhQRFBEUERQRFBEUERQ2FBEUNhQ2FDYUNhQ2EzcTAA0FAAAAAAAAAAAAAAAA'
+        command_off:
+          'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhMSExITEhMSExITEhM2FBITEhMSExITEhMSEzYUERQ2FDYUNhQ2FDYUNhQABgeWkxQ2FDYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUNhQRFBEUERQRFBEUERQ2FBEUNhQ2FDYUNhQ2EzcTAA0FAAAAAAAAAAAAAAAA' 
+      vacuum:
+        friendly_name: Deebot Vacuum Cleaner
+        command_on:
+          'JgBQAAABKpEVEBQRFBEUEBUQFRAUERQRFDUVNRQ1FTUVNRQ1FTUUNRUQFTUUERQ1FRAVEBQRFBAVNRUQFDUVEBU1FDUVNRU1FAAFJgABKkgVAA0FAAAAAAAAAAA='
+        command_off:
+          'JgBQAAABKZIUERQRFBEUEBUQFBEUERQRFDUVNRQ1FTUUNhQ1FTUUNRUQFTUUNRU1FBEUERQQFRAVNRQRFBAVEBU1FDUVNRQ2FAAFJgABKkgVAA0FAAAAAAAAAAA='

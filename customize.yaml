@@ -1,0 +1,132 @@
+## GROUPS
+group.tracker_debby:
+  entity_picture: /local/debby.jpg
+  device_class: presence
+  
+group.tracker_cas:
+  entity_picture: /local/cas.jpg
+  device_class: presence
+  
+## MEDIA PLAYERS & ASSISTANTS
+media_player.tonecas:
+  icon: mdi:speaker
+  
+media_player.homecas:
+  icon: mdi:google-assistant
+  
+media_player.homecasjr:
+  icon: mdi:google-assistant
+  
+## SENSORS
+sensor.power_consumption:
+  friendly_name: Actual power consumption
+  icon: mdi:power-plug
+
+sensor.power_consumption_normal:
+  friendly_name: Normal tariff power consumption
+  icon: mdi:white-balance-sunny
+  
+sensor.power_consumption_low:
+  friendly_name: Low tariff power consumption
+  icon: mdi:weather-night
+  
+sensor.power_tariff:
+  friendly_name: Actual tariff
+  icon: mdi:theme-light-dark
+
+sensor.motionsensor_hallway_illuminance:
+  friendly_name: Illuminance hallway
+  
+binary_sensor.motionsensor_hallway_occupancy:
+  friendly_name: Motion hallway
+  
+sensor.motionsensor_toilet_illuminance:
+  friendly_name: Illuminance toilet
+  
+binary_sensor.motionsensor_toilet_occupancy:
+  friendly_name: Motion toilet
+  
+sensor.a_phone_battery_state_2:
+  friendly_name: Phone battery
+  
+sensor.climatesensor_temperature:
+  friendly_name: Temperature inside
+  
+sensor.climatesensor_humidity:
+  friendly_name: Humidity inside
+  
+sensor.climatesensor_pressure:
+  friendly_name: Pressure inside
+  
+sensor.xiaomiswitch1_2:
+  friendly_name: Xiaomi switch 1
+  
+sensor.waqi_de_jongweg_utrecht:
+  friendly_name: Air quality
+  
+## LIGHTS
+light.aurora:
+  friendly_name: Nanoleaf
+
+light.livingroom:
+  friendly_name: Living room ceiling light
+  icon: mdi:ceiling-light
+  
+light.hallwayceiling:
+  friendly_name: Hallway ceiling light
+  icon: mdi:ceiling-light
+ 
+light.hallwaystanding:
+  friendly_name: Hallway standing lamp
+  icon: mdi:lamp
+  
+light.bedroom:
+  friendly_name: Bedroom light
+  icon: mdi:ceiling-light
+
+light.toilet:
+  friendly_name: Toilet light
+  icon: mdi:ceiling-light
+
+light.livingroom_spot1:
+  friendly_name: Spot 1
+  icon: mdi:track-light
+  
+light.livingroom_spot2:
+  friendly_name: Spot 2
+  icon: mdi:track-light
+  
+light.livingroom_spot3:
+  friendly_name: Spot 3
+  icon: mdi:track-light
+  
+light.livingroom_spot4:
+  friendly_name: Spot 4
+  icon: mdi:track-light
+  
+light.living_room_spots:
+  friendly_name: Spotlights
+  icon: mdi:track-light
+
+## SWITCHES
+switch.tv_samsung:
+  icon: mdi:television
+  
+switch.soundbar:
+  icon: mdi:speaker
+
+switch.vacuum:
+  icon: mdi:robot-vacuum
+  
+script.party_mode:
+  icon: mdi:balloon
+
+## SCRIPTS
+script.tv_next_source:
+  icon: mdi:remote
+  
+script.tv_ok:
+  icon: mdi:remote
+  
+script.soundbar_next_source:
+  icon: mdi:remote
