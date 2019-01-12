@@ -45,9 +45,6 @@ discovery:
   ignore:
     - yeelight
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
 # Enables support for tracking state changes over time
 history:
 
@@ -103,7 +100,7 @@ device_tracker:
   - platform: bluetooth_tracker
     track_new_devices: false
   - platform: nmap_tracker
-    hosts: 192.168.1.1-255
+    hosts: 192.168.1.50-255
     track_new_devices: false
     consider_home: 300
 
@@ -114,7 +111,9 @@ media_player:
     client_id: !secret spotifyid
     client_secret: !secret spotifysecret
   - platform: ps4
-    host: 10.0.0.56
+    host: 192.168.1.206
+    cmd: 'sudo ps4-waker'
+    filename: '.ps4-wake.credentials.json'
 
 light:
   - platform: yeelight
@@ -136,7 +135,7 @@ light:
         model: color1
         save_on_change: true
   - platform: nanoleaf_aurora
-    host: 192.168.1.55
+    host: 192.168.1.205
     token: !secret nanoleaftoken
   - platform: group
     name: Living room spots
@@ -172,9 +171,9 @@ switch:
       tv_samsung:
         friendly_name: "Samsung TV"
         command_on:
-          'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhMSExITEhMSExITEhM2FBITEhMSExITEhMSEzYUERQ2FDYUNhQ2FDYUNhQABgeWkxQ2FDYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUNhQRFBEUERQRFBEUERQ2FBEUNhQ2FDYUNhQ2EzcTAA0FAAAAAAAAAAAAAAAA'
+          'JgBGAJaTFDYVNxQ2FRIVERUSFREVEhU1FjYVNhUSFBIVEhQSFRISOBYSFBIVNhU2FRIVERU3FBEWNhU2FRIUEhU3FDYVEhUADQUAAA=='
         command_off:
-          'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhMSExITEhMSExITEhM2FBITEhMSExITEhMSEzYUERQ2FDYUNhQ2FDYUNhQABgeWkxQ2FDYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUNhQRFBEUERQRFBEUERQ2FBEUNhQ2FDYUNhQ2EzcTAA0FAAAAAAAAAAAAAAAA' 
+          'JgBGAJSWEzcUOBQ3FBIUERQTEhIUExI4EzkTNxUSExIUEhMSFBIUERQTExEVNxQ3FBITEhQ4EzcUOBM3FBITEhQ4EzcVEhMADQUAAA==' 
       vacuum:
         friendly_name: Deebot Vacuum Cleaner
         command_on:

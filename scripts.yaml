@@ -12,7 +12,23 @@ tv_ok:
       data:
         packet:
           - 'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhQRFBETEhMSExITERQRFBEUNhQRFDYUNhQRFDYUNhQ2FBEUNhQRFBETNhQABgeXkxQ2EzYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUERQRFDYUERQ2FDYUERQ1FDYUNhQRFDYUERQRFDYUAA0FAAAAAAAAAAAAAAAA'
-    
+
+tv_hdmi1:
+  alias: "TV HDMI 1"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_202
+      data:
+        packet:
+          - 'JgBGAJOSEjcUMxUzFQ4UDhEREREUDxMzETcSNxMQEw4UDhEREhAUMxUOERERNxQPEzMRNxI3ExATMxUzEhEUMxIRExATDhQADQUAAA=='
+ 
+tv_hdmi2:
+  alias: "TV HDMI 2"
+  sequence:
+    - service: switch.broadlink_send_packet_192_168_1_202
+      data:
+        packet:
+          - 'JgBGAJOUETkRORA6ERQQFRAVERQRFBA6ETkROhAVDxYQFQ8WEBUQFQ87EDoRORA6DzsQFRA6DzsPFhAVDxYQFRAVEDoQFRAADQUAAA=='
+
 soundbar_next_source:
   alias: Soundbar next source
   sequence:

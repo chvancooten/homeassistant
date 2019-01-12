@@ -216,6 +216,14 @@ views:
         show_progress: true
         power_color: true
       
+      - type: custom:mini-media-player
+        entity: media_player.playstation_4
+        artwork: full-cover-fit
+        power_color: true
+        show_source: small
+        hide_controls: true
+        hide_volume: true
+      
       - type: entities
         title: Assistants
         entities:
@@ -226,8 +234,8 @@ views:
         title: Devices
         entities:
           - entity: switch.tv_samsung
-          - entity: script.tv_next_source
-          - entity: script.tv_ok
+          - entity: script.tv_hdmi1
+          - entity: script.tv_hdmi2
           - entity: switch.soundbar
           - entity: script.soundbar_next_source
 

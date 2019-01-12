@@ -39,11 +39,24 @@
   action:
   - service: media_player.media_stop
     entity_id: 'media_player.tonecas'
-  - service: switch.broadlink_send_packet_192_168_1_202
-    data:
-      packet: # "Optical next" for soundbar
-      - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
- 
+  - service: script.soundbar_next_source
+  - service: script.tv_hdmi2
+  
+- alias: Switch to Playstation
+  id: automation_switchtoPS
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'media_player.playstation_4'
+    from: 'off'
+    to: 'idle'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.tv_samsung
+  - delay:
+    - seconds: 5
+  - service: script.tv_hdmi1
+  
 - alias: Switch to soundbar
   id: automation_switchtoSB
   initial_state: 'on'
@@ -61,10 +74,7 @@
       entity_id: 'switch.tv_samsung'
       state: 'on'
   action:
-  - service: switch.broadlink_send_packet_192_168_1_202
-    data:
-      packet: # "Optical next" for soundbar
-      - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
+  - service: script.soundbar_next_source
  
 ### TIME BASED
 
@@ -109,7 +119,7 @@
     state: 'not_home'
     ## AND automation has not been triggered for 12 hours (prevent spam when reconnecting)
   - condition: template
-    value_template: '{{(as_timestamp(now())-as_timestamp(states.automation.debbydetectie.attributes["last_triggered"])) > 43200}}'
+    value_template: '{{ as_timestamp(now()) - as_timestamp(states.automation.debbydetectie.attributes["last_triggered"]) < 21600}}'
   action:
   - service: notify.ios_iphone_cas
     data:
@@ -118,7 +128,7 @@
 
 - alias: Welcome home
   id: automation_welcomehome
-  initial_state: 'on'
+  initial_state: 'off'
   trigger:
   # Trigger on bluetooth to get closest to the actual 'home-entry'
   - platform: state
