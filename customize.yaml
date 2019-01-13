@@ -58,6 +58,15 @@ sensor.climatesensor_humidity:
 sensor.climatesensor_pressure:
   friendly_name: Pressure inside
   
+sensor.buienradar_temperature:
+  friendly_name: Temperature outside
+  
+sensor.buienradar_humidity:
+  friendly_name: Humidity outside
+  
+sensor.buienradar_pressure:
+  friendly_name: Pressure outside
+  
 sensor.xiaomiswitch1_2:
   friendly_name: Xiaomi switch 1
   
