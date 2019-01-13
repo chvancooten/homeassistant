@@ -119,7 +119,13 @@
     state: 'not_home'
     ## AND automation has not been triggered for 12 hours (prevent spam when reconnecting)
   - condition: template
-    value_template: '{{ as_timestamp(now()) - as_timestamp(states.automation.debbydetectie.attributes["last_triggered"]) < 21600}}'
+    value_template: >
+      {% set debby_time = as_timestamp(states.automation.debbydetectie.attributes["last_triggered"]) %}
+      {% if debby_time %}
+        {{as_timestamp(now()) - debby_time > 21600}}
+      {% else %}
+        {{ True }}
+      {% endif %}
   action:
   - service: notify.ios_iphone_cas
     data:
