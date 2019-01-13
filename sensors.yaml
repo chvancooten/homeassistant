@@ -28,15 +28,15 @@
   sensors:
     buienradar_temperature:
       value_template: '{{ states.weather.buienradar.attributes.temperature }}'
-      unit_of_measurement: '°C'
+      device_class: temperature
       friendly_name: Outside temperature
     buienradar_pressure:
       value_template: '{{ states.weather.buienradar.attributes.pressure }}'
-      unit_of_measurement: 'hPa'
+      device_class: pressure
       friendly_name: Outside pressure
     buienradar_humidity:
       value_template: '{{ states.weather.buienradar.attributes.humidity }}'
-      unit_of_measurement: '%'
+      device_class: humidity
       friendly_name: Outside humidity
     climatesensor_battery:
       value_template: '{{ states.sensor.climatesensor_temperature.attributes.battery }}'
