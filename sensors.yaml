@@ -8,7 +8,13 @@
   - 'utrecht'
   stations:
   - 'de Jongweg, Utrecht'
-  
+
+### Todo - verify correct (/both) alarm source
+- platform: rest
+    resource: http://192.168.1.56:8008/setup/assistant/alarms
+    value_template: "{{ value_json.alarm.0.fire_time }}"
+    name: Next alarm
+
 - platform: systemmonitor
   resources:
   - type: disk_use_percent
