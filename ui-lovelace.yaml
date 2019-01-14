@@ -265,10 +265,14 @@ views:
       
     - type: glance
       title: Climate
+      columns: 3
       entities:
       - entity: sensor.climatesensor_temperature
       - entity: sensor.climatesensor_humidity
       - entity: sensor.climatesensor_pressure
+      - entity: sensor.buienradar_temperature
+      - entity: sensor.buienradar_humidity
+      - entity: sensor.buienradar_pressure
       - entity: sensor.waqi_de_jongweg_utrecht
       
     - type: history-graph
