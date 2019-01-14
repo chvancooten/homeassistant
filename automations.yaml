@@ -32,6 +32,39 @@
   - platform: state
     entity_id: 'media_player.chromecas'
     to: 'playing'
+  action:
+  - service: script.tv_hdmi2
+
+- alias: Switch to Playstation
+  id: automation_switchtoPS
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'media_player.playstation_4'
+    from: 'off'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.tv_samsung
+  - delay: '00:00:10'
+  - service: script.tv_hdmi1
+  
+- alias: Switch from Playstation
+  id: automation_switchtoPS
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'media_player.playstation_4'
+    to: 'off'
+  action:
+  - service: script.tv_hdmi2
+
+- alias: Switch audio to TV
+  id: automation_switchaudiotoTV
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'media_player.chromecas'
+    to: 'playing'
   condition:
   - condition: state
     entity_id: 'media_player.tonecas'
@@ -40,25 +73,9 @@
   - service: media_player.media_stop
     entity_id: 'media_player.tonecas'
   - service: script.soundbar_next_source
-  - service: script.tv_hdmi2
-  
-- alias: Switch to Playstation
-  id: automation_switchtoPS
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: 'media_player.playstation_4'
-    from: 'off'
-    to: 'idle'
-  action:
-  - service: switch.turn_on
-    entity_id: switch.tv_samsung
-  - delay:
-    - seconds: 5
-  - service: script.tv_hdmi1
-  
-- alias: Switch to soundbar
-  id: automation_switchtoSB
+
+- alias: Switch audio to soundbar
+  id: automation_switchaudiotoSB
   initial_state: 'on'
   trigger:
   - platform: state
