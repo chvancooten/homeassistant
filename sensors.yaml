@@ -9,11 +9,10 @@
   stations:
   - 'de Jongweg, Utrecht'
 
-### Todo - verify correct (/both) alarm source
 - platform: rest
-    resource: http://192.168.1.56:8008/setup/assistant/alarms
-    value_template: "{{ value_json.alarm.0.fire_time }}"
-    name: Next alarm
+  resource: http://192.168.1.52:8008/setup/assistant/alarms
+  value_template: "{{ value_json.alarm.0.fire_time }}"
+  name: Next alarm
 
 - platform: systemmonitor
   resources:
@@ -26,35 +25,48 @@
   
 - platform: template
   sensors:
+    totalpowerconsumption:
+      value_template: '{{ ( states("sensor.power_consumption_low")|float ) + ( states("sensor.power_consumption_normal")|float ) }}'
+      friendly_name: Total power consumption
+      unit_of_measurement: 'kWh'
+      icon_template: 'mdi:power-socket-eu'
     buienradar_temperature:
       value_template: '{{ states.weather.buienradar.attributes.temperature }}'
       device_class: temperature
-      friendly_name: Outside temperature
+      friendly_name: Temperature outside
+      unit_of_measurement: '°C'
     buienradar_pressure:
       value_template: '{{ states.weather.buienradar.attributes.pressure }}'
       device_class: pressure
-      friendly_name: Outside pressure
+      friendly_name: Pressure outside
+      unit_of_measurement: 'hPa'
     buienradar_humidity:
       value_template: '{{ states.weather.buienradar.attributes.humidity }}'
       device_class: humidity
-      friendly_name: Outside humidity
+      friendly_name: Humidity outside
+      unit_of_measurement: '%'
     climatesensor_battery:
       value_template: '{{ states.sensor.climatesensor_temperature.attributes.battery }}'
       device_class: battery
       friendly_name: Climate sensor battery
+      unit_of_measurement: '%'
     motionsensor_hallway_battery:
       value_template: '{{ states.sensor.motionsensor_hallway_illuminance.attributes.battery }}'
       device_class: battery
       friendly_name: Hallway motion sensor battery
+      unit_of_measurement: '%'
     motionsensor_toilet_battery:
       value_template: '{{ states.sensor.motionsensor_toilet_illuminance.attributes.battery }}'
       device_class: battery
       friendly_name: Toilet motion sensor battery
+      unit_of_measurement: '%'
     xiaomibutton_battery:
       value_template: '{{ states.sensor.xiaomibutton.attributes.battery }}'
       device_class: battery
       friendly_name: Xiaomi button battery
+      unit_of_measurement: '%'
     xiaomiswitch_battery:
       value_template: '{{ states.sensor.xiaomiswitch1_2.attributes.battery }}'
       device_class: battery
       friendly_name: Xiaomi switch battery
+      unit_of_measurement: '%'

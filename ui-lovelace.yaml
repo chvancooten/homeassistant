@@ -262,26 +262,31 @@ views:
       title: Power use
       entities:
         - entity: sensor.power_consumption
+        - entity: sensor.totalpowerconsumption
       
     - type: glance
       title: Climate
-      columns: 3
       entities:
       - entity: sensor.climatesensor_temperature
       - entity: sensor.climatesensor_humidity
       - entity: sensor.climatesensor_pressure
-      - entity: sensor.buienradar_temperature
-      - entity: sensor.buienradar_humidity
-      - entity: sensor.buienradar_pressure
       - entity: sensor.waqi_de_jongweg_utrecht
       
     - type: history-graph
-      title: Temperature
+      title: Climate history
       entities: 
       - entity: sensor.climatesensor_temperature
-        name: Living room
+        name: Inside temperature
       - entity: sensor.buienradar_temperature
-        name: Outside
+        name: Outside temperature
+      - entity: sensor.climatesensor_pressure
+        name: Inside pressure
+      - entity: sensor.buienradar_pressure
+        name: Outside pressure
+      - entity: sensor.climatesensor_humidity
+        name: Inside humidity
+      - entity: sensor.buienradar_humidity
+        name: Outside humidity
     
     - type: glance
       title: Motion
