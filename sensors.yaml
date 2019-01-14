@@ -10,9 +10,14 @@
   - 'de Jongweg, Utrecht'
 
 - platform: rest
-  resource: http://192.168.1.52:8008/setup/assistant/alarms
-  value_template: "{{ value_json.alarm.0.fire_time }}"
   name: Next alarm
+  resource: http://192.168.1.52:8008/setup/assistant/alarms
+  value_template: >
+    {% if value_json.alarm %}
+      {{ value_json.alarm.0.fire_time }}
+    {% else %}
+      None
+    {% endif %}
 
 - platform: systemmonitor
   resources:
