@@ -17,6 +17,9 @@ homeassistant:
 frontend:
   themes: !include themes.yaml
   
+lovelace:
+  mode: yaml
+  
 panel_iframe:
   configurator:
     title: 'Configurator'
@@ -77,7 +80,6 @@ sensor: !include sensors.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-
 google_assistant: !include google_assistant.yaml
 
 weather:
@@ -113,7 +115,7 @@ media_player:
   - platform: ps4
     host: 192.168.1.206
     cmd: 'sudo ps4-waker'
-    filename: '.ps4-wake.credentials.json'
+    filename: /home/homeassistant/.homeassistant/.ps4_wake_credentials.json
 
 light:
   - platform: yeelight

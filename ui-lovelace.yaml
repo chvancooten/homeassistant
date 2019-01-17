@@ -7,10 +7,11 @@ views:
   - icon: mdi:home-assistant
     title: Home
     path: home
-    panel: true
+    #panel: true
     cards:
       - type: vertical-stack
         cards: 
+        
         - type: entity-filter
           entities:
           - group.tracker_cas
@@ -25,7 +26,44 @@ views:
         - type: entities
           entities:
           - entity: input_select.scene 
-
+          
+        - type: horizontal-stack
+          cards:
+          - type: entity-button
+            entity: script.reset_scene
+            icon: mdi:brightness-4
+            name: Reset
+            tap_action:
+              action: call-service
+              service: script.reset_scene
+          - type: entity-button
+            entity: scene.atmospheric_mode
+            icon: mdi:sofa
+            name: Atmosphere
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.atmospheric_mode
+          - type: entity-button
+            entity: scene.party_mode
+            icon: mdi:balloon
+            name: Party
+            tap_action:
+              action: call-service
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.party_mode
+          - type: entity-button
+            entity: group.all_lights
+            icon: mdi:lightbulb-outline
+            name: Off
+            tap_action:
+              action: call-service
+              service: light.turn_off
+              service_data:
+                entity_id: group.all_lights
+                
         - type: picture-elements
           image: /local/floorplan_gs.jpg
           elements:
