@@ -22,7 +22,29 @@ views:
           card: 
             type: glance
             title: People at home
+        
+        - type: conditional
+          conditions:
+          - entity: media_player.tonecas
+            state_not: "off"
+          card:
+            type: custom:mini-media-player
+            entity: media_player.tonecas
+            artwork: cover
+            show_progress: true
+            power_color: true
             
+        - type: conditional
+          conditions:
+          - entity: media_player.chromecas
+            state_not: "off" #or idle?
+          card:
+            type: custom:mini-media-player
+            entity: media_player.chromecas
+            artwork: cover
+            show_progress: true
+            power_color: true
+        
         - type: entities
           entities:
           - entity: input_select.scene 
@@ -176,12 +198,6 @@ views:
             style:
               left: 6.5%
               top: 21%
-                
-        - type: custom:mini-media-player
-          entity: media_player.tonecas
-          artwork: cover
-          show_progress: true
-          power_color: true
         
 ############### PAGE 2: LIGHTS
   - icon: mdi:lightbulb
@@ -191,27 +207,42 @@ views:
       - type: entities
         title: Lights
         entities:
-          - entity: light.living_room_spots
+          - type: section
+            label: Living room
           - entity: light.livingroom
+            name: Ceiling
+          - entity: light.living_room_spots
           - entity: light.aurora
-          - entity: light.hallwayceiling
-          - entity: light.hallwaystanding
+          - type: section
+            label: Bedroom
           - entity: light.bedroom
+            name: Ceiling
+          - type: section
+            label: Hallway
+          - entity: light.hallwayceiling
+            name: Ceiling
+          - entity: light.hallwaystanding
+            name: Standing
+          - type: section
+            label: Toilet
           - entity: light.toilet
+            name: Toilet
           
-      - type: entities
-        title: Spots
-        entities:
-          - entity: light.livingroom_spot1
-          - entity: light.livingroom_spot2
-          - entity: light.livingroom_spot3
-          - entity: light.livingroom_spot4
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Spots
+          entities:
+            - entity: light.livingroom_spot1
+            - entity: light.livingroom_spot2
+            - entity: light.livingroom_spot3
+            - entity: light.livingroom_spot4
           
-      - type: glance
-        title: Illuminance
-        entities:
-        - entity: sensor.motionsensor_hallway_illuminance
-        - entity: sensor.motionsensor_toilet_illuminance
+        - type: glance
+          title: Illuminance
+          entities:
+          - entity: sensor.motionsensor_hallway_illuminance
+          - entity: sensor.motionsensor_toilet_illuminance
 
 ############### PAGE 3: MEDIA
   - icon: mdi:play-box-outline
@@ -354,7 +385,7 @@ views:
       - entity: sensor.processor_use
       - entity: sensor.load_5m
       - entity: sensor.memory_use_percent
-      - entity: sensor.disk_use_percent_
+      - entity: sensor.disk_use_percent
       - entity: sensor.last_boot
       
     - type: history-graph
@@ -364,7 +395,7 @@ views:
         name: Processor
       - entity: sensor.memory_use_percent
         name: Memory
-      - entity: sensor.disk_use_percent_
+      - entity: sensor.disk_use_percent
         name: Disk
         
     - type: glance
