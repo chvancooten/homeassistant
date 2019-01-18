@@ -60,18 +60,19 @@
       device_class: battery
       friendly_name: Climate sensor battery
       unit_of_measurement: '%'
+     
+## Deprecated with new Zigbee2MQTT
+#    motionsensor_hallway_battery:
+#      value_template: '{{ states.sensor.motionsensor_hallway_illuminance.attributes.battery }}'
+#      device_class: battery
+#      friendly_name: Hallway motion sensor battery
+#      unit_of_measurement: '%'
       
-    motionsensor_hallway_battery:
-      value_template: '{{ states.sensor.motionsensor_hallway_illuminance.attributes.battery }}'
-      device_class: battery
-      friendly_name: Hallway motion sensor battery
-      unit_of_measurement: '%'
-      
-    motionsensor_toilet_battery:
-      value_template: '{{ states.sensor.motionsensor_toilet_illuminance.attributes.battery }}'
-      device_class: battery
-      friendly_name: Toilet motion sensor battery
-      unit_of_measurement: '%'
+#    motionsensor_toilet_battery:
+#      value_template: '{{ states.sensor.motionsensor_toilet_illuminance.attributes.battery }}'
+#      device_class: battery
+#      friendly_name: Toilet motion sensor battery
+#      unit_of_measurement: '%'
       
     xiaomibutton_battery:
       value_template: '{{ states.sensor.xiaomibutton.attributes.battery }}'
@@ -80,7 +81,7 @@
       unit_of_measurement: '%'
       
     xiaomiswitch_battery:
-      value_template: '{{ states.sensor.xiaomiswitch1_2.attributes.battery }}'
+      value_template: '{{ states.sensor.xiaomiswitch1.attributes.battery }}'
       device_class: battery
       friendly_name: Xiaomi switch battery
       unit_of_measurement: '%'

@@ -14,7 +14,7 @@ media_player.tonecas:
 media_player.homecas:
   icon: mdi:google-assistant
   
-media_player.homecasjr:
+media_player.homecas_junior:
   icon: mdi:google-assistant
   
 ## SENSORS

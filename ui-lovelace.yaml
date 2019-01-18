@@ -297,7 +297,7 @@ views:
         title: Assistants
         entities:
           - entity: media_player.homecas
-          - entity: media_player.homecasjr
+          - entity: media_player.homecas_junior
           
       - type: entities
         title: Devices

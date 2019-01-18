@@ -87,10 +87,10 @@ media_player:
   - platform: spotify
     client_id: !secret spotifyid
     client_secret: !secret spotifysecret
-  - platform: ps4
-    host: 192.168.1.206
-    cmd: 'sudo ps4-waker'
-    filename: /home/homeassistant/.homeassistant/.ps4_wake_credentials.json
+#  - platform: ps4
+#    host: 192.168.1.206
+#    cmd: 'sudo ps4-waker'
+#    filename: /home/homeassistant/.homeassistant/.ps4_wake_credentials.json
 
 light:
   - platform: yeelight
