@@ -37,7 +37,9 @@ views:
         - type: conditional
           conditions:
           - entity: media_player.chromecas
-            state_not: "off" #or idle?
+            state_not: "off"
+          - entity: media_player.chromecas
+            state_not: "unavailable"
           card:
             type: custom:mini-media-player
             entity: media_player.chromecas

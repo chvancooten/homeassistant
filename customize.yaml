@@ -42,9 +42,17 @@ binary_sensor.motionsensor_hallway_occupancy:
   
 sensor.motionsensor_toilet_illuminance:
   friendly_name: Illuminance toilet
+
+sensor.motionsensor_hallway_battery:
+  friendly_name: Hall motion sensor battery
+
+sensor.motionsensor_toilet_battery:
+  friendly_name: Toilet motion sensor battery
+  unit_of_measurement: "%"
   
 binary_sensor.motionsensor_toilet_occupancy:
   friendly_name: Motion toilet
+  unit_of_measurement: "%"
   
 sensor.a_phone_battery_state_2:
   friendly_name: Phone battery

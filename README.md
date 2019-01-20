@@ -1,5 +1,5 @@
 # Home Cassistant
-## Probably the smartest home
+> "Probably the smartest home"
 The configuration for my homeassistant instance.
 Still quite basic, but slowly expanding.
 

@@ -57,15 +57,15 @@
 #Extra scenes (activate through voice)
 - name: Morning
   entities:
-    input_select.scene: 
-      option: Day
+#    input_select.scene: 
+#      option: Day
     light.livingroom: off
     light.aurora: off
     light.living_room_spots:
       state: on
       color_temp: 350
       brightness: 70
-    light.bedroom: off
+#    light.bedroom: off
 
 - name: Atmospheric mode
   entities: 
