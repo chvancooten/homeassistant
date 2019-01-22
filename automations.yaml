@@ -11,6 +11,25 @@
       name: Light - Navy Blue
     service: frontend.set_theme
 
+### BACKUP
+
+- alias: Incidental full backup
+  id: automation_backup
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '3:00:00'
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
+  - delay: 0:05:00
+  - service: hassio.addon_stdin
+    data:
+      addon: "7be23ff5_dropbox_sync"
+      input:
+        command: "upload"
+
 ### SCENES
 
 - id: automation_sceneselect

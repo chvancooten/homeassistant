@@ -45,6 +45,7 @@ sensor.motionsensor_toilet_illuminance:
 
 sensor.motionsensor_hallway_battery:
   friendly_name: Hall motion sensor battery
+  unit_of_measurement: "%"
 
 sensor.motionsensor_toilet_battery:
   friendly_name: Toilet motion sensor battery
@@ -52,8 +53,7 @@ sensor.motionsensor_toilet_battery:
   
 binary_sensor.motionsensor_toilet_occupancy:
   friendly_name: Motion toilet
-  unit_of_measurement: "%"
-  
+
 sensor.a_phone_battery_state_2:
   friendly_name: Phone battery
   
@@ -138,3 +138,40 @@ script.tv_ok:
   
 script.soundbar_next_source:
   icon: mdi:remote
+
+## HIDDEN
+sensor.gas_consumption:
+  hidden: true
+
+sensor.hourly_gas_consumption:
+  hidden: true
+
+sensor.power_consumption_phase_l1:
+  hidden: true
+
+sensor.power_consumption_phase_l2:
+  hidden: true
+
+sensor.power_consumption_phase_l3:
+  hidden: true
+
+sensor.power_production:
+  hidden: true
+
+sensor.power_production_low:
+  hidden: true
+
+sensor.power_production_normal:
+  hidden: true
+
+sensor.power_production_phase_l2:
+  hidden: true
+
+sensor.power_production_phase_l3:
+  hidden: true
+
+sensor.voltage_sags_phase_l2:
+  hidden: true
+
+sensor.voltage_sags_phase_l3:
+  hidden: true

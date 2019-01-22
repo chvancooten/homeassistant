@@ -12,15 +12,20 @@ frontend:
   
 lovelace:
   mode: yaml
-  
-panel_iframe:
-  configurator:
-    title: 'Configurator'
-    url: !secret configurl
-    icon: mdi:wrench
 
 http:
   base_url: !secret baseurl
+
+recorder:
+  db_url: !secret dburl
+  purge_keep_days: 30
+  exclude:
+    domains:
+      - automation
+      - group
+      - scene
+      - script
+      - zone
 
 updater:
    include_used_components: true
