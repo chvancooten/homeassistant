@@ -240,6 +240,12 @@ views:
             - entity: light.livingroom_spot3
             - entity: light.livingroom_spot4
           
+        - type: entities
+          title: Circadian lighting
+          entities:
+            - entity: switch.circadian_lighting_circadian_lighting
+            - entity: sensor.circadian_values
+
         - type: glance
           title: Illuminance
           entities:

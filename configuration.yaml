@@ -137,7 +137,12 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
+circadian_lighting:
+
 switch:
+  - platform: circadian_lighting
+    lights_ct:
+      - light.livingroom
   - platform: broadlink
     host: 192.168.1.202
     mac: '78:0F:77:5A:B5:02'
