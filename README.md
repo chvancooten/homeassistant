@@ -1,8 +1,7 @@
 # Home Cassistant
 > "Probably the smartest home"
 
-The configuration for my homeassistant instance.
-Still quite basic, but slowly expanding.
+My personal Home Assistant configuration.
 
 ### Devices
 - 1x Nanoleaf (Smarter Series) "Aurora" Light Panels
@@ -17,3 +16,7 @@ Still quite basic, but slowly expanding.
 - 1x Google Chromecast
 - 1x Google Chromecast Audio
 - 1x Broadlink RM Mini universal remote
+
+### Custom components
+- [Circadian lighting](https://community.home-assistant.io/t/circadian-lighting-custom-component/61246)
+- [PS4](https://github.com/hmn/home-assistant-config/wiki/media_player_ps4) (removed due to instability)

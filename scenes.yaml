@@ -72,6 +72,7 @@
 #Extra scenes (activate manually)
 - name: Atmospheric mode
   entities: 
+    switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
       color_name: orange
@@ -92,6 +93,7 @@
 
 - name: Party mode
   entities: 
+    switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
       effect: 'Disco'
@@ -113,6 +115,7 @@
 
 - name: Cleaning mode
   entities:
+    switch.circadian_lighting_circadian_lighting: off
     group.all_lights:
       state: on
       color_temp: 270

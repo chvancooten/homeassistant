@@ -139,9 +139,8 @@ mqtt:
     payload: 'offline'
 
 circadian_lighting:
-  min_colortemp: 2500
+  min_colortemp: 2000
   max_colortemp: 4500
-  # Update once every 5 minutes with a 1-min transition
   # Defaults to 15 minute transition every 15 min but causes transition bug
   interval: 300
   transition: 60
@@ -150,6 +149,10 @@ switch:
   - platform: circadian_lighting
     lights_ct:
       - light.livingroom
+      - light.livingroom_spot1
+      - light.livingroom_spot2
+      - light.livingroom_spot3
+      - light.livingroom_spot4
   - platform: broadlink
     host: 192.168.1.202
     mac: '78:0F:77:5A:B5:02'
