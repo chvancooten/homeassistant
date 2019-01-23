@@ -58,6 +58,7 @@ input_select:
     name: 'Scene'
     icon: mdi:theme-light-dark
     options:
+    - "Morning"
     - "Day"
     - "Evening"
     - "Night"
@@ -138,6 +139,12 @@ mqtt:
     payload: 'offline'
 
 circadian_lighting:
+  min_colortemp: 2500
+  max_colortemp: 4500
+  # Update once every 5 minutes with a 1-min transition
+  # Defaults to 15 minute transition every 15 min but causes transition bug
+  interval: 300
+  transition: 60
 
 switch:
   - platform: circadian_lighting

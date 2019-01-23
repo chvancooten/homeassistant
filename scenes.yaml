@@ -1,8 +1,21 @@
 #Scenes included in modes (automation controllers)
+- name: Morning
+  entities:
+    input_select.scene: 
+      option: Morning
+    switch.circadian_lighting_circadian_lighting: off
+    light.livingroom: off
+    light.aurora: off
+    light.living_room_spots:
+      state: on
+      color_temp: 350
+      brightness: 70
+
 - name: Day
   entities: 
     input_select.scene: 
       option: Day
+    switch.circadian_lighting_circadian_lighting: on
     light.livingroom:
       state: on
       color_temp: 290
@@ -24,6 +37,7 @@
   entities: 
     input_select.scene: 
       option: Evening
+    switch.circadian_lighting_circadian_lighting: on
     light.livingroom:
       state: on
       color_temp: 350
@@ -51,22 +65,11 @@
   entities:
     input_select.scene: 
       option: Night
+    switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
     script.script_stopper: on
 
-#Extra scenes (activate through voice)
-- name: Morning
-  entities:
-#    input_select.scene: 
-#      option: Day
-    light.livingroom: off
-    light.aurora: off
-    light.living_room_spots:
-      state: on
-      color_temp: 350
-      brightness: 70
-#    light.bedroom: off
-
+#Extra scenes (activate manually)
 - name: Atmospheric mode
   entities: 
     light.livingroom:

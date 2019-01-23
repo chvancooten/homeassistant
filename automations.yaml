@@ -13,7 +13,7 @@
 
 ### BACKUP
 
-- alias: Incidental full backup
+- alias: Daily full backup
   id: automation_backup
   initial_state: 'on'
   trigger:
@@ -54,28 +54,29 @@
   action:
   - service: script.tv_hdmi2
 
-- alias: Switch to Playstation
-  id: automation_switchtoPS
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: 'media_player.playstation_4'
-    from: 'off'
-  action:
-  - service: switch.turn_on
-    entity_id: switch.tv_samsung
-  - delay: '00:00:10'
-  - service: script.tv_hdmi1
-  
-- alias: Switch from Playstation
-  id: automation_switchtoPS
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: 'media_player.playstation_4'
-    to: 'off'
-  action:
-  - service: script.tv_hdmi2
+## Obsolete - Playstation component disabled due to buginess
+#- alias: Switch to Playstation
+#  id: automation_switchtoPS
+#  initial_state: 'on'
+#  trigger:
+#  - platform: state
+#    entity_id: 'media_player.playstation_4'
+#    from: 'off'
+#  action:
+#  - service: switch.turn_on
+#    entity_id: switch.tv_samsung
+#  - delay: '00:00:10'
+#  - service: script.tv_hdmi1
+#  
+#- alias: Switch from Playstation
+#  id: automation_switchtoPS
+#  initial_state: 'on'
+#  trigger:
+#  - platform: state
+#    entity_id: 'media_player.playstation_4'
+#    to: 'off'
+#  action:
+#  - service: script.tv_hdmi2
 
 - alias: Switch audio to TV
   id: automation_switchaudiotoTV
@@ -225,8 +226,8 @@
   - service: light.turn_on
     data_template:
       entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling {% else %} light.hallwayceiling, light.hallwaystanding {% endif %}'
-      transition: '{% if is_state("input_select.scene", "Night") %} 5 {% else %} 2 {% endif %}'
-      brightness: '{% if is_state("input_select.scene", "Night") %} 5 {% else %} 100 {% endif %}'
+      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 2 {% endif %}'
+      brightness: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 100 {% endif %}'
       kelvin: '{% if is_state("input_select.scene", "Night") %} 1850 {% else %} 2500 {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.hallway_motion_light_off
@@ -263,7 +264,7 @@
   - service: light.turn_on
     data_template:
       entity_id: light.toilet
-      transition: '{% if is_state("input_select.scene", "Night") %} 5 {% else %} 1 {% endif %}'
+      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1 {% endif %}'
       brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100 {% endif %}'
       kelvin: '{% if is_state("input_select.scene", "Night") %} 1850 {% else %} 2700 {% endif %}'
   - service: homeassistant.turn_on

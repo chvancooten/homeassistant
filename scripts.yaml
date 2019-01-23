@@ -1,12 +1,27 @@
 ### SCENES
 
-#reset currently selected scene
+#reset lights to currently selected scene
 reset_scene:
   alias: Reset selected scene
   sequence:
     - service: scene.turn_on
       data_template:
         entity_id: scene.{{ states('input_select.scene') }}
+
+#set scene based on time of day (for home arrivals and wakeup routines)
+set_scene:
+  alias: Set current scene
+  sequence:
+    - service: scene.turn_on
+      data_template:
+        entity_id: >
+          {% if now().hour > 10 %}
+            scene.day
+          {% elif now().hour > 18 %}
+            scene.evening
+          {% else %}
+            scene.morning
+          {% endif %}
 
 ### LIGHTING
 
