@@ -10,11 +10,13 @@ homeassistant:
 frontend:
   themes: !include themes.yaml
   
-lovelace:
-  mode: yaml
+#lovelace:
+#  mode: yaml
 
 http:
   base_url: !secret baseurl
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
 
 recorder:
   db_url: !secret dburl
@@ -22,7 +24,6 @@ recorder:
   exclude:
     domains:
       - automation
-      - group
       - scene
       - script
       - zone
@@ -139,11 +140,11 @@ mqtt:
     payload: 'offline'
 
 circadian_lighting:
-  min_colortemp: 2000
-  max_colortemp: 4500
+  min_colortemp: 2500
+  max_colortemp: 5000
   # Defaults to 15 minute transition every 15 min but causes transition bug
   interval: 300
-  transition: 60
+  transition: 50
 
 switch:
   - platform: circadian_lighting
