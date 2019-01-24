@@ -1,0 +1,705 @@
+{
+    "data": {
+        "config": {
+            "resources": [
+                {
+                    "type": "module",
+                    "url": "/local/mini-media-player-bundle.js?v=0.9.8"
+                }
+            ],
+            "title": "Home Cassistant",
+            "views": [
+                {
+                    "cards": [
+                        {
+                            "cards": [
+                                {
+                                    "card": {
+                                        "title": "People at home",
+                                        "type": "glance"
+                                    },
+                                    "entities": [
+                                        "group.tracker_cas",
+                                        "group.tracker_debby"
+                                    ],
+                                    "show_empty": false,
+                                    "state_filter": [
+                                        "home"
+                                    ],
+                                    "type": "entity-filter"
+                                },
+                                {
+                                    "card": {
+                                        "artwork": "cover",
+                                        "entity": "media_player.tonecas",
+                                        "power_color": true,
+                                        "show_progress": true,
+                                        "type": "custom:mini-media-player"
+                                    },
+                                    "conditions": [
+                                        {
+                                            "entity": "media_player.tonecas",
+                                            "state_not": "off"
+                                        }
+                                    ],
+                                    "type": "conditional"
+                                },
+                                {
+                                    "card": {
+                                        "artwork": "cover",
+                                        "entity": "media_player.chromecas",
+                                        "power_color": true,
+                                        "show_progress": true,
+                                        "type": "custom:mini-media-player"
+                                    },
+                                    "conditions": [
+                                        {
+                                            "entity": "media_player.chromecas",
+                                            "state_not": "off"
+                                        },
+                                        {
+                                            "entity": "media_player.chromecas",
+                                            "state_not": "unavailable"
+                                        }
+                                    ],
+                                    "type": "conditional"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "input_select.scene"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                },
+                                {
+                                    "cards": [
+                                        {
+                                            "entity": "script.reset_scene",
+                                            "icon": "mdi:brightness-4",
+                                            "name": "Reset",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "script.reset_scene"
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "scene.atmospheric_mode",
+                                            "icon": "mdi:sofa",
+                                            "name": "Atmosphere",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "scene.turn_on",
+                                                "service_data": {
+                                                    "entity_id": "scene.atmospheric_mode"
+                                                }
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "scene.party_mode",
+                                            "icon": "mdi:balloon",
+                                            "name": "Party",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "scene.turn_on",
+                                                "service_data": {
+                                                    "entity_id": "scene.party_mode"
+                                                }
+                                            },
+                                            "type": "entity-button"
+                                        },
+                                        {
+                                            "entity": "group.all_lights",
+                                            "icon": "mdi:lightbulb-outline",
+                                            "name": "Off",
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "light.turn_off",
+                                                "service_data": {
+                                                    "entity_id": "group.all_lights"
+                                                }
+                                            },
+                                            "type": "entity-button"
+                                        }
+                                    ],
+                                    "type": "horizontal-stack"
+                                },
+                                {
+                                    "elements": [
+                                        {
+                                            "entity": "switch.soundbar",
+                                            "style": {
+                                                "left": "21%",
+                                                "top": "24%"
+                                            },
+                                            "title": "Soundbar",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "switch.tv_samsung",
+                                            "style": {
+                                                "left": "21%",
+                                                "top": "14%"
+                                            },
+                                            "title": "TV",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.livingroom",
+                                            "style": {
+                                                "left": "30%",
+                                                "top": "30%"
+                                            },
+                                            "title": "Living room light",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.aurora",
+                                            "style": {
+                                                "left": "30%",
+                                                "top": "84%"
+                                            },
+                                            "title": "Nanoleaf",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot4",
+                                            "style": {
+                                                "left": "30%",
+                                                "top": "47%"
+                                            },
+                                            "title": "Living room spot 4",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot3",
+                                            "style": {
+                                                "left": "30%",
+                                                "top": "56%"
+                                            },
+                                            "title": "Living room spot 3",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot2",
+                                            "style": {
+                                                "left": "30%",
+                                                "top": "65%"
+                                            },
+                                            "title": "Living room spot 2",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot1",
+                                            "style": {
+                                                "left": "30%",
+                                                "top": "74%"
+                                            },
+                                            "title": "Living room spot 1",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "switch.vacuum",
+                                            "style": {
+                                                "left": "21%",
+                                                "top": "84%"
+                                            },
+                                            "title": "Deebot",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.toilet",
+                                            "style": {
+                                                "left": "58.5%",
+                                                "top": "12%"
+                                            },
+                                            "title": "Toilet light",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.motionsensor_toilet_occupancy",
+                                            "style": {
+                                                "left": "58.5%",
+                                                "top": "23%"
+                                            },
+                                            "title": "Toilet motion",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.hallwayceiling",
+                                            "style": {
+                                                "left": "80%",
+                                                "top": "37%"
+                                            },
+                                            "title": "Hallway ceiling light",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.motionsensor_hallway_occupancy",
+                                            "style": {
+                                                "left": "74%",
+                                                "top": "37%"
+                                            },
+                                            "title": "Hallway motion",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.hallwaystanding",
+                                            "style": {
+                                                "left": "86%",
+                                                "top": "37%"
+                                            },
+                                            "title": "Hallway motion",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "light.bedroom",
+                                            "style": {
+                                                "left": "78%",
+                                                "top": "69%"
+                                            },
+                                            "title": "Bedroom light",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "sensor.climatesensor_temperature",
+                                            "style": {
+                                                "left": "40%",
+                                                "top": "14%"
+                                            },
+                                            "title": "Inside temperature",
+                                            "type": "state-label"
+                                        },
+                                        {
+                                            "entity": "sensor.buienradar_temperature",
+                                            "style": {
+                                                "left": "6.5%",
+                                                "top": "14%"
+                                            },
+                                            "title": "Outside temperature",
+                                            "type": "state-label"
+                                        },
+                                        {
+                                            "entity": "sensor.waqi_de_jongweg_utrecht",
+                                            "style": {
+                                                "left": "6.5%",
+                                                "top": "21%"
+                                            },
+                                            "title": "Air quality",
+                                            "type": "state-label"
+                                        }
+                                    ],
+                                    "image": "/local/floorplan_gs.jpg",
+                                    "type": "picture-elements"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        }
+                    ],
+                    "icon": "mdi:home-assistant",
+                    "path": "home",
+                    "title": "Home"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "label": "Living room",
+                                    "type": "section"
+                                },
+                                {
+                                    "entity": "light.livingroom",
+                                    "name": "Ceiling"
+                                },
+                                {
+                                    "entity": "light.living_room_spots"
+                                },
+                                {
+                                    "entity": "light.aurora"
+                                },
+                                {
+                                    "label": "Bedroom",
+                                    "type": "section"
+                                },
+                                {
+                                    "entity": "light.bedroom",
+                                    "name": "Ceiling"
+                                },
+                                {
+                                    "label": "Hallway",
+                                    "type": "section"
+                                },
+                                {
+                                    "entity": "light.hallwayceiling",
+                                    "name": "Ceiling"
+                                },
+                                {
+                                    "entity": "light.hallwaystanding",
+                                    "name": "Standing"
+                                },
+                                {
+                                    "label": "Toilet",
+                                    "type": "section"
+                                },
+                                {
+                                    "entity": "light.toilet",
+                                    "name": "Toilet"
+                                }
+                            ],
+                            "title": "Lights",
+                            "type": "entities"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "light.livingroom_spot1"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot2"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot3"
+                                        },
+                                        {
+                                            "entity": "light.livingroom_spot4"
+                                        }
+                                    ],
+                                    "title": "Spots",
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "switch.circadian_lighting_circadian_lighting"
+                                        },
+                                        {
+                                            "entity": "sensor.circadian_values"
+                                        }
+                                    ],
+                                    "title": "Circadian lighting",
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.motionsensor_hallway_illuminance"
+                                        },
+                                        {
+                                            "entity": "sensor.motionsensor_toilet_illuminance"
+                                        }
+                                    ],
+                                    "title": "Illuminance",
+                                    "type": "glance"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        }
+                    ],
+                    "icon": "mdi:lightbulb",
+                    "path": "lights",
+                    "title": "Lights"
+                },
+                {
+                    "cards": [
+                        {
+                            "artwork": "cover",
+                            "entity": "media_player.spotify",
+                            "media_buttons": [
+                                {
+                                    "name": "Release Radar",
+                                    "type": "playlist",
+                                    "url": "spotify:user:spotify:playlist:37i9dQZEVXbt00olLhj6c6"
+                                },
+                                {
+                                    "name": "Discover Weekly",
+                                    "type": "playlist",
+                                    "url": "spotify:user:spotify:playlist:37i9dQZEVXcQg2aDzCNHrV"
+                                },
+                                {
+                                    "name": "Peaceful Piano",
+                                    "type": "playlist",
+                                    "url": "spotify:user:spotify:playlist:37i9dQZF1DX4sWSpwq3LiO"
+                                },
+                                {
+                                    "name": "Jazz Vibes",
+                                    "type": "playlist",
+                                    "url": "spotify:user:spotify:playlist:37i9dQZF1DX0SM0LYsmbMT"
+                                },
+                                {
+                                    "name": "Background & Chill",
+                                    "type": "playlist",
+                                    "url": "spotify:user:chvancooten:playlist:3iMf0W5ZWN7yEBpzKO9gTv"
+                                }
+                            ],
+                            "power_color": true,
+                            "show_progress": true,
+                            "show_shuffle": true,
+                            "show_source": "full",
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "artwork": "cover",
+                            "entity": "media_player.chromecas",
+                            "power_color": true,
+                            "show_progress": true,
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "artwork": "cover",
+                            "entity": "media_player.tonecas",
+                            "power_color": true,
+                            "show_progress": true,
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "artwork": "full-cover-fit",
+                            "entity": "media_player.playstation_4",
+                            "hide_controls": true,
+                            "hide_volume": true,
+                            "power_color": true,
+                            "show_source": "small",
+                            "type": "custom:mini-media-player"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "media_player.homecas"
+                                },
+                                {
+                                    "entity": "media_player.homecas_junior"
+                                }
+                            ],
+                            "title": "Assistants",
+                            "type": "entities"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "switch.tv_samsung"
+                                },
+                                {
+                                    "entity": "script.tv_hdmi1"
+                                },
+                                {
+                                    "entity": "script.tv_hdmi2"
+                                },
+                                {
+                                    "entity": "switch.soundbar"
+                                },
+                                {
+                                    "entity": "script.soundbar_next_source"
+                                }
+                            ],
+                            "title": "Devices",
+                            "type": "entities"
+                        }
+                    ],
+                    "icon": "mdi:play-box-outline",
+                    "path": "media",
+                    "title": "Media"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "group.tracker_cas"
+                                },
+                                {
+                                    "entity": "group.tracker_debby"
+                                }
+                            ],
+                            "title": "Presence",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.power_consumption"
+                                },
+                                {
+                                    "entity": "sensor.power_consumption_normal"
+                                },
+                                {
+                                    "entity": "sensor.power_consumption_low"
+                                },
+                                {
+                                    "entity": "sensor.power_tariff"
+                                }
+                            ],
+                            "title": "Power usage",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.power_consumption"
+                                },
+                                {
+                                    "entity": "sensor.totalpowerconsumption"
+                                }
+                            ],
+                            "title": "Power use",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.climatesensor_temperature"
+                                },
+                                {
+                                    "entity": "sensor.climatesensor_humidity"
+                                },
+                                {
+                                    "entity": "sensor.climatesensor_pressure"
+                                },
+                                {
+                                    "entity": "sensor.waqi_de_jongweg_utrecht"
+                                }
+                            ],
+                            "title": "Climate",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.climatesensor_temperature",
+                                    "name": "Inside temperature"
+                                },
+                                {
+                                    "entity": "sensor.buienradar_temperature",
+                                    "name": "Outside temperature"
+                                },
+                                {
+                                    "entity": "sensor.climatesensor_pressure",
+                                    "name": "Inside pressure"
+                                },
+                                {
+                                    "entity": "sensor.buienradar_pressure",
+                                    "name": "Outside pressure"
+                                },
+                                {
+                                    "entity": "sensor.climatesensor_humidity",
+                                    "name": "Inside humidity"
+                                },
+                                {
+                                    "entity": "sensor.buienradar_humidity",
+                                    "name": "Outside humidity"
+                                }
+                            ],
+                            "title": "Climate history",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.motionsensor_hallway_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.motionsensor_toilet_occupancy"
+                                }
+                            ],
+                            "title": "Motion",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.motionsensor_hallway_occupancy",
+                                    "name": "Hallway"
+                                },
+                                {
+                                    "entity": "binary_sensor.motionsensor_toilet_occupancy",
+                                    "name": "Toilet"
+                                }
+                            ],
+                            "title": "Motion history",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entity": "weather.buienradar",
+                            "type": "weather-forecast"
+                        }
+                    ],
+                    "icon": "mdi:access-point",
+                    "path": "sensors",
+                    "title": "Sensors"
+                },
+                {
+                    "cards": [
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.processor_use"
+                                },
+                                {
+                                    "entity": "sensor.load_5m"
+                                },
+                                {
+                                    "entity": "sensor.memory_use_percent"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent"
+                                },
+                                {
+                                    "entity": "sensor.last_boot"
+                                }
+                            ],
+                            "title": "System performance",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.processor_use",
+                                    "name": "Processor"
+                                },
+                                {
+                                    "entity": "sensor.memory_use_percent",
+                                    "name": "Memory"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent",
+                                    "name": "Disk"
+                                }
+                            ],
+                            "title": "Performance history",
+                            "type": "history-graph"
+                        },
+                        {
+                            "entities": [
+                                {
+                                    "entity": "sensor.climatesensor_battery"
+                                },
+                                {
+                                    "entity": "sensor.motionsensor_hallway_battery"
+                                },
+                                {
+                                    "entity": "sensor.motionsensor_toilet_battery"
+                                },
+                                {
+                                    "entity": "sensor.xiaomibutton_battery"
+                                },
+                                {
+                                    "entity": "sensor.xiaomiswitch_battery"
+                                }
+                            ],
+                            "title": "Zigbee sensor battery levels",
+                            "type": "glance"
+                        }
+                    ],
+                    "icon": "mdi:chip",
+                    "path": "system",
+                    "title": "System"
+                }
+            ]
+        }
+    },
+    "key": "lovelace",
+    "version": 1
+}
