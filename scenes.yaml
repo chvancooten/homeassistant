@@ -3,7 +3,7 @@
   entities:
     input_select.scene: 
       option: Morning
-    switch.circadian_lighting_circadian_lighting: off
+    switch.circadian_lighting_circadian_lighting: on
     light.livingroom: off
     light.aurora: off
     light.living_room_spots:
