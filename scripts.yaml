@@ -95,24 +95,31 @@ script_stopper:
   alias: STOP ALL SCRIPTS
   sequence:
     - service: script.turn_off
+      entity_id: "*"
     - delay:
         seconds: 0.25
     - service: script.turn_off
+      entity_id: "*"
     - delay:
         seconds: 0.15
     - service: script.turn_off
+      entity_id: "*"
     - delay:
         seconds: 0.25
     - service: script.turn_off
+      entity_id: "*"
     - delay:
         seconds: 0.15
     - service: script.turn_off
+      entity_id: "*"
     - delay:
         seconds: 0.25
     - service: script.turn_off
+      entity_id: "*"
     - delay:
         seconds: 0.15
     - service: script.turn_off
+      entity_id: "*"
 
 party_mode:
   alias: Party in the 90s!
