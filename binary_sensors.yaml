@@ -1,0 +1,8 @@
+- platform: template
+  sensors:
+    display_commute:
+      friendly_name: Display Commute Card
+      entity_id: sensor.time
+      value_template: >
+          {% set ct = now().hour + now().minute/60 + now().second/3600 %}
+          {{ 6 <= ct <= 12 and now().weekday() < 5 }}

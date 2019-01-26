@@ -30,6 +30,21 @@
                                 },
                                 {
                                     "card": {
+                                        "entities": [
+                                            "sensor.work_commute"
+                                        ],
+                                        "type": "entities"
+                                    },
+                                    "conditions": [
+                                        {
+                                            "entity": "binary_sensor.display_commute",
+                                            "state": "on"
+                                        }
+                                    ],
+                                    "type": "conditional"
+                                },
+                                {
+                                    "card": {
                                         "artwork": "cover",
                                         "entity": "media_player.tonecas",
                                         "power_color": true,

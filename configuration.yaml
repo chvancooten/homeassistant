@@ -43,6 +43,7 @@ map:
 sun:
 
 sensor: !include sensors.yaml
+binary_sensor: !include binary_sensors.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
