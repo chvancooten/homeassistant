@@ -155,7 +155,7 @@
   - condition: state
     entity_id: 'group.tracker_cas'
     state: 'not_home'
-    ## AND automation has not been triggered for 12 hours (prevent spam when reconnecting)
+    ## AND automation has not been triggered for 6 hours (prevent spam when reconnecting)
   - condition: template
     value_template: >
       {% set debby_time = as_timestamp(states.automation.debbydetectie.attributes["last_triggered"]) %}
@@ -195,7 +195,7 @@
   initial_state: 'on'
   trigger:
   - platform: state
-    entity_id: binary_sensor.motionsensor_hallway_occupancy, binary_sensor.motionsensor_toilet_occupancy
+    entity_id: binary_sensor.motionsensor_hallway_occupancy
     to: 'on'
   condition:
     condition: and
