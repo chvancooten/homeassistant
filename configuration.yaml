@@ -141,7 +141,7 @@ mqtt:
 
 circadian_lighting:
   min_colortemp: 2500
-  max_colortemp: 5000
+  max_colortemp: 4500
   # Defaults to 15 minute transition every 15 min but causes transition bug
   interval: 300
   transition: 50

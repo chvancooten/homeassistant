@@ -28,6 +28,12 @@
   - type: processor_use
   - type: last_boot
   
+- platform: waze_travel_time
+    origin: Hof van Oslo, Utrecht
+    destination: Aaron Coplandstraat 8, Amsterdam
+    region: 'EU'
+    name: Work commute
+
 - platform: template
   sensors:
   
