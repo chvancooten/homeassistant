@@ -20,7 +20,8 @@ http:
 
 recorder:
   db_url: !secret dburl
-  purge_keep_days: 30
+  purge_keep_days: 7
+  purge_interval: 1
   exclude:
     domains:
       - automation

@@ -15,10 +15,10 @@ set_scene:
     - service: scene.turn_on
       data_template:
         entity_id: >
-          {% if now().hour > 10 %}
-            scene.day
-          {% elif now().hour > 18 %}
+          {% if now().hour > 18 %}
             scene.evening
+          {% elif now().hour > 10 %}
+            scene.day
           {% else %}
             scene.morning
           {% endif %}
