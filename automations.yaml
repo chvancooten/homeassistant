@@ -279,7 +279,7 @@
     entity_id: binary_sensor.motionsensor_toilet_occupancy
     to: 'off'
     for:
-      minutes: 1
+      minutes: 2
   action:
   - service: light.turn_off
     data:
@@ -330,4 +330,4 @@
   action:
   - service: light.toggle
     data_template:
-      entity_id: '{% if trigger.payload_json.click == "left" %} light.living_room_spots {% elif trigger.payload_json.click == "right" %} light.livingroom {% elif trigger.payload_json.click == "both" %} group.all_lights {% endif %}'
+      entity_id: '{% if trigger.payload_json.click == "right" %} light.living_room_spots {% elif trigger.payload_json.click == "left" %} light.livingroom {% elif trigger.payload_json.click == "both" %} group.all_lights {% endif %}'

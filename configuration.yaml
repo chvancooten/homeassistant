@@ -151,11 +151,11 @@ mqtt:
     payload: 'offline'
 
 circadian_lighting:
-  min_colortemp: 2500
-  max_colortemp: 4500
+  min_colortemp: 2250
+  max_colortemp: 4000
   # Defaults to 15 minute transition every 15 min but causes transition bug
-  interval: 300
-  transition: 50
+  interval: 150
+  transition: 30
 
 switch:
   - platform: circadian_lighting

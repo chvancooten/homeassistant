@@ -11,5 +11,3 @@ tracker_cas:
   - device_tracker.iphone_cas
   - device_tracker.iphone_cas_bt
   - device_tracker.iphone_cas_wifi
-  - device_tracker.laptop_cas
-  - device_tracker.werklaptop_cas
