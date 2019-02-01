@@ -37,8 +37,8 @@
                                     },
                                     "conditions": [
                                         {
-                                            "entity": "binary_sensor.display_commute",
-                                            "state": "on"
+                                            "entity": "input_select.scene",
+                                            "state": "Morning"
                                         }
                                     ],
                                     "type": "conditional"
