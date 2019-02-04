@@ -33,6 +33,11 @@
   destination: "Aaron Coplandstraat 8, Amsterdam"
   region: "EU"
   name: "Work commute"
+- platform: waze_travel_time
+  origin: "Aaron Coplandstraat 8, Amsterdam"
+  destination:  "Hof van Oslo, Utrecht"
+  region: "EU"
+  name: "Home commute"
 
 - platform: template
   sensors:
