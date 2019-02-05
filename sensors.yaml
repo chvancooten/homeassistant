@@ -29,13 +29,13 @@
   - type: last_boot
   
 - platform: waze_travel_time
-  origin: "Hof van Oslo, Utrecht"
-  destination: "Aaron Coplandstraat 8, Amsterdam"
+  origin: !secret homeaddr
+  destination: !secret workaddr
   region: "EU"
   name: "Work commute"
 - platform: waze_travel_time
-  origin: "Aaron Coplandstraat 8, Amsterdam"
-  destination:  "Hof van Oslo, Utrecht"
+  origin: !secret workaddr
+  destination: !secret homeaddr
   region: "EU"
   name: "Home commute"
 

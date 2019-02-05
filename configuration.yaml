@@ -10,6 +10,12 @@ homeassistant:
 frontend:
   themes: !include themes.yaml
 
+panel_iframe:
+  grafana:
+    title: 'Grafana dashboard'
+    url: 'https://dashcas.vancooten.com'
+    icon: mdi:monitor-dashboard
+  
 http:
   base_url: !secret baseurl
   ip_ban_enabled: True
@@ -17,7 +23,7 @@ http:
 
 recorder:
   db_url: !secret dburl
-  purge_keep_days: 7
+  purge_keep_days: 1
   purge_interval: 1
   exclude:
     domains:
@@ -151,8 +157,8 @@ circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 4000
   # Defaults to 15 minute transition every 15 min but causes transition bug
-  interval: 150
-  transition: 30
+  interval: 300
+  transition: 10
 
 switch:
   - platform: circadian_lighting
