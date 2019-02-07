@@ -10,7 +10,7 @@ My personal Home Assistant configuration.
 - 1x IKEA Tradfri dimmable 'candle' bulb
 - 2x Xiaomi Aqara motion sensors
 - 1x Xiaomi Aqara climate sensor
-- 2x Xiaomi Aqara double-key wireless switch (1 not connected as of yet)
+- 2x Xiaomi Aqara double-key wireless switch
 - 1x Xiaomi Aqara single button w/ accelerometer
 - 2x Google Home mini
 - 1x Google Chromecast
