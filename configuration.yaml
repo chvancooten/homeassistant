@@ -10,6 +10,8 @@ homeassistant:
 frontend:
   themes: !include themes.yaml
 
+system_health:
+  
 panel_iframe:
   grafana:
     title: 'Grafana dashboard'

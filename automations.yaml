@@ -331,3 +331,17 @@
   - service: light.toggle
     data_template:
       entity_id: '{% if trigger.payload_json.click == "right" %} light.living_room_spots {% elif trigger.payload_json.click == "left" %} light.livingroom {% elif trigger.payload_json.click == "both" %} group.all_lights {% endif %}'
+
+- alias: Bedroom light switch
+  id: automation_bedroom_lightswitch
+  initial_state: 'on'
+  trigger:
+  - platform: mqtt
+    topic: zigbee2mqtt/xiaomiswitch2
+  condition:
+  - condition: template
+    value_template: '{{ trigger.payload_json.click == "left" }}'
+  action:
+  - service: light.toggle
+    data:
+      entity_id: light.bedroom

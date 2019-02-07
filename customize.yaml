@@ -69,6 +69,9 @@ sensor.climatesensor_pressure:
 sensor.xiaomiswitch1_2:
   friendly_name: Xiaomi switch 1
   
+sensor.xiaomiswitch2:
+  friendly_name: Xiaomi switch 2
+  
 sensor.waqi_de_jongweg_utrecht:
   friendly_name: Air quality
   

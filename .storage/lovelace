@@ -527,6 +527,15 @@
                                 },
                                 {
                                     "entity": "group.tracker_debby"
+                                },
+                                {
+                                    "entity": "device_tracker.laptop_cas"
+                                },
+                                {
+                                    "entity": "device_tracker.werklaptop_cas"
+                                },
+                                {
+                                    "entity": "device_tracker.playstation"
                                 }
                             ],
                             "title": "Presence",
@@ -549,18 +558,6 @@
                             ],
                             "title": "Power usage",
                             "type": "glance"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "sensor.power_consumption"
-                                },
-                                {
-                                    "entity": "sensor.totalpowerconsumption"
-                                }
-                            ],
-                            "title": "Power use",
-                            "type": "history-graph"
                         },
                         {
                             "entities": [
@@ -702,6 +699,9 @@
                                 },
                                 {
                                     "entity": "sensor.xiaomiswitch_battery"
+                                },
+                                {
+                                    "entity": "sensor.0x00158d00021333aa_battery"
                                 }
                             ],
                             "title": "Zigbee sensor battery levels",
