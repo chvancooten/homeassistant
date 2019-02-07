@@ -66,11 +66,11 @@
       friendly_name: Humidity outside
       unit_of_measurement: '%'
       
-    climatesensor_battery:
-      value_template: '{{ states.sensor.climatesensor_temperature.attributes.battery }}'
-      device_class: battery
-      friendly_name: Climate sensor battery
-      unit_of_measurement: '%'
+#    climatesensor_battery:
+#      value_template: '{{ states.sensor.climatesensor_temperature.attributes.battery }}'
+#      device_class: battery
+#      friendly_name: Climate sensor battery
+#      unit_of_measurement: '%'
      
 ## Deprecated with new Zigbee2MQTT
 #    motionsensor_hallway_battery:
@@ -85,14 +85,14 @@
 #      friendly_name: Toilet motion sensor battery
 #      unit_of_measurement: '%'
       
-    xiaomibutton_battery:
-      value_template: '{{ states.sensor.xiaomibutton.attributes.battery }}'
-      device_class: battery
-      friendly_name: Xiaomi button battery
-      unit_of_measurement: '%'
+#    xiaomibutton_battery:
+#      value_template: '{{ states.sensor.xiaomibutton.attributes.battery }}'
+#      device_class: battery
+#      friendly_name: Xiaomi button battery
+#      unit_of_measurement: '%'
       
-    xiaomiswitch_battery:
-      value_template: '{{ states.sensor.xiaomiswitch1.attributes.battery }}'
-      device_class: battery
-      friendly_name: Xiaomi switch battery
-      unit_of_measurement: '%'
+#    xiaomiswitch_battery:
+#      value_template: '{{ states.sensor.xiaomiswitch1.attributes.battery }}'
+#      device_class: battery
+#      friendly_name: Xiaomi switch battery
+#      unit_of_measurement: '%'

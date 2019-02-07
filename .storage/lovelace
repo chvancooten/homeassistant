@@ -684,9 +684,10 @@
                             "type": "history-graph"
                         },
                         {
+                            "columns": 6,
                             "entities": [
                                 {
-                                    "entity": "sensor.climatesensor_battery"
+                                    "entity": "sensor.climatesensor_battery_2"
                                 },
                                 {
                                     "entity": "sensor.motionsensor_hallway_battery"
@@ -695,13 +696,13 @@
                                     "entity": "sensor.motionsensor_toilet_battery"
                                 },
                                 {
-                                    "entity": "sensor.xiaomibutton_battery"
+                                    "entity": "sensor.xiaomibutton_battery_2"
                                 },
                                 {
-                                    "entity": "sensor.xiaomiswitch_battery"
+                                    "entity": "sensor.xiaomiswitch1_battery"
                                 },
                                 {
-                                    "entity": "sensor.0x00158d00021333aa_battery"
+                                    "entity": "sensor.xiaomiswitch2_battery"
                                 }
                             ],
                             "title": "Zigbee sensor battery levels",
