@@ -31,7 +31,7 @@
                                 {
                                     "card": {
                                         "entities": [
-                                            "sensor.next_alarm"
+                                            "sensor.next_alarm_human"
                                         ],
                                         "type": "entities"
                                     },
