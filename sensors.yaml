@@ -41,7 +41,11 @@
 
 - platform: template
   sensors:
-  
+    next_alarm_human:
+      value_template: "{{ (states('sensor.next_alarm')|int/1000)|timestamp_custom('%A %H:%M') }}"
+      friendly_name: Next alarm
+      icon_template: 'mdi:alarm'
+
     totalpowerconsumption:
       value_template: '{{ ( states("sensor.power_consumption_low")|float ) + ( states("sensor.power_consumption_normal")|float ) }}'
       friendly_name: Total power consumption

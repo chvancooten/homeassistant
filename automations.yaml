@@ -134,7 +134,6 @@
         entity_id: light.bedroom
         effect: Wakeuplight
 
-
 ### PRESENCE DETECTION
 
 - alias: DebbyDetectie
