@@ -119,14 +119,9 @@
   id: automation_wakeuplight
   initial_state: 'on'
   trigger:
-  - platform: template
-    # Trigger if Google Assistant alarm clock is set for less than 15 minutes from now and light is off
-    value_template: >
-      {% if states('sensor.next_alarm')=="None"%}
-        {{ False }}
-      {% else %}
-        {{ (states('sensor.next_alarm')|int/1000) - as_timestamp(now()) < 900 }}
-      {% endif %}
+  - platform: state
+    entity_id: 'binary_sensor.next_alarm_within15min'
+    to: 'on'
   condition:
   - condition: state
     entity_id: 'light.bedroom'
