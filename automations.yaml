@@ -115,32 +115,25 @@
   - service: script.soundbar_next_source
  
 ### TIME BASED
+- alias: Wakeup Light
+  id: automation_wakeuplight
+  initial_state: 'on'
+  trigger:
+  - platform: template
+    # Trigger if Google Assistant alarm clock is set for less than 15 minutes from now and light is off
+    value_template: "{{ (states('sensor.next_alarm')|int/1000) - as_timestamp(now()) < 900 }}" 
+  condition:
+    condition: or
+    conditions:
+    - condition: state
+      entity_id: 'light.bedroom'
+      state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bedroom
+        effect: Wakeuplight
 
-## Wakeup does not work due to yeelight >60 second transition bug (https://github.com/home-assistant/home-assistant/issues/11371)
-#- alias: Wakeup Light
-#  id: automation_wakeuplight
-#  initial_state: 'on'
-#  trigger: #TODO read alarm clock
-#  - platform: sun
-#    event: sunrise
-#  condition:
-#    condition: or
-#    conditions:
-#    - condition: state
-#      entity_id: 'input_select.scene'
-#      state: 'Night'
-#  action:
-#    - service: light.turn_on
-#      data:
-#        brightness_pct: 1
-#        entity_id: light.bedroom
-#        color_name: red
-#    - service: light.turn_on
-#      data:
-#        brightness_pct: 80
-#        entity_id: light.bedroom
-#        color_name: orange
-#        transition: 900
 
 ### PRESENCE DETECTION
 

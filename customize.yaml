@@ -128,3 +128,5 @@ sensor.xiaomiswitch1_battery:
   friendly_name: Switch 1 battery
 sensor.xiaomiswitch2_battery:
   friendly_name: Switch 2 battery
+sensor.next_alarm:
+  icon: mdi:alarm
