@@ -31,6 +31,21 @@
                                 {
                                     "card": {
                                         "entities": [
+                                            "sensor.next_alarm"
+                                        ],
+                                        "type": "entities"
+                                    },
+                                    "conditions": [
+                                        {
+                                            "entity": "sensor.next_alarm",
+                                            "state_not": "None"
+                                        }
+                                    ],
+                                    "type": "conditional"
+                                },
+                                {
+                                    "card": {
+                                        "entities": [
                                             "sensor.work_commute"
                                         ],
                                         "type": "entities"
