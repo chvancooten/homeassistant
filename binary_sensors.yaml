@@ -3,10 +3,10 @@
   sensors:
     next_alarm_within15min:
       value_template: >
-        {% if states('sensor.next_alarm') != "None" %}
-          {{ (states('sensor.next_alarm')|int/1000) - as_timestamp(now()) < 900 }}
-        {% else %}
+        {% if states('sensor.next_alarm') == "None" or states('sensor.next_alarm') == "unavailable" %}
           False
+        {% else %}
+          {{ (states('sensor.next_alarm')|int/1000) - as_timestamp(now()) < 900 }}
         {% endif %}
       friendly_name: Next alarm within 15 minutes
       icon_template: 'mdi:alarm'

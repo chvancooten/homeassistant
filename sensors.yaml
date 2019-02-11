@@ -51,6 +51,8 @@
       value_template: >
         {% if states('sensor.next_alarm') == "None" %}
           No alarm set
+        {% elif states('sensor.next_alarm') == "unavailable" %}
+          Google Home unavailable
         {% else %}
           {{ (states('sensor.next_alarm')|int/1000)|timestamp_custom('%A %H:%M') }}
         {% endif %}
