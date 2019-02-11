@@ -18,8 +18,9 @@
   name: Next alarm
   resource: http://192.168.1.51:8008/setup/assistant/alarms
   value_template: >
-    {% if value_json.alarm %}
-      {{ value_json.alarm.0.fire_time }}
+    {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
+    {% if alarms[0] is defined %}
+      {{ alarms[0].fire_time }}
     {% else %}
       None
     {% endif %}
@@ -79,34 +80,3 @@
       device_class: humidity
       friendly_name: Humidity outside
       unit_of_measurement: '%'
-      
-#    climatesensor_battery:
-#      value_template: '{{ states.sensor.climatesensor_temperature.attributes.battery }}'
-#      device_class: battery
-#      friendly_name: Climate sensor battery
-#      unit_of_measurement: '%'
-     
-## Deprecated with new Zigbee2MQTT
-#    motionsensor_hallway_battery:
-#      value_template: '{{ states.sensor.motionsensor_hallway_illuminance.attributes.battery }}'
-#      device_class: battery
-#      friendly_name: Hallway motion sensor battery
-#      unit_of_measurement: '%'
-      
-#    motionsensor_toilet_battery:
-#      value_template: '{{ states.sensor.motionsensor_toilet_illuminance.attributes.battery }}'
-#      device_class: battery
-#      friendly_name: Toilet motion sensor battery
-#      unit_of_measurement: '%'
-      
-#    xiaomibutton_battery:
-#      value_template: '{{ states.sensor.xiaomibutton.attributes.battery }}'
-#      device_class: battery
-#      friendly_name: Xiaomi button battery
-#      unit_of_measurement: '%'
-      
-#    xiaomiswitch_battery:
-#      value_template: '{{ states.sensor.xiaomiswitch1.attributes.battery }}'
-#      device_class: battery
-#      friendly_name: Xiaomi switch battery
-#      unit_of_measurement: '%'
