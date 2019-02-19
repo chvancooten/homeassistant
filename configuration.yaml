@@ -67,6 +67,7 @@ google_assistant: !include google_assistant.yaml
 tts:
   - platform: google
     cache: false
+    base_url: http://192.168.1.100:8123
 
 scene: !include scenes.yaml
 

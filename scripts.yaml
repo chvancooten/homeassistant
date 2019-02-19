@@ -1,3 +1,12 @@
+### RANDOM
+power_level:
+  alias: Say power level
+  sequence:
+    - service: tts.google_say
+      data_template:
+        entity_id: "media_player.homecas"
+        message: "It is probably a little bit over {{ (1000*(states('sensor.power_consumption')|float))|round }} Watts!"
+
 ### SCENES
 
 #reset lights to currently selected scene
@@ -169,7 +178,6 @@ party_mode:
         entity_id: script.script_stopper
         
 ### IR
-
 tv_next_source:
   alias: TV next source
   sequence:
