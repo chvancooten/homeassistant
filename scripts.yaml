@@ -136,7 +136,11 @@ party_mode:
     - service: media_player.play_media
       data:
         entity_id: "media_player.tonecas"
+        media_content_id: "http://192.168.1.100:8123/local/audio/running.mp3"
+        media_content_type: "music"
     - service: light.turn_off
+      data:
+        entity_id: "all"
     - delay:
         seconds: 2
     - service: media_player.play_media

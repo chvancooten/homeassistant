@@ -338,7 +338,8 @@
   - service: light.turn_on
     data:
       entity_id: light.bedroom
-      white_value: 150
+      transition: 1
+      kelvin: 2700
       brightness_pct: 80
 
 - alias: Bedroom light switch both
