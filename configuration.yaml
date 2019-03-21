@@ -135,8 +135,7 @@ light:
       - name: 'Wakeuplight'
         flow_params:
           count: 1
-## PR accepted - uncomment after pull
-#          action: stay
+          action: stay
           transitions:
             - RGBTransition: [255, 0, 0, 300000, 1]
             - RGBTransition: [253, 106, 2, 900000, 50]
