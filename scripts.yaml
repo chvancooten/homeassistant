@@ -150,7 +150,7 @@ party_mode:
         media_content_type: "music"
     - service: light.turn_on
       data:
-        entity_id: light.aurora
+        entity_id: light.nanoleaf
         brightness: 255
         effect: '80s Burst Synth'
     - delay:

@@ -5,7 +5,7 @@
       option: Morning
     switch.circadian_lighting_circadian_lighting: on
     light.livingroom: off
-    light.aurora: off
+    light.nanoleaf: off
     light.living_room_spots:
       state: on
       color_temp: 350
@@ -22,7 +22,7 @@
       brightness: 255
       transition: 1
     light.living_room_spots: off
-    light.aurora:
+    light.nanoleaf:
       state: on
       brightness: 200
       effect: 'Rain'
@@ -53,7 +53,7 @@
       brightness: 80
       transition: 3
     light.livingroom_spot4: off
-    light.aurora:
+    light.nanoleaf:
       state: on
       brightness: 150
       effect: 'Vintage Modern'
@@ -78,7 +78,7 @@
       color_name: orange
       brightness: 3
       transition: 5
-    light.aurora:
+    light.nanoleaf:
       state: on
       brightness: 50
       effect: Flames
@@ -102,7 +102,7 @@
       state: on
       effect: 'Disco'
       brightness: 255
-    light.aurora:
+    light.nanoleaf:
       state: on
       brightness: 255
       effect: 'Dancing Duo'
@@ -111,7 +111,7 @@
     light.bedroom: off
     light.hallwayceiling: off
     light.hallwaystanding: off
-    
+
 - name: Cleaning mode
   entities:
     switch.circadian_lighting_circadian_lighting: off

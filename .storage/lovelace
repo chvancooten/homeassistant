@@ -195,7 +195,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.aurora",
+                                            "entity": "light.nanoleaf",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "84%"
@@ -357,7 +357,7 @@
                                     "entity": "light.living_room_spots"
                                 },
                                 {
-                                    "entity": "light.aurora"
+                                    "entity": "light.nanoleaf"
                                 },
                                 {
                                     "label": "Bedroom",
