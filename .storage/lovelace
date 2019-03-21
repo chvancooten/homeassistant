@@ -168,6 +168,15 @@
                                             "type": "state-icon"
                                         },
                                         {
+                                            "entity": "switch.deskoutlet",
+                                            "style": {
+                                                "left": "44%",
+                                                "top": "23%"
+                                            },
+                                            "title": "Desk",
+                                            "type": "state-icon"
+                                        },
+                                        {
                                             "entity": "switch.tv_samsung",
                                             "style": {
                                                 "left": "21%",

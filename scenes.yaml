@@ -21,10 +21,7 @@
       color_temp: 290
       brightness: 255
       transition: 1
-    light.livingroom_spot1: off
-    light.livingroom_spot2: off
-    light.livingroom_spot3: off
-    light.livingroom_spot4: off
+    light.living_room_spots: off
     light.aurora:
       state: on
       brightness: 200
@@ -32,6 +29,7 @@
     light.bedroom: off
     light.toilet: off
     script.script_stopper: on
+    switch.deskoutlet: on
       
 - name: Evening
   entities: 
@@ -60,6 +58,7 @@
       brightness: 150
       effect: 'Vintage Modern'
     script.script_stopper: on
+    switch.deskoutlet: on
     
 - name: Night
   entities:
@@ -68,6 +67,7 @@
     switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
     script.script_stopper: on
+    switch.deskoutlet: off
 
 #Extra scenes (activate manually)
 - name: Atmospheric mode
@@ -111,8 +111,7 @@
     light.bedroom: off
     light.hallwayceiling: off
     light.hallwaystanding: off
-
-
+    
 - name: Cleaning mode
   entities:
     switch.circadian_lighting_circadian_lighting: off

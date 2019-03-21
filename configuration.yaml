@@ -141,7 +141,7 @@ light:
             - RGBTransition: [255, 0, 0, 300000, 1]
             - RGBTransition: [253, 106, 2, 900000, 50]
             - TemperatureTransition: [3000, 600000, 80]
-  - platform: nanoleaf_aurora
+  - platform: nanoleaf
     host: 192.168.1.205
     token: !secret nanoleaftoken
   - platform: group
