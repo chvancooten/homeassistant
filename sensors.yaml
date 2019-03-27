@@ -16,7 +16,7 @@
 
 - platform: rest
   name: Next alarm
-  resource: http://192.168.1.51:8008/setup/assistant/alarms
+  resource: http://192.168.1.207:8008/setup/assistant/alarms
   value_template: >
     {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
     {% if alarms[0] is defined %}
@@ -37,12 +37,12 @@
 - platform: waze_travel_time
   origin: !secret homeaddr
   destination: !secret workaddr
-  region: "EU"
+  region: 'EU'
   name: "Work commute"
 - platform: waze_travel_time
   origin: !secret workaddr
   destination: !secret homeaddr
-  region: "EU"
+  region: 'EU'
   name: "Home commute"
 
 - platform: template
