@@ -426,6 +426,15 @@
                                 {
                                     "entities": [
                                         {
+                                            "entity": "automation.wakeup_light",
+                                            "icon": "mdi:weather-sunset-up"
+                                        }
+                                    ],
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
                                             "entity": "sensor.motionsensor_hallway_illuminance"
                                         },
                                         {

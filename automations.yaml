@@ -52,6 +52,9 @@
   - platform: state
     entity_id: 'media_player.chromecas'
     to: 'playing'
+  condition:
+  - condition: template
+    value_template: "{{ state_attr('media_player.chromecas', 'app_name') != 'Backdrop' }}"
   action:
   - service: script.tv_hdmi2
 
