@@ -112,34 +112,35 @@ media_player:
     client_id: !secret spotifyid
     client_secret: !secret spotifysecret
 
+yeelight:
+  devices:
+    192.168.1.200:
+      name: HallwayCeiling
+      model: color2
+      save_on_change: true
+    192.168.1.201:
+      name: Livingroom
+      model: color2
+      save_on_change: true
+    192.168.1.203:
+      name: Bedroom
+      model: color1
+      save_on_change: true
+    192.168.1.204:
+      name: Toilet
+      model: color1
+      save_on_change: true
+  custom_effects:
+    - name: 'Wakeuplight'
+      flow_params:
+        count: 1
+        action: stay
+        transitions:
+          - RGBTransition: [255, 0, 0, 300000, 1]
+          - RGBTransition: [253, 106, 2, 900000, 50]
+          - TemperatureTransition: [3000, 600000, 80]
+
 light:
-  - platform: yeelight
-    devices:
-      192.168.1.200:
-        name: HallwayCeiling
-        model: color2
-        save_on_change: true
-      192.168.1.201:
-        name: Livingroom
-        model: color2
-        save_on_change: true
-      192.168.1.203:
-        name: Bedroom
-        model: color1
-        save_on_change: true
-      192.168.1.204:
-        name: Toilet
-        model: color1
-        save_on_change: true
-    custom_effects:
-      - name: 'Wakeuplight'
-        flow_params:
-          count: 1
-          action: stay
-          transitions:
-            - RGBTransition: [255, 0, 0, 300000, 1]
-            - RGBTransition: [253, 106, 2, 900000, 50]
-            - TemperatureTransition: [3000, 600000, 80]
   - platform: nanoleaf
     host: 192.168.1.205
     token: !secret nanoleaftoken

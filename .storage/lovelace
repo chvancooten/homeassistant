@@ -161,25 +161,25 @@
                                         {
                                             "entity": "switch.soundbar",
                                             "style": {
-                                                "left": "21%",
-                                                "top": "24%"
+                                                "left": "24%",
+                                                "top": "25%"
                                             },
                                             "title": "Soundbar",
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "switch.deskoutlet",
+                                            "entity": "switch.terrariumlight",
                                             "style": {
-                                                "left": "44%",
-                                                "top": "23%"
+                                                "left": "18%",
+                                                "top": "15%"
                                             },
-                                            "title": "Desk",
+                                            "title": "Terrarium",
                                             "type": "state-icon"
                                         },
                                         {
                                             "entity": "switch.tv_samsung",
                                             "style": {
-                                                "left": "21%",
+                                                "left": "24%",
                                                 "top": "14%"
                                             },
                                             "title": "TV",

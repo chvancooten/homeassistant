@@ -10,6 +10,7 @@
       state: on
       color_temp: 350
       brightness: 70
+    switch.terrariumlight: off
 
 - name: Day
   entities: 
@@ -29,7 +30,7 @@
     light.bedroom: off
     light.toilet: off
     script.script_stopper: on
-    switch.deskoutlet: on
+    switch.terrariumlight: off
       
 - name: Evening
   entities: 
@@ -58,7 +59,7 @@
       brightness: 150
       effect: 'Vintage Modern'
     script.script_stopper: on
-    switch.deskoutlet: on
+    switch.terrariumlight: on
     
 - name: Night
   entities:
@@ -67,7 +68,7 @@
     switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
     script.script_stopper: on
-    switch.deskoutlet: off
+    switch.terrariumlight: on
 
 #Extra scenes (activate manually)
 - name: Atmospheric mode
@@ -90,6 +91,7 @@
     light.livingroom_spot3: off
     light.livingroom_spot4: off
     script.script_stopper: on
+    switch.terrariumlight: off
 
 - name: Party mode
   entities: 
