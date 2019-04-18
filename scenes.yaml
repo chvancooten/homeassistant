@@ -22,18 +22,15 @@
       color_temp: 290
       brightness: 255
       transition: 1
-    light.livingroom_spot1: off
-    light.livingroom_spot2: off
-    light.livingroom_spot3: off
-    light.livingroom_spot4: off
     light.nanoleaf:
       state: on
       brightness: 200
       effect: 'Rain'
     light.bedroom: off
     light.toilet: off
-    script.script_stopper: on
+    light.living_room_spots: off
     switch.terrariumlight: off
+    script.script_stopper: on
       
 - name: Evening
   entities: 

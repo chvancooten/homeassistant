@@ -7,6 +7,10 @@
   port: /dev/ttyUSB0
   dsmr_version: 5
 
+- platform: miflora
+  mac: 'c4:7c:8d:6a:84:01'
+  name: Dieffenbachia Sublime
+
 - platform: waqi
   token: !secret aqitoken
   locations:
