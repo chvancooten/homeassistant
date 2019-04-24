@@ -128,7 +128,7 @@
 
 - alias: DebbyDetectie
   id: automation_debbydetectie
-  initial_state: 'on'
+  initial_state: 'off'
   trigger:
   - platform: state
     entity_id: 'group.tracker_debby'
@@ -137,20 +137,36 @@
   - condition: state
     entity_id: 'group.tracker_cas'
     state: 'not_home'
-    ## AND automation has not been triggered for 6 hours (prevent spam when reconnecting)
-  - condition: template
-    value_template: >
-      {% set debby_time = as_timestamp(states.automation.debbydetectie.attributes["last_triggered"]) %}
-      {% if debby_time %}
-        {{as_timestamp(now()) - debby_time > 21600}}
-      {% else %}
-        {{ True }}
-      {% endif %}
+  ### Obsolete (checking for how long she's gone instead, see below)
+  ### AND automation has not been triggered for 6 hours (prevent spam when reconnecting)
+  # - condition: template
+  #   value_template: >
+  #     {% set debby_time = as_timestamp(states.automation.debbydetectie.attributes["last_triggered"]) %}
+  #     {% if debby_time %}
+  #       {{as_timestamp(now()) - debby_time > 21600}}
+  #     {% else %}
+  #       {{ True }}
+  #     {% endif %}
   action:
   - service: notify.ios_iphone_cas
     data:
       title: "DebbyDetectie alert"
       message: "Debby is thuis!"
+  - service: homeassistant.turn_off
+    entity_id: automation.debbydetectie
+
+- alias: DebbyDetectie Enable
+  id: automation_debbydetectieenable
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: 'group.tracker_debby'
+    to: 'not_home'
+    for:
+      hours: 4
+  action:
+  - service: homeassistant.turn_on
+    entity_id: automation.debbydetectie
 
 - alias: Welcome home
   id: automation_welcomehome

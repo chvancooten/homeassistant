@@ -152,16 +152,6 @@ light:
       - light.livingroom_spot3
       - light.livingroom_spot4
 
-mqtt:
-  discovery: true
-  broker: 127.0.0.1
-  birth_message:
-    topic: 'hass/status'
-    payload: 'online'
-  will_message:
-    topic: 'hass/status'
-    payload: 'offline'
-
 circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 4000
