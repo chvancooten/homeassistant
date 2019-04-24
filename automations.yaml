@@ -79,6 +79,8 @@
     entity_id: 'media_player.chromecas'
     to: 'playing'
   condition:
+  - condition: template
+    value_template: "{{ state_attr('media_player.chromecas', 'app_name') != 'Backdrop' }}"
   - condition: state
     entity_id: 'media_player.tonecas'
     state: 'playing'
