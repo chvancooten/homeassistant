@@ -65,7 +65,8 @@ script: !include scripts.yaml
 google_assistant: !include google_assistant.yaml
 
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
     cache: false
     base_url: http://192.168.1.100:8123
 
