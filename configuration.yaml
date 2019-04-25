@@ -82,6 +82,12 @@ input_select:
     - "Evening"
     - "Night"
 
+input_boolean:
+  party_mode:
+    name: "Party Mode!"
+    initial: off
+    icon: mdi:balloon
+
 weather:
   - platform: buienradar
     name: buienradar
