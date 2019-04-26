@@ -8,8 +8,13 @@ class partyMode(hass.Hass):
         self.listen_state(self.motion, "input_boolean.party_mode")
 
     def motion(self, entity, attribute, old, new, kwargs):
-        n=1
+        self.log("Party engaged!")
         while self.get_state("input_boolean.party_mode") == "on":
-            self.log("Partying for  " + str(n) + " seconds...")
-            n=n+1
-            time.sleep(1)
+            self.turn_on("switch.terrariumlight")
+            time.sleep(2)
+            self.turn_off("switch.terrariumlight")
+            time.sleep(2)
+
+            ###
+            ### TODO : Replicate party mode automation in python loop
+            ###

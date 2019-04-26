@@ -3,7 +3,7 @@
   entities:
     input_select.scene: 
       option: Morning
-    switch.circadian_lighting_circadian_lighting: on
+    switch.circadian_lighting_circadian_lighting: off
     light.livingroom: off
     light.nanoleaf: off
     light.living_room_spots:
@@ -16,7 +16,7 @@
   entities: 
     input_select.scene: 
       option: Day
-    switch.circadian_lighting_circadian_lighting: on
+    switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
       color_temp: 290
@@ -36,7 +36,7 @@
   entities: 
     input_select.scene: 
       option: Evening
-    switch.circadian_lighting_circadian_lighting: on
+    switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
       color_temp: 350
