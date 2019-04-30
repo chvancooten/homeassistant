@@ -128,7 +128,7 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "scene.party_mode",
+                                            "entity": "input_boolean.party_mode",
                                             "icon": "mdi:balloon",
                                             "name": "Party",
                                             "tap_action": {
