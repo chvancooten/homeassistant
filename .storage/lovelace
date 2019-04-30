@@ -133,9 +133,9 @@
                                             "name": "Party",
                                             "tap_action": {
                                                 "action": "call-service",
-                                                "service": "scene.turn_on",
+                                                "service": "input_boolean.toggle",
                                                 "service_data": {
-                                                    "entity_id": "scene.party_mode"
+                                                    "entity_id": "input_boolean.party_mode"
                                                 }
                                             },
                                             "type": "entity-button"

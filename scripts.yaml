@@ -32,192 +32,48 @@ set_scene:
             scene.morning
           {% endif %}
 
-### LIGHTING
-
-spot_disco:
-  alias: Spotlight disco mode
-  sequence:
-    - service: light.turn_off
-      data:
-        entity_id: light.livingroom_spot4
-  
-    - service: light.turn_on
-      data:
-        entity_id: light.livingroom_spot1
-        brightness: 255
-        color_temp: 250
-        
-    - delay:
-        seconds: 0.25
-        
-    - service: light.turn_off
-      data:
-        entity_id: light.livingroom_spot1
-
-    - service: light.turn_on
-      data:
-        entity_id: light.livingroom_spot2
-        brightness: 255
-        color_temp: 250
-        
-    - delay:
-        seconds: 0.25
-        
-    - service: light.turn_off
-      data:
-        entity_id: light.livingroom_spot2
-        
-    - service: light.turn_on
-      data:
-        entity_id: light.livingroom_spot3
-        brightness: 255
-        color_temp: 250
-        
-    - delay:
-        seconds: 0.25
-        
-    - service: light.turn_off
-      data:
-        entity_id: light.livingroom_spot3
-        
-    - service: light.turn_on
-      data:
-        entity_id: light.livingroom_spot4
-        brightness: 255
-        color_temp: 250
-        
-    - service: script.turn_on
-      data:
-        entity_id: script.spot_disco_loop
-        
-spot_disco_loop:
-  alias: Spotlight disco mode loop
-  sequence:
-    - delay:
-        seconds: 0.25
-    - service: script.turn_on
-      data:
-        entity_id: script.spot_disco
-        
-# Bit hacky but the light loop sometimes doesn't halt properly. Better be safe :)
-script_stopper:
-  alias: STOP ALL SCRIPTS
-  sequence:
-    - service: script.turn_off
-      entity_id: "all"
-    - delay:
-        seconds: 0.25
-    - service: script.turn_off
-      entity_id: "all"
-    - delay:
-        seconds: 0.15
-    - service: script.turn_off
-      entity_id: "all"
-    - delay:
-        seconds: 0.25
-    - service: script.turn_off
-      entity_id: "all"
-    - delay:
-        seconds: 0.15
-    - service: script.turn_off
-      entity_id: "all"
-    - delay:
-        seconds: 0.25
-    - service: script.turn_off
-      entity_id: "all"
-    - delay:
-        seconds: 0.15
-    - service: script.turn_off
-      entity_id: "all"
-
-party_mode:
-  alias: Party in the 90s!
-  sequence:
-    - service: media_player.play_media
-      data:
-        entity_id: "media_player.tonecas"
-        media_content_id: "http://192.168.1.100:8123/local/audio/running.mp3"
-        media_content_type: "music"
-    - service: light.turn_off
-      data:
-        entity_id: "all"
-    - delay:
-        seconds: 2
-    - service: media_player.play_media
-      data:
-        entity_id: "media_player.tonecas"
-        media_content_id: "http://192.168.1.100:8123/local/audio/running.mp3"
-        media_content_type: "music"
-    - service: light.turn_on
-      data:
-        entity_id: light.nanoleaf
-        brightness: 255
-        effect: '80s Burst Synth'
-    - delay:
-        seconds: 1.7
-    - service: light.turn_on
-      data:
-        entity_id: light.livingroom
-        brightness: 255
-        effect: 'Strobe color'
-    - service: light.turn_on
-      data:
-        entity_id: light.toilet
-        brightness: 255
-        effect: 'Strobe color'
-    - service: script.turn_on
-      data:
-        entity_id: script.spot_disco_loop
-    - delay:
-        seconds: 58
-    - delay:
-        seconds: 0.2
-    - service: scene.turn_on
-      entity_id: scene.day
-    - service: light.turn_off
-      data:
-        entity_id: light.toilet
-    - service: script.turn_on
-      data:
-        entity_id: script.script_stopper
-        
 ### IR
 tv_next_source:
   alias: TV next source
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_202
+    - service: broadlink.send
       data:
+        host: '192.168.1.202'
         packet:
           - 'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNRQSExITERQRFBEUNhQRFBEUERQRFBEUERQRFBEUNhQ2FDYUNhQ2FDYUNhQABgaXkRY2FDYUNhQRFBETEhMSExEUNhQ2FDYUERQRFBEUERQRFDYUERQRFBEUERQRFBEUERQRFDYUNhQ2FDYUNhQ1FDYUAA0FAAAAAAAAAAAAAAAA'
 tv_ok:
   alias: TV OK
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_202
+    - service: broadlink.send
       data:
+        host: '192.168.1.202'
         packet:
           - 'JgCMAJaTFDYUNhQ2FBEUERQRFBEUERQ2FDYUNhQRFBETEhMSExITERQRFBEUNhQRFDYUNhQRFDYUNhQ2FBEUNhQRFBETNhQABgeXkxQ2EzYUNhQRFBEUERQRFBEUNhQ2FDYUERQRFBEUERQRFBEUERQRFDYUERQ2FDYUERQ1FDYUNhQRFDYUERQRFDYUAA0FAAAAAAAAAAAAAAAA'
 
 tv_hdmi1:
   alias: "TV HDMI 1"
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_202
+    - service: broadlink.send
       data:
+        host: '192.168.1.202'
         packet:
           - 'JgBGAJOSEjcUMxUzFQ4UDhEREREUDxMzETcSNxMQEw4UDhEREhAUMxUOERERNxQPEzMRNxI3ExATMxUzEhEUMxIRExATDhQADQUAAA=='
  
 tv_hdmi2:
   alias: "TV HDMI 2"
   sequence:
-    - service: switch.broadlink_send_packet_192_168_1_202
+    - service: broadlink.send
       data:
+        host: '192.168.1.202'
         packet:
           - 'JgBGAJOUETkRORA6ERQQFRAVERQRFBA6ETkROhAVDxYQFQ8WEBUQFQ87EDoRORA6DzsQFRA6DzsPFhAVDxYQFRAVEDoQFRAADQUAAA=='
 
 soundbar_next_source:
   alias: Soundbar next source
   sequence:
-  - service: switch.broadlink_send_packet_192_168_1_202
+  - service: broadlink.send
     data:
+      host: '192.168.1.202'
       packet:
       ## Switch between optical 1 and 2
       - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='

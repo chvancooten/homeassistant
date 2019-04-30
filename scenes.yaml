@@ -30,7 +30,6 @@
     light.toilet: off
     light.living_room_spots: off
     switch.terrariumlight: off
-    script.script_stopper: on
       
 - name: Evening
   entities: 
@@ -58,7 +57,6 @@
       state: on
       brightness: 150
       effect: 'Vintage Modern'
-    script.script_stopper: on
     switch.terrariumlight: on
     
 - name: Night
@@ -67,7 +65,6 @@
       option: Night
     switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
-    script.script_stopper: on
     switch.terrariumlight: off
 
 #Extra scenes (activate manually)
@@ -90,29 +87,7 @@
     light.livingroom_spot2: off
     light.livingroom_spot3: off
     light.livingroom_spot4: off
-    script.script_stopper: on
     switch.terrariumlight: on
-
-- name: Party mode
-  entities: 
-    switch.circadian_lighting_circadian_lighting: off
-    light.livingroom:
-      state: on
-      effect: 'Disco'
-      brightness: 255
-    light.toilet: 
-      state: on
-      effect: 'Disco'
-      brightness: 255
-    light.nanoleaf:
-      state: on
-      brightness: 255
-      effect: 'Dancing Duo'
-    script.spot_disco: on
-    light.living_room_spots: off
-    light.bedroom: off
-    light.hallwayceiling: off
-    light.hallwaystanding: off
 
 - name: Cleaning mode
   entities:
