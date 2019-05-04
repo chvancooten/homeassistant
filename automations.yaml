@@ -217,9 +217,9 @@
   - service: light.turn_on
     data_template:
       entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling {% else %} light.hallwayceiling, light.hallwaystanding {% endif %}'
-      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 2 {% endif %}'
-      brightness: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 100 {% endif %}'
-      kelvin: '{% if is_state("input_select.scene", "Night") %} 1700 {% else %} 2500 {% endif %}'
+      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1 {% endif %}'
+      brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100 {% endif %}'
+      kelvin: '{% if is_state("input_select.scene", "Night") %} 1500 {% else %} 2700 {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.hallway_motion_light_off
 
@@ -257,7 +257,7 @@
       entity_id: light.toilet
       transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1 {% endif %}'
       brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100 {% endif %}'
-      kelvin: '{% if is_state("input_select.scene", "Night") %} 1700 {% else %} 2700 {% endif %}'
+      kelvin: '{% if is_state("input_select.scene", "Night") %} 1500 {% else %} 2700 {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.toilet_motion_light_off
 
