@@ -8,8 +8,9 @@
   dsmr_version: 5
 
 - platform: miflora
-  mac: 'c4:7c:8d:6a:84:01'
-  name: Dieffenbachia Sublime
+  mac: 'c4:7c:8d:6a:6e:1f'
+  name: Dieffenbachia
+  median: 1
 
 - platform: waqi
   token: !secret aqitoken
