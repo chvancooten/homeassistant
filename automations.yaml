@@ -148,9 +148,8 @@
       title: "\U0001F331\U0001F614 De Dieffenbachia voelt zich ongelukkig :("
   - service: tts.google_say
     data_template:
-      message: 'Warning: Your plant is unhappy. {{ states.plant.dieffenbachia.attributes.problem
-        }}'
-      entity_id: media_player.google_home  
+      message: 'Warning: Your plant is unhappy. {{ states.plant.dieffenbachia.attributes.problem }}'
+      entity_id: media_player.homecas  
 
 - alias: DebbyDetectie
   id: automation_debbydetectie
