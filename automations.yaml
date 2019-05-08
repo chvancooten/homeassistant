@@ -109,6 +109,7 @@
   - service: script.soundbar_next_source
  
 ### TIME BASED
+
 - alias: Wakeup Light
   id: automation_wakeuplight
   initial_state: 'on'
@@ -127,6 +128,29 @@
         effect: Wakeuplight
 
 ### PRESENCE DETECTION
+#credits Vic
+- id: automation_plantmonitor
+  alias: Plant monitor
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: group.tracker_cas
+    to: home
+    for: 00:10
+  condition:
+  - condition: state
+    entity_id: plant.dieffenbachia
+    state: problem
+  action:
+  - service: notify.notify
+    data:
+      message: '{{ state_attr(''plant.dieffenbachia'', ''problem'')  }}'
+      title: "\U0001F331\U0001F614 De Dieffenbachia voelt zich ongelukkig :("
+  - service: tts.google_say
+    data_template:
+      message: 'Warning: Your plant is unhappy. {{ states.plant.dieffenbachia.attributes.problem
+        }}'
+      entity_id: media_player.google_home  
 
 - alias: DebbyDetectie
   id: automation_debbydetectie

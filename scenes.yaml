@@ -9,7 +9,7 @@
     light.living_room_spots:
       state: on
       color_temp: 350
-      brightness: 70
+      brightness: 150
     switch.terrariumlight: off
 
 - name: Day
@@ -24,7 +24,7 @@
       transition: 1
     light.nanoleaf:
       state: on
-      brightness: 200
+      brightness: 255
       effect: 'Rain'
     light.bedroom: off
     light.toilet: off
@@ -39,23 +39,23 @@
     light.livingroom:
       state: on
       color_temp: 350
-      brightness: 150
+      brightness: 180
       transition: 3
     light.livingroom_spot1: off
     light.livingroom_spot2:
       state: on
       color_temp: 350
-      brightness: 100
+      brightness: 200
       transition: 3
     light.livingroom_spot3:
       state: on
       color_temp: 400
-      brightness: 80
+      brightness: 180
       transition: 3
     light.livingroom_spot4: off
     light.nanoleaf:
       state: on
-      brightness: 150
+      brightness: 200
       effect: 'Vintage Modern'
     switch.terrariumlight: on
     
