@@ -7,6 +7,8 @@ homeassistant:
   time_zone: CET
   customize: !include customize.yaml
 
+default_config:
+
 frontend:
   themes: !include themes.yaml
 
