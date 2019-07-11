@@ -153,13 +153,14 @@ light:
   - platform: nanoleaf
     host: 192.168.1.205
     token: !secret nanoleaftoken
-  - platform: group
+  - platform: mqtt
+    schema: json
     name: Living room spots
-    entities:
-      - light.livingroom_spot1
-      - light.livingroom_spot2
-      - light.livingroom_spot3
-      - light.livingroom_spot4
+    command_topic: "zigbee2mqtt/livingroom_spots/set"
+    state_topic: "zigbee2mqtt/livingroom_spots"
+    color_temp: true
+    brightness: true
+    rgb: false
 
 circadian_lighting:
   min_colortemp: 2250

@@ -9,7 +9,7 @@
     light.living_room_spots:
       state: on
       color_temp: 350
-      brightness: 150
+      brightness: 200
     switch.terrariumlight: off
 
 - name: Day
@@ -41,18 +41,10 @@
       color_temp: 350
       brightness: 180
       transition: 3
-    light.livingroom_spot1: off
-    light.livingroom_spot2:
-      state: on
-      color_temp: 350
-      brightness: 200
-      transition: 3
-    light.livingroom_spot3:
+    light.living_room_spots:
       state: on
       color_temp: 400
-      brightness: 180
-      transition: 3
-    light.livingroom_spot4: off
+      brightness: 200
     light.nanoleaf:
       state: on
       brightness: 200
