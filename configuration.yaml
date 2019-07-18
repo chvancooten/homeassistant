@@ -172,8 +172,8 @@ circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 4000
   # Defaults to 15 minute transition every 15 min but causes transition bug
-  interval: 300
-  transition: 10
+  interval: 900
+  transition: 900
 
 plant:
   dieffenbachia:
