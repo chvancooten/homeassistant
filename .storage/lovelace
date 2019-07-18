@@ -570,9 +570,6 @@
                                 },
                                 {
                                     "entity": "device_tracker.werklaptop_cas"
-                                },
-                                {
-                                    "entity": "device_tracker.playstation"
                                 }
                             ],
                             "title": "Presence",

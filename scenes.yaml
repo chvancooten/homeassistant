@@ -44,7 +44,7 @@
     light.living_room_spots:
       state: on
       color_temp: 400
-      brightness: 200
+      brightness: 150
     light.nanoleaf:
       state: on
       brightness: 200

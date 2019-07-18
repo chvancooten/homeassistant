@@ -162,6 +162,12 @@ light:
     brightness: true
     rgb: false
 
+hacs:
+  token: 248eb171ef27e307ad3e1adbe19d02b9d7c074c9
+  appdaemon: True
+  python_script: True
+  theme: True
+
 circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 4000
