@@ -3,7 +3,7 @@
   sensors:
     next_alarm_within15min:
       value_template: >
-        {% if states('sensor.next_alarm') == "None" or states('sensor.next_alarm') == "unavailable" %}
+        {% if states('sensor.next_alarm') == "None" or states('sensor.next_alarm') == "unavailable" or states('sensor.next_alarm') == "unknown" %}
           False
         {% else %}
           {{ (states('sensor.next_alarm')|int/1000) - as_timestamp(now()) < 900 }}
