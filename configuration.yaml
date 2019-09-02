@@ -7,8 +7,6 @@ homeassistant:
   time_zone: CET
   customize: !include customize.yaml
 
-default_config:
-
 frontend:
   themes: !include themes.yaml
 
@@ -26,7 +24,6 @@ http:
   login_attempts_threshold: 5
 
 recorder:
-  db_url: !secret dburl
   purge_keep_days: 1
   purge_interval: 1
   exclude:

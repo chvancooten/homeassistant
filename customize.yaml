@@ -4,6 +4,8 @@ group.tracker_debby:
 group.tracker_cas:
   entity_picture: /local/cas.jpg
   device_class: presence
+device_tracker.a_phone:
+  entity_picture: /local/cas.jpg
 media_player.tonecas:
   icon: mdi:speaker
 media_player.homecas:
