@@ -60,7 +60,7 @@ light.livingroom:
 light.hallwayceiling:
   friendly_name: Hallway ceiling light
   icon: mdi:ceiling-light
-light.hallwaystanding:
+light.hallwaystanding_light:
   friendly_name: Hallway standing lamp
   icon: mdi:lamp
 light.bedroom:
@@ -69,16 +69,16 @@ light.bedroom:
 light.toilet:
   friendly_name: Toilet light
   icon: mdi:ceiling-light
-light.livingroom_spot1:
+light.livingroom_spot1_light:
   friendly_name: Spot 1
   icon: mdi:track-light
-light.livingroom_spot2:
+light.livingroom_spot2_light:
   friendly_name: Spot 2
   icon: mdi:track-light
-light.livingroom_spot3:
+light.livingroom_spot3_light:
   friendly_name: Spot 3
   icon: mdi:track-light
-light.livingroom_spot4:
+light.livingroom_spot4_light:
   friendly_name: Spot 4
   icon: mdi:track-light
 light.living_room_spots:

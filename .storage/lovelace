@@ -172,7 +172,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "switch.terrariumlight",
+                                            "entity": "switch.terrarium_switch",
                                             "style": {
                                                 "left": "18%",
                                                 "top": "15%"
@@ -208,7 +208,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot4",
+                                            "entity": "light.livingroom_spot4_light",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "47%"
@@ -217,7 +217,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot3",
+                                            "entity": "light.livingroom_spot3_light",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "56%"
@@ -226,7 +226,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot2",
+                                            "entity": "light.livingroom_spot2_light",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "65%"
@@ -235,7 +235,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot1",
+                                            "entity": "light.livingroom_spot1_light",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "74%"
@@ -289,7 +289,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.hallwaystanding",
+                                            "entity": "light.hallwaystanding_light",
                                             "style": {
                                                 "left": "86%",
                                                 "top": "37%"
@@ -380,7 +380,7 @@
                                     "name": "Ceiling"
                                 },
                                 {
-                                    "entity": "light.hallwaystanding",
+                                    "entity": "light.hallwaystanding_light",
                                     "name": "Standing"
                                 },
                                 {
@@ -400,16 +400,16 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "light.livingroom_spot1"
+                                            "entity": "light.livingroom_spot1_light"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot2"
+                                            "entity": "light.livingroom_spot2_light"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot3"
+                                            "entity": "light.livingroom_spot3_light"
                                         },
                                         {
-                                            "entity": "light.livingroom_spot4"
+                                            "entity": "light.livingroom_spot4_light"
                                         }
                                     ],
                                     "title": "Spots",
