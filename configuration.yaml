@@ -24,7 +24,7 @@ http:
   login_attempts_threshold: 5
 
 recorder:
-  purge_keep_days: 1
+  purge_keep_days: 3
   purge_interval: 1
   exclude:
     domains:
