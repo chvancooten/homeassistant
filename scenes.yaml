@@ -10,7 +10,7 @@
       state: on
       color_temp: 350
       brightness: 200
-    switch.terrarium_switch: off
+    light.terrarium_light: off
 
 - name: Day
   entities: 
@@ -29,7 +29,7 @@
     light.bedroom: off
     light.toilet: off
     light.living_room_spots: off
-    switch.terrarium_switch: off
+    light.terrarium_light: off
       
 - name: Evening
   entities: 
@@ -49,7 +49,7 @@
       state: on
       brightness: 200
       effect: 'Vintage Modern'
-    switch.terrarium_switch: on
+    light.terrarium_light: on
     
 - name: Night
   entities:
@@ -57,7 +57,7 @@
       option: Night
     switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
-    switch.terrarium_switch: off
+    light.terrarium_light: off
 
 #Extra scenes (activate manually)
 - name: Atmospheric mode
@@ -79,7 +79,7 @@
     light.livingroom_spot2_light: off
     light.livingroom_spot3_light: off
     light.livingroom_spot4_light: off
-    switch.terrarium_switch: on
+    light.terrarium_light: on
 
 - name: Cleaning mode
   entities:

@@ -172,10 +172,10 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "switch.terrarium_switch",
+                                            "entity": "light.terrarium_light",
                                             "style": {
                                                 "left": "18%",
-                                                "top": "15%"
+                                                "top": "13%"
                                             },
                                             "title": "Terrarium",
                                             "type": "state-icon"
@@ -359,6 +359,9 @@
                                 },
                                 {
                                     "entity": "light.living_room_spots"
+                                },
+                                {
+                                    "entity": "light.terrarium_light"
                                 },
                                 {
                                     "entity": "light.nanoleaf"

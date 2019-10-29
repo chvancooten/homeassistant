@@ -104,8 +104,8 @@ zone:
     icon: mdi:home
 
 device_tracker:
-  - platform: bluetooth_tracker
-    track_new_devices: false
+  # - platform: bluetooth_tracker
+  #   track_new_devices: false
   - platform: nmap_tracker
     hosts: 192.168.1.50-255
     exclude:
@@ -153,11 +153,14 @@ light:
   - platform: mqtt
     schema: json
     name: Living room spots
-    command_topic: "zigbee2mqtt/livingroom_spots/set"
-    state_topic: "zigbee2mqtt/livingroom_spots"
+    command_topic: "zigbee2mqtt/livingroom_spotlights/set"
+    state_topic: "zigbee2mqtt/livingroom_spotlights"
     color_temp: true
     brightness: true
     rgb: false
+  - platform: switch
+    name: Terrarium Light
+    entity_id: switch.terrarium_switch
 
 hacs:
   token: 248eb171ef27e307ad3e1adbe19d02b9d7c074c9

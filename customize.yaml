@@ -132,3 +132,5 @@ sensor.xiaomiswitch2_battery:
   friendly_name: Switch 2 battery
 sensor.next_alarm:
   icon: mdi:alarm
+light.terrarium_light:
+  icon: mdi:sprout
