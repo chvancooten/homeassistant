@@ -80,4 +80,20 @@ soundbar_next_source:
       ## ALTERNATIVELY: Switch through all inputs
       #- 'JgBGAJWTFBEUERQ2FDYUERQ1FRAVEBUQFBEUNhQ2FBEUNhQRFBAVEBU1FRAUNhQRFBEUERQ2FDUVEBU1FBEUNhQ2FDYUERQADQUAAA=='
 
+soundbar_vol_up:
+  alias: Soundbar volume up
+  sequence:
+  - service: broadlink.send
+    data:
+      host: '192.168.1.202'
+      packet:
+      - 'JgBOAJSVExITEhM3EjcTEhM3ExITEhMSExITNxM3ExITNxMSEhITNxM3EzcTEhM3ExIUERMSExITEhMSEzcSExI3EzcTNxMABgiUlRM3EwANBQAAAAAAAAAAAAA='
 
+soundbar_vol_down:
+  alias: Soundbar volume down
+  sequence:
+  - service: broadlink.send
+    data:
+      host: '192.168.1.202'
+      packet:
+      - 'JgBOAJSVExITEhM3EjcTEhM3ExITEhMSExITNxM3ExITNxMSEhMSEhQ2EzcTEhM3ExITEhMSEzcTEhMSEzcTEhI3EzcTNxMABgiUlRM3EwANBQAAAAAAAAAAAAA='

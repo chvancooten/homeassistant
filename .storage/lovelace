@@ -548,8 +548,15 @@
                                 },
                                 {
                                     "entity": "script.soundbar_next_source"
+                                },
+                                {
+                                    "entity": "script.soundbar_vol_up"
+                                },
+                                {
+                                    "entity": "script.soundbar_vol_down"
                                 }
                             ],
+                            "theme": "Backend-selected",
                             "title": "Devices",
                             "type": "entities"
                         }

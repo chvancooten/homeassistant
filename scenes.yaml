@@ -1,8 +1,7 @@
 #Scenes included in modes (automation controllers)
 - name: Morning
   entities:
-    input_select.scene: 
-      option: Morning
+    input_select.scene: Morning
     switch.circadian_lighting_circadian_lighting: off
     light.livingroom: off
     light.nanoleaf: off
@@ -14,8 +13,7 @@
 
 - name: Day
   entities: 
-    input_select.scene: 
-      option: Day
+    input_select.scene: Day
     switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
@@ -33,8 +31,7 @@
       
 - name: Evening
   entities: 
-    input_select.scene: 
-      option: Evening
+    input_select.scene: Evening
     switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
@@ -53,8 +50,7 @@
     
 - name: Night
   entities:
-    input_select.scene: 
-      option: Night
+    input_select.scene: Night
     switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
     light.terrarium_light: off

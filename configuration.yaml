@@ -11,6 +11,7 @@ frontend:
   themes: !include themes.yaml
 
 system_health:
+mobile_app:
   
 panel_iframe:
   grafana:
