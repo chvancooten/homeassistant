@@ -7,10 +7,10 @@
   port: /dev/ttyUSB0
   dsmr_version: 5
 
-- platform: miflora
-  mac: C4:7C:8D:6A:6E:1F
-  name: Dieffenbachia
-  median: 1
+# - platform: miflora
+#   mac: C4:7C:8D:6A:6E:1F
+#   name: Dieffenbachia
+#   median: 1
 # - platform: miflora
 #   mac: C4:7C:8D:6A:84:01
 #   name: Backup Miflora
@@ -23,16 +23,16 @@
   stations:
   - 'de Jongweg, Utrecht'
 
-- platform: rest
-  name: Next alarm
-  resource: http://192.168.1.150:8008/setup/assistant/alarms
-  value_template: >
-    {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
-    {% if alarms[0] is defined %}
-      {{ alarms[0].fire_time }}
-    {% else %}
-      None
-    {% endif %}
+# - platform: rest
+#   name: Next alarm
+#   resource: http://192.168.1.150:8008/setup/assistant/alarms
+#   value_template: >
+#     {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
+#     {% if alarms[0] is defined %}
+#       {{ alarms[0].fire_time }}
+#     {% else %}
+#       None
+#     {% endif %}
 
 - platform: systemmonitor
   resources:
@@ -54,19 +54,24 @@
   region: 'EU'
   name: "Home commute"
 
+- platform: darksky
+  api_key: !secret dark_sky_api_key
+  monitored_conditions:
+    - cloud_cover
+
 - platform: template
   sensors:
-    next_alarm_human:
-      value_template: >
-        {% if states('sensor.next_alarm') == "None" %}
-          No alarm set
-        {% elif states('sensor.next_alarm') == "unavailable" or states('sensor.next_alarm') == "unknown" %}
-          Google Home unavailable
-        {% else %}
-          {{ (states('sensor.next_alarm')|int/1000)|timestamp_custom('%A %H:%M') }}
-        {% endif %}
-      friendly_name: Next alarm
-      icon_template: 'mdi:alarm'
+    # next_alarm_human:
+    #   value_template: >
+    #     {% if states('sensor.next_alarm') == "None" %}
+    #       No alarm set
+    #     {% elif states('sensor.next_alarm') == "unavailable" or states('sensor.next_alarm') == "unknown" %}
+    #       Google Home unavailable
+    #     {% else %}
+    #       {{ (states('sensor.next_alarm')|int/1000)|timestamp_custom('%A %H:%M') }}
+    #     {% endif %}
+    #   friendly_name: Next alarm
+    #   icon_template: 'mdi:alarm'
 
     totalpowerconsumption:
       value_template: '{{ ( states("sensor.power_consumption_low")|float ) + ( states("sensor.power_consumption_normal")|float ) }}'
@@ -91,3 +96,54 @@
       device_class: humidity
       friendly_name: Humidity outside
       unit_of_measurement: '%'
+
+    sun_elevation:
+      friendly_name: Sun elevation
+      icon_template: mdi:white-balance-sunny
+      unit_of_measurement: "°"
+      value_template: "{{ state_attr('sun.sun', 'elevation')|float|round(1) }}"
+
+    sun_elevation_corrected:
+      icon_template: mdi:white-balance-sunny
+      friendly_name: Sun elevation (corrected for cloud coverage)
+      value_template: >-
+        {% set maxDecrease = states('input_number.max_sun_elevation_decrease')|float / 100 %}
+        {% set coverage = states('sensor.dark_sky_cloud_coverage')|float / 100 %}
+        {% set elevation = state_attr('sun.sun', 'elevation')|float %}
+        {{ "%.2f"|format(elevation - ((coverage * maxDecrease) * elevation)|abs) }}
+      unit_of_measurement: "°"
+
+    sun_direction:
+      friendly_name: Sun direction
+      icon_template: >-
+        {% if as_timestamp(state_attr('sun.sun', 'next_noon')) - as_timestamp(state_attr('sun.sun', 'next_midnight')) < 0 %}
+          mdi:weather-sunset-up
+        {% else %}
+          mdi:weather-sunset-down
+        {% endif %}
+      value_template: >-
+        {% if as_timestamp(state_attr('sun.sun', 'next_noon')) - as_timestamp(state_attr('sun.sun', 'next_midnight')) < 0 %}
+          Rising
+        {% else %}
+          Setting
+        {% endif %}
+
+    time_of_day:
+      friendly_name: Time of day
+      icon_template: mdi:calendar-clock
+      value_template: >-
+        {% if is_state('sensor.sun_direction', 'Rising') and states('sensor.sun_elevation_corrected')|float > states('input_number.day_threshold')|float %}
+          Day
+        {% elif is_state('sensor.sun_direction', 'Rising') and states('sensor.sun_elevation_corrected')|float > states('input_number.morning_threshold')|float %}
+          Morning
+        {% elif is_state('sensor.sun_direction', 'Rising') %}
+          Night
+        {% elif is_state('sensor.sun_direction', 'Setting') and states('sensor.sun_elevation_corrected')|float < states('input_number.evening_threshold')|float %}
+          Evening
+        {% elif is_state('sensor.sun_direction', 'Setting') and states('sensor.sun_elevation_corrected')|float < states('input_number.early_evening_threshold')|float %}
+          Early evening
+        {% elif is_state('sensor.sun_direction', 'Setting') and states('sensor.sun_elevation_corrected')|float < states('input_number.afternoon_threshold')|float %}
+          Afternoon
+        {% else %}
+          Day
+        {% endif %}

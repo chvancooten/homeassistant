@@ -24,9 +24,9 @@ set_scene:
     - service: scene.turn_on
       data_template:
         entity_id: >
-          {% if now().hour > 18 %}
+          {% if states('sensor.time_of_day') == "Evening" or states('sensor.time_of_day') == "Early Evening" %}
             scene.evening
-          {% elif now().hour > 10 %}
+          {% elif states('sensor.time_of_day') == "Day" or states('sensor.time_of_day') == "Afternoon" %}
             scene.day
           {% else %}
             scene.morning

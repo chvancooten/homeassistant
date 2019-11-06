@@ -66,7 +66,7 @@
       transition: 5
     light.nanoleaf:
       state: on
-      brightness: 50
+      brightness: 150
       effect: Flames
     light.livingroom_spot1_light:
       state: on

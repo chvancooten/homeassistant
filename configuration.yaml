@@ -13,12 +13,6 @@ frontend:
 system_health:
 mobile_app:
   
-panel_iframe:
-  grafana:
-    title: 'Grafana dashboard'
-    url: 'https://dashcas.vancooten.com'
-    icon: mdi:monitor-dashboard
-  
 http:
   base_url: !secret baseurl
   ip_ban_enabled: True
@@ -63,14 +57,13 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 google_assistant: !include google_assistant.yaml
+scene: !include scenes.yaml
 
 tts:
   - platform: google_translate
     service_name: google_say
     cache: false
     base_url: http://192.168.1.100:8123
-
-scene: !include scenes.yaml
 
 input_select:
   scene:
@@ -87,6 +80,56 @@ input_boolean:
     name: "Party Mode!"
     initial: off
     icon: mdi:balloon
+
+input_number:
+  max_sun_elevation_decrease:
+    icon: mdi:tune
+    max: 100
+    min: 0
+    mode: box
+    name: Max sun elevation decrease (%)
+    step: 1
+    unit_of_measurement: "%"
+  morning_threshold:
+    icon: mdi:tune
+    max: 10
+    min: -10
+    mode: box
+    name: Activate Morning when elevation reaches
+    step: 0.5
+    unit_of_measurement: "°"
+  day_threshold:
+    icon: mdi:tune
+    max: 10
+    min: -10
+    mode: box
+    name: Activate Day when elevation reaches
+    step: 0.5
+    unit_of_measurement: "°"
+  afternoon_threshold:
+    icon: mdi:tune
+    max: 10
+    min: -10
+    mode: box
+    name: Activate Afternoon when elevation drops below
+    step: 0.5
+    unit_of_measurement: "°"
+  early_evening_threshold:
+    icon: mdi:tune
+    max: 10
+    min: -10
+    mode: box
+    name: Activate Early evening when elevation drops below
+    step: 0.5
+    unit_of_measurement: "°"
+  evening_threshold:
+    icon: mdi:tune
+    max: 10
+    min: -10
+    mode: box
+    name: Activate Evening when elevation drops below
+    step: 0.5
+    unit_of_measurement: "°"
 
 weather:
   - platform: buienradar
@@ -172,37 +215,38 @@ hacs:
 circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 4000
-  # Defaults to 15 minute transition every 15 min but causes transition bug
   interval: 900
   transition: 900
 
-plant:
-  dieffenbachia:
-    sensors:
-      moisture: sensor.dieffenbachia_moisture
-      battery: sensor.dieffenbachia_battery
-      temperature: sensor.dieffenbachia_temperature
-      conductivity: sensor.dieffenbachia_conductivity
-      brightness: sensor.dieffenbachia_light_intensity
-    min_moisture: 15
-    max_moisture: 60
-    min_conductivity: 200
-    max_conductivity: 1500
-    min_temperature: 12
-    max_temperature: 32
-    min_brightness: 1500
-    max_brightness: 25000
-    min_battery: 10
+# plant:
+#   dieffenbachia:
+#     sensors:
+#       moisture: sensor.dieffenbachia_moisture
+#       battery: sensor.dieffenbachia_battery
+#       temperature: sensor.dieffenbachia_temperature
+#       conductivity: sensor.dieffenbachia_conductivity
+#       brightness: sensor.dieffenbachia_light_intensity
+#     min_moisture: 15
+#     max_moisture: 60
+#     min_conductivity: 200
+#     max_conductivity: 1500
+#     min_temperature: 12
+#     max_temperature: 32
+#     min_brightness: 1500
+#     max_brightness: 25000
+#     min_battery: 10
 
 
 switch:
   - platform: circadian_lighting
     lights_ct:
       - light.livingroom
-      - light.livingroom_spot1
-      - light.livingroom_spot2
-      - light.livingroom_spot3
-      - light.livingroom_spot4
+      - light.livingroom_spot1_light
+      - light.livingroom_spot2_light
+      - light.livingroom_spot3_light
+      - light.livingroom_spot4_light
+      - light.living_room_spots
+      - light.bedroom
   - platform: broadlink
     host: 192.168.1.202
     mac: '78:0F:77:5A:B5:02'

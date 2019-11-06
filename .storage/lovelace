@@ -35,21 +35,6 @@
                                 {
                                     "card": {
                                         "entities": [
-                                            "sensor.next_alarm_human"
-                                        ],
-                                        "type": "entities"
-                                    },
-                                    "conditions": [
-                                        {
-                                            "entity": "sensor.next_alarm",
-                                            "state_not": "None"
-                                        }
-                                    ],
-                                    "type": "conditional"
-                                },
-                                {
-                                    "card": {
-                                        "entities": [
                                             "sensor.work_commute"
                                         ],
                                         "type": "entities"
@@ -100,6 +85,9 @@
                                 },
                                 {
                                     "entities": [
+                                        {
+                                            "entity": "sensor.time_of_day"
+                                        },
                                         {
                                             "entity": "input_select.scene"
                                         }
@@ -348,58 +336,58 @@
                 {
                     "cards": [
                         {
-                            "entities": [
-                                {
-                                    "label": "Living room",
-                                    "type": "section"
-                                },
-                                {
-                                    "entity": "light.livingroom",
-                                    "name": "Ceiling"
-                                },
-                                {
-                                    "entity": "light.living_room_spots"
-                                },
-                                {
-                                    "entity": "light.terrarium_light"
-                                },
-                                {
-                                    "entity": "light.nanoleaf"
-                                },
-                                {
-                                    "label": "Bedroom",
-                                    "type": "section"
-                                },
-                                {
-                                    "entity": "light.bedroom",
-                                    "name": "Ceiling"
-                                },
-                                {
-                                    "label": "Hallway",
-                                    "type": "section"
-                                },
-                                {
-                                    "entity": "light.hallwayceiling",
-                                    "name": "Ceiling"
-                                },
-                                {
-                                    "entity": "light.hallwaystanding_light",
-                                    "name": "Standing"
-                                },
-                                {
-                                    "label": "Toilet",
-                                    "type": "section"
-                                },
-                                {
-                                    "entity": "light.toilet",
-                                    "name": "Toilet"
-                                }
-                            ],
-                            "title": "Lights",
-                            "type": "entities"
-                        },
-                        {
                             "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "label": "Living room",
+                                            "type": "section"
+                                        },
+                                        {
+                                            "entity": "light.livingroom",
+                                            "name": "Ceiling"
+                                        },
+                                        {
+                                            "entity": "light.living_room_spots"
+                                        },
+                                        {
+                                            "entity": "light.terrarium_light"
+                                        },
+                                        {
+                                            "entity": "light.nanoleaf"
+                                        },
+                                        {
+                                            "label": "Bedroom",
+                                            "type": "section"
+                                        },
+                                        {
+                                            "entity": "light.bedroom",
+                                            "name": "Ceiling"
+                                        },
+                                        {
+                                            "label": "Hallway",
+                                            "type": "section"
+                                        },
+                                        {
+                                            "entity": "light.hallwayceiling",
+                                            "name": "Ceiling"
+                                        },
+                                        {
+                                            "entity": "light.hallwaystanding_light",
+                                            "name": "Standing"
+                                        },
+                                        {
+                                            "label": "Toilet",
+                                            "type": "section"
+                                        },
+                                        {
+                                            "entity": "light.toilet",
+                                            "name": "Toilet"
+                                        }
+                                    ],
+                                    "title": "Lights",
+                                    "type": "entities"
+                                },
                                 {
                                     "entities": [
                                         {
@@ -417,6 +405,23 @@
                                     ],
                                     "title": "Spots",
                                     "type": "entities"
+                                }
+                            ],
+                            "type": "vertical-stack"
+                        },
+                        {
+                            "cards": [
+                                {
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.motionsensor_hallway_illuminance"
+                                        },
+                                        {
+                                            "entity": "sensor.motionsensor_toilet_illuminance"
+                                        }
+                                    ],
+                                    "title": "Illuminance",
+                                    "type": "glance"
                                 },
                                 {
                                     "entities": [
@@ -433,23 +438,38 @@
                                 {
                                     "entities": [
                                         {
-                                            "entity": "automation.wakeup_light",
-                                            "icon": "mdi:weather-sunset-up"
+                                            "entity": "sensor.sun_elevation_corrected",
+                                            "name": "Corrected elevation"
+                                        },
+                                        {
+                                            "entity": "sensor.time_of_day"
                                         }
                                     ],
-                                    "type": "entities"
+                                    "title": "Time of day",
+                                    "type": "glance"
                                 },
                                 {
                                     "entities": [
                                         {
-                                            "entity": "sensor.motionsensor_hallway_illuminance"
+                                            "entity": "input_number.max_sun_elevation_decrease"
                                         },
                                         {
-                                            "entity": "sensor.motionsensor_toilet_illuminance"
+                                            "entity": "input_number.morning_threshold"
+                                        },
+                                        {
+                                            "entity": "input_number.day_threshold"
+                                        },
+                                        {
+                                            "entity": "input_number.afternoon_threshold"
+                                        },
+                                        {
+                                            "entity": "input_number.early_evening_threshold"
+                                        },
+                                        {
+                                            "entity": "input_number.evening_threshold"
                                         }
                                     ],
-                                    "title": "Illuminance",
-                                    "type": "glance"
+                                    "type": "entities"
                                 }
                             ],
                             "type": "vertical-stack"
