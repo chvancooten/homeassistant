@@ -32,7 +32,7 @@
 - name: Evening
   entities: 
     input_select.scene: Evening
-    switch.circadian_lighting_circadian_lighting: off
+    switch.circadian_lighting_circadian_lighting: on
     light.livingroom:
       state: on
       color_temp: 350
@@ -53,7 +53,6 @@
     input_select.scene: Night
     switch.circadian_lighting_circadian_lighting: off
     group.all_lights: off
-    light.terrarium_light: off
 
 #Extra scenes (activate manually)
 - name: Atmospheric mode

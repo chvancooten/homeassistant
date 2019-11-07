@@ -700,12 +700,6 @@
                         {
                             "entity": "weather.buienradar",
                             "type": "weather-forecast"
-                        },
-                        {
-                            "entity": "plant.dieffenbachia",
-                            "image": "/local/dieffenbachia.jpg",
-                            "title": "Dieffenbachia Sublime",
-                            "type": "custom:picture-plant-card"
                         }
                     ],
                     "icon": "mdi:access-point",
@@ -757,7 +751,7 @@
                             "columns": 6,
                             "entities": [
                                 {
-                                    "entity": "sensor.climatesensor_battery_2"
+                                    "entity": "sensor.climatesensor_battery"
                                 },
                                 {
                                     "entity": "sensor.motionsensor_hallway_battery"
@@ -766,7 +760,7 @@
                                     "entity": "sensor.motionsensor_toilet_battery"
                                 },
                                 {
-                                    "entity": "sensor.xiaomibutton_battery_2"
+                                    "entity": "sensor.xiaomibutton_battery"
                                 },
                                 {
                                     "entity": "sensor.xiaomiswitch1_battery"

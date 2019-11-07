@@ -122,9 +122,9 @@ sensor.voltage_sags_phase_l2:
   hidden: true
 sensor.voltage_sags_phase_l3:
   hidden: true
-sensor.climatesensor_battery_2:
+sensor.climatesensor_battery:
   friendly_name: Climate sensor battery
-sensor.xiaomibutton_battery_2:
+sensor.xiaomibutton_battery:
   friendly_name: Button battery
 sensor.xiaomiswitch1_battery:
   friendly_name: Switch 1 battery
