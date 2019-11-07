@@ -37,7 +37,9 @@
 - platform: systemmonitor
   resources:
   - type: disk_use_percent
-    arg: /
+    arg: /config
+  - type: disk_use_percent
+    arg: /data/
   - type: memory_use_percent
   - type: load_5m
   - type: processor_use

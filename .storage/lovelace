@@ -709,6 +709,7 @@
                 {
                     "cards": [
                         {
+                            "columns": 3,
                             "entities": [
                                 {
                                     "entity": "sensor.processor_use"
@@ -720,12 +721,17 @@
                                     "entity": "sensor.memory_use_percent"
                                 },
                                 {
-                                    "entity": "sensor.disk_use_percent"
+                                    "entity": "sensor.disk_use_percent_config"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent_data"
                                 },
                                 {
                                     "entity": "sensor.last_boot"
                                 }
                             ],
+                            "show_name": true,
+                            "theme": "Backend-selected",
                             "title": "System performance",
                             "type": "glance"
                         },
@@ -740,15 +746,21 @@
                                     "name": "Memory"
                                 },
                                 {
-                                    "entity": "sensor.disk_use_percent",
-                                    "name": "Disk"
+                                    "entity": "sensor.disk_use_percent_config",
+                                    "name": "SSD"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent_data",
+                                    "name": "HDD"
                                 }
                             ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
                             "title": "Performance history",
                             "type": "history-graph"
                         },
                         {
-                            "columns": 6,
+                            "columns": 3,
                             "entities": [
                                 {
                                     "entity": "sensor.climatesensor_battery"
@@ -769,6 +781,7 @@
                                     "entity": "sensor.xiaomiswitch2_battery"
                                 }
                             ],
+                            "show_state": true,
                             "title": "Zigbee sensor battery levels",
                             "type": "glance"
                         }
