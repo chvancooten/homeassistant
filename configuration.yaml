@@ -214,9 +214,9 @@ hacs:
 
 circadian_lighting:
   min_colortemp: 2250
-  max_colortemp: 4000
-  interval: 900
-  transition: 900
+  max_colortemp: 5000
+  # interval: 900
+  # transition: 900
 
 # plant:
 #   dieffenbachia:
@@ -247,6 +247,8 @@ switch:
       - light.livingroom_spot4_light
       - light.living_room_spots
       - light.bedroom
+    lights_brightness:
+      - light.nanoleaf
   - platform: broadlink
     host: 192.168.1.202
     mac: '78:0F:77:5A:B5:02'
