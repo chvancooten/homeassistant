@@ -47,16 +47,16 @@
   alias: Automatic evening scene
   initial_state: 'on'
   trigger:
-  - platform: state
+    platform: state
     entity_id: 'sensor.time_of_day'
     to: 'Early evening'
   condition:
     condition: or
     conditions:
-    - platform: state
+    - condition: state
       entity_id: 'group.tracker_debby'
       state: 'home'
-    - platform: state
+    - condition: state
       entity_id: 'group.tracker_cas'
       state: 'home'
   action:
