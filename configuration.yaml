@@ -246,7 +246,6 @@ switch:
       - light.livingroom_spot3_light
       - light.livingroom_spot4_light
       - light.living_room_spots
-      - light.bedroom
     lights_brightness:
       - light.nanoleaf
   - platform: broadlink

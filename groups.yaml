@@ -1,8 +1,8 @@
 tracker_debby:
   name: Debby
   entities:
-  - device_tracker.galaxys8_debby_bt
-  - device_tracker.galaxys8_debby
+  - device_tracker.telefoon_debby_bt
+  - device_tracker.telefoon_debby
   - device_tracker.laptop_debby
 
 tracker_cas:
