@@ -223,24 +223,16 @@ circadian_lighting:
   # interval: 900
   # transition: 900
 
-# plant:
-#   dieffenbachia:
-#     sensors:
-#       moisture: sensor.dieffenbachia_moisture
-#       battery: sensor.dieffenbachia_battery
-#       temperature: sensor.dieffenbachia_temperature
-#       conductivity: sensor.dieffenbachia_conductivity
-#       brightness: sensor.dieffenbachia_light_intensity
-#     min_moisture: 15
-#     max_moisture: 60
-#     min_conductivity: 200
-#     max_conductivity: 1500
-#     min_temperature: 12
-#     max_temperature: 32
-#     min_brightness: 1500
-#     max_brightness: 25000
-#     min_battery: 10
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_key
+    allowed_chat_ids:
+      - !secret telegram_chat_id
 
+notify:
+  - name: Telegram
+    platform: telegram
+    chat_id: !secret telegram_chat_id
 
 switch:
   - platform: circadian_lighting

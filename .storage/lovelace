@@ -760,6 +760,15 @@
                             "type": "history-graph"
                         },
                         {
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.rclone_backup"
+                                }
+                            ],
+                            "title": "Health",
+                            "type": "glance"
+                        },
+                        {
                             "columns": 3,
                             "entities": [
                                 {
