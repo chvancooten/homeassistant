@@ -81,6 +81,11 @@ input_boolean:
     initial: off
     icon: mdi:balloon
 
+clean_up_snapshots_service:
+  host: https://homecas.vancooten.com
+  token: !secret hass_token
+  number_of_snapshots_to_keep: 3
+
 input_number:
   max_sun_elevation_decrease:
     icon: mdi:tune
