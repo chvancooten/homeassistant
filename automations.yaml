@@ -29,7 +29,6 @@
   trigger: 
     platform: time
     at: '03:30:00'
-  condition:
   action:
     - service: clean_up_snapshots_service.clean_up
 
@@ -54,18 +53,71 @@
     entity_id: 'sensor.time_of_day'
     to: 'Early evening'
   condition:
-    condition: or
-    conditions:
-    - condition: state
-      entity_id: 'group.tracker_debby'
-      state: 'home'
-    - condition: state
-      entity_id: 'group.tracker_cas'
-      state: 'home'
+    condition: state
+    entity_id: 'group.everyone'
+    state: 'home'
   action:
     service: scene.turn_on
     data:
       entity_id: scene.evening
+
+### TELEGRAM INTERACTIONS
+
+- id: automation_telegram_lightsonnotify
+  alias: 'Telegram - Forgotten lights notify'
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: 'group.everyone'
+    to: 'not_home'
+    for: 
+      seconds: 300
+  condition:
+    condition: state
+    entity_id: 'group.all_lights'
+    state: 'on'
+  action:
+    service: telegram_bot.send_message
+    data:
+      title: '🚨 *Alert* 🚨'
+      message: "No one is home but not all lights are off!"
+      disable_notification: false
+      inline_keyboard: 
+      - 'Turn off the lights:/turnofflights, Ignore:/ignore'
+
+- id: automation_telegram_lightsoff
+  alias: 'Telegram - Turn off lights'
+  initial_state: 'on'
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/turnofflights'
+  action:
+    - service: telegram_bot.answer_callback_query
+      data_template:
+        callback_query_id: '{{ trigger.event.data.id }}'
+        message: 'Turning off all lights...'
+    - service: light.turn_off
+      data:
+        entity_id: group.all_lights
+
+- id: automation_telegram_ignore
+  alias: 'Telegram - Ignore alert'
+  initial_state: 'on'
+  hide_entity: true
+  trigger:
+    platform: event
+    event_type: telegram_callback
+    event_data:
+      data: '/ignore'
+  action:
+    - service: telegram_bot.answer_callback_query
+      data_template:
+        callback_query_id: '{{ trigger.event.data.id }}'
+        message: '👍'
+
 
 ### INPUT BASED
 
