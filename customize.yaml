@@ -141,3 +141,5 @@ sensor.disk_use_percent_data:
   icon: mdi:harddisk-plus
 sensor.memory_use_percent:
   friendly_name: Memory use
+binary_sensor.0x00158d0004230430_contact:
+  friendly_name: Voordeur Dicht

@@ -63,6 +63,24 @@
 
 ### TELEGRAM INTERACTIONS
 
+- id: automation_telegram_mss
+  alias: 'Telegram - Motion Sensor Security'
+  initial_state: 'on'
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motionsensor_hallway_occupancy
+    to: 'on'
+  condition:
+    condition: state
+    entity_id: 'group.everyone'
+    state: 'not_home'
+  action:
+  - service: telegram_bot.send_message
+    data:
+      title: '🚨 *Alert* 🚨'
+      message: "Motion sensor was triggered but no one is home!"
+      disable_notification: false
+
 - id: automation_telegram_lightsonnotify
   alias: 'Telegram - Forgotten lights notify'
   initial_state: 'on'
@@ -85,8 +103,23 @@
       inline_keyboard: 
       - 'Turn off the lights:/turnofflights, Ignore:/ignore'
 
+# - id: automation_telegram_power
+#   alias: 'Telegram - Report power use'
+#   initial_state: 'on'
+#   hide_entity: true
+#   trigger:
+#     platform: event
+#     event_type: telegram_command
+#     event_data:
+#       command: '/power'
+#   action:
+#     - service: telegram_bot.send_photo
+#       data_template:
+#         url: 'https://homecas.vancooten.com/api/hassio_ingress/-K0r1D-orJUOQhZLZW8ZvpbXkk2-OvFYxESWLHXMNOI/render/d-solo/X-6T2Ymgz/dash?orgId=1&refresh=30s&from=1573945200000&to=1574023489245&panelId=14&width=1000&height=500&tz=Europe%2FAmsterdam'
+#         caption: 'This is what the scouter says about your power level.'
+
 - id: automation_telegram_lightsoff
-  alias: 'Telegram - Turn off lights'
+  alias: 'Telegram - Turn off lights inline'
   initial_state: 'on'
   hide_entity: true
   trigger:
@@ -102,9 +135,14 @@
     - service: light.turn_off
       data:
         entity_id: group.all_lights
+    - service: telegram_bot.edit_replymarkup
+      data_template:
+        message_id: 'last'
+        chat_id: '{{ trigger.event.data.chat_id }}'
+        inline_keyboard: []
 
 - id: automation_telegram_ignore
-  alias: 'Telegram - Ignore alert'
+  alias: 'Telegram - Ignore alert inline'
   initial_state: 'on'
   hide_entity: true
   trigger:
@@ -117,6 +155,11 @@
       data_template:
         callback_query_id: '{{ trigger.event.data.id }}'
         message: '👍'
+    - service: telegram_bot.edit_replymarkup
+      data_template:
+        message_id: 'last'
+        chat_id: '{{ trigger.event.data.chat_id }}'
+        inline_keyboard: []
 
 
 ### INPUT BASED
@@ -204,6 +247,7 @@
 #         effect: Wakeuplight
 
 ### PRESENCE DETECTION
+
 #credits Vic
 # - id: automation_plantmonitor
 #   alias: Plant monitor
@@ -278,28 +322,6 @@
         'Welcome home, {{ trigger.from_state.attributes.friendly_name.split(' ', 1)[0] }}'
 
 ### MOTION SENSING
-
-- alias: Motion sensor security
-  id: automation_mss
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: binary_sensor.motionsensor_hallway_occupancy
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-    - condition: state
-      entity_id: 'group.tracker_cas'
-      state: 'not_home'
-    - condition: state
-      entity_id: 'group.tracker_debby'
-      state: 'not_home'
-  action:
-  - service: notify.ios_iphone_cas
-    data:
-      title: "Security alert"
-      message: "Motion sensor was triggered but no one is home!"
 
 - alias: Hallway motion light (on)
   id: automation_motionlighton_hallway

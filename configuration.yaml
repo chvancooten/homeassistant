@@ -223,6 +223,14 @@ circadian_lighting:
   # interval: 900
   # transition: 900
 
+stream:
+camera:
+  - platform: generic
+    name: YiCam
+    still_image_url: "http://192.168.1.53:8080/cgi-bin/snapshot.sh"
+    stream_source: !secret yicam_stream
+    verify_ssl: false
+
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_api_key
@@ -269,3 +277,8 @@ switch:
           'JgBQAAABKpEVEBQRFBEUEBUQFRAUERQRFDUVNRQ1FTUVNRQ1FTUUNRUQFTUUERQ1FRAVEBQRFBAVNRUQFDUVEBU1FDUVNRU1FAAFJgABKkgVAA0FAAAAAAAAAAA='
         command_off:
           'JgBQAAABKZIUERQRFBEUEBUQFBEUERQRFDUVNRQ1FTUUNhQ1FTUUNRUQFTUUNRU1FBEUERQQFRAVNRQRFBAVEBU1FDUVNRQ2FAAFJgABKkgVAA0FAAAAAAAAAAA='
+
+
+## TODO - fix output of grafana files
+#shell_command:
+  #grafana_get_energy_graph: !secret grafanacommand

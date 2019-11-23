@@ -324,6 +324,27 @@
                                     ],
                                     "image": "/local/floorplan_gs.jpg",
                                     "type": "picture-elements"
+                                },
+                                {
+                                    "aspect_ratio": "0%",
+                                    "camera_image": "camera.yicam",
+                                    "camera_view": "live",
+                                    "entities": [
+                                        {
+                                            "entity": "binary_sensor.frontdoor"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.yicam_motion"
+                                        },
+                                        {
+                                            "entity": "binary_sensor.motionsensor_hallway_occupancy"
+                                        }
+                                    ],
+                                    "entity": "camera.yicam",
+                                    "hold_action": {
+                                        "action": "none"
+                                    },
+                                    "type": "picture-glance"
                                 }
                             ],
                             "type": "vertical-stack"
@@ -608,6 +629,24 @@
                         {
                             "entities": [
                                 {
+                                    "entity": "binary_sensor.frontdoor"
+                                },
+                                {
+                                    "entity": "binary_sensor.yicam_motion"
+                                },
+                                {
+                                    "entity": "binary_sensor.motionsensor_hallway_occupancy"
+                                },
+                                {
+                                    "entity": "binary_sensor.motionsensor_toilet_occupancy"
+                                }
+                            ],
+                            "title": "Motion",
+                            "type": "glance"
+                        },
+                        {
+                            "entities": [
+                                {
                                     "entity": "sensor.power_consumption"
                                 },
                                 {
@@ -670,18 +709,6 @@
                             ],
                             "title": "Climate history",
                             "type": "history-graph"
-                        },
-                        {
-                            "entities": [
-                                {
-                                    "entity": "binary_sensor.motionsensor_hallway_occupancy"
-                                },
-                                {
-                                    "entity": "binary_sensor.motionsensor_toilet_occupancy"
-                                }
-                            ],
-                            "title": "Motion",
-                            "type": "glance"
                         },
                         {
                             "entities": [

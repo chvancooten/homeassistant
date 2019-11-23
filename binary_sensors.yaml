@@ -1,3 +1,10 @@
+- platform: mqtt
+  name: "YiCam motion"
+  state_topic: "yicam/motion"
+  payload_on: "motion_start"
+  payload_off: "motion_stop"
+  qos: 1
+  device_class: motion
 
 - platform: template
   sensors:
@@ -11,3 +18,4 @@
       friendly_name: Next alarm within 15 minutes
       icon_template: 'mdi:alarm'
       entity_id: sensor.time
+
