@@ -135,9 +135,9 @@ sensor.next_alarm:
 light.terrarium_light:
   icon: mdi:sprout
 sensor.disk_use_percent_config:
-  friendly_name: Disk Use (HDD)
+  friendly_name: Disk Use (SSD)
 sensor.disk_use_percent_data:
-  friendly_name: Disk use (SSD)
+  friendly_name: Disk use (HDD)
   icon: mdi:harddisk-plus
 sensor.memory_use_percent:
   friendly_name: Memory use

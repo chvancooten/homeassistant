@@ -39,7 +39,7 @@
   - type: disk_use_percent
     arg: /config
   - type: disk_use_percent
-    arg: /data/
+    arg: /data
   - type: memory_use_percent
   - type: load_5m
   - type: processor_use

@@ -19,6 +19,30 @@
                             "cards": [
                                 {
                                     "card": {
+                                        "entities": [
+                                            {
+                                                "entity": "binary_sensor.frontdoor"
+                                            },
+                                            {
+                                                "entity": "binary_sensor.yicam_motion"
+                                            },
+                                            {
+                                                "entity": "binary_sensor.motionsensor_hallway_occupancy"
+                                            }
+                                        ],
+                                        "title": "Sekjoerietie",
+                                        "type": "glance"
+                                    },
+                                    "conditions": [
+                                        {
+                                            "entity": "group.everyone",
+                                            "state_not": "home"
+                                        }
+                                    ],
+                                    "type": "conditional"
+                                },
+                                {
+                                    "card": {
                                         "title": "People at home",
                                         "type": "glance"
                                     },
@@ -324,27 +348,6 @@
                                     ],
                                     "image": "/local/floorplan_gs.jpg",
                                     "type": "picture-elements"
-                                },
-                                {
-                                    "aspect_ratio": "0%",
-                                    "camera_image": "camera.yicam",
-                                    "camera_view": "live",
-                                    "entities": [
-                                        {
-                                            "entity": "binary_sensor.frontdoor"
-                                        },
-                                        {
-                                            "entity": "binary_sensor.yicam_motion"
-                                        },
-                                        {
-                                            "entity": "binary_sensor.motionsensor_hallway_occupancy"
-                                        }
-                                    ],
-                                    "entity": "camera.yicam",
-                                    "hold_action": {
-                                        "action": "none"
-                                    },
-                                    "type": "picture-glance"
                                 }
                             ],
                             "type": "vertical-stack"
@@ -748,10 +751,10 @@
                                     "entity": "sensor.memory_use_percent"
                                 },
                                 {
-                                    "entity": "sensor.disk_use_percent_config"
+                                    "entity": "sensor.disk_use_percent_data"
                                 },
                                 {
-                                    "entity": "sensor.disk_use_percent_data"
+                                    "entity": "sensor.disk_use_percent_config"
                                 },
                                 {
                                     "entity": "sensor.last_boot"

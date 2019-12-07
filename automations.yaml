@@ -68,18 +68,22 @@
   initial_state: 'on'
   trigger:
   - platform: state
-    entity_id: binary_sensor.motionsensor_hallway_occupancy
+    entity_id: binary_sensor.yicam_motion
     to: 'on'
   condition:
-    condition: state
+  - condition: state
     entity_id: 'group.everyone'
     state: 'not_home'
+  - condition: template
+    value_template: {{ ((as_timestamp(now()) - as_timestamp(states.automation.telegram_motion_sensor_security.attributes["last_triggered"]))/60)|round > 60 }}
   action:
-  - service: telegram_bot.send_message
+  - service: telegram_bot.send_photo
     data:
-      title: '🚨 *Alert* 🚨'
-      message: "Motion sensor was triggered but no one is home!"
+      caption: "Alert: Motion sensor was triggered but no one is home!"
       disable_notification: false
+      url: "http://192.168.1.55:8080/cgi-bin/snapshot.sh"
+      username: !secret yicam_user
+      password: !secret yicam_pass
 
 - id: automation_telegram_lightsonnotify
   alias: 'Telegram - Forgotten lights notify'
@@ -271,37 +275,37 @@
 #       message: 'Warning: Your plant is unhappy. {{ states.plant.dieffenbachia.attributes.problem }}'
 #       entity_id: media_player.homecas  
 
-- alias: DebbyDetectie
-  id: automation_debbydetectie
-  initial_state: 'off'
-  trigger:
-  - platform: state
-    entity_id: 'group.tracker_debby'
-    to: 'home'
-  condition:
-  - condition: state
-    entity_id: 'group.tracker_cas'
-    state: 'not_home'
-  action:
-  - service: notify.ios_iphone_cas
-    data:
-      title: "DebbyDetectie alert"
-      message: "Debby is thuis!"
-  - service: homeassistant.turn_off
-    entity_id: automation.debbydetectie
+# - alias: DebbyDetectie
+#   id: automation_debbydetectie
+#   initial_state: 'off'
+#   trigger:
+#   - platform: state
+#     entity_id: 'group.tracker_debby'
+#     to: 'home'
+#   condition:
+#   - condition: state
+#     entity_id: 'group.tracker_cas'
+#     state: 'not_home'
+#   action:
+#   - service: notify.ios_iphone_cas
+#     data:
+#       title: "DebbyDetectie alert"
+#       message: "Debby is thuis!"
+#   - service: homeassistant.turn_off
+#     entity_id: automation.debbydetectie
 
-- alias: DebbyDetectie Enable
-  id: automation_debbydetectieenable
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: group.tracker_debby
-    to: 'not_home'
-    for:
-      hours: 4
-  action:
-  - service: homeassistant.turn_on
-    entity_id: automation.debbydetectie
+# - alias: DebbyDetectie Enable
+#   id: automation_debbydetectieenable
+#   initial_state: 'on'
+#   trigger:
+#   - platform: state
+#     entity_id: group.tracker_debby
+#     to: 'not_home'
+#     for:
+#       hours: 4
+#   action:
+#   - service: homeassistant.turn_on
+#     entity_id: automation.debbydetectie
 
 - alias: Welcome home
   id: automation_welcomehome

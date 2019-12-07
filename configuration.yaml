@@ -9,6 +9,7 @@ homeassistant:
 
 frontend:
   themes: !include themes.yaml
+  javascript_version: latest
 
 system_health:
 mobile_app:
@@ -220,16 +221,17 @@ hacs:
 circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 5000
-  # interval: 900
-  # transition: 900
 
-stream:
-camera:
-  - platform: generic
-    name: YiCam
-    still_image_url: "http://192.168.1.53:8080/cgi-bin/snapshot.sh"
-    stream_source: !secret yicam_stream
-    verify_ssl: false
+# stream:
+# camera:
+#   - platform: generic
+#     name: YiCam
+#     still_image_url: "http://192.168.1.55:8080/cgi-bin/snapshot.sh"
+#     framerate: 1
+#     #stream_source: !secret yicam_stream
+#     verify_ssl: false
+#     username: !secret yicam_user
+#     password: !secret yicam_pass
 
 telegram_bot:
   - platform: polling
