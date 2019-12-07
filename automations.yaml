@@ -75,7 +75,7 @@
     entity_id: 'group.everyone'
     state: 'not_home'
   - condition: template
-    value_template: {{ ((as_timestamp(now()) - as_timestamp(states.automation.telegram_motion_sensor_security.attributes["last_triggered"]))/60)|round > 60 }}
+    value_template: '{{ ((as_timestamp(now()) - as_timestamp(states.automation.telegram_motion_sensor_security.attributes["last_triggered"]))/60)|round > 60 }}'
   action:
   - service: telegram_bot.send_photo
     data:
