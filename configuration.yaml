@@ -9,7 +9,6 @@ homeassistant:
 
 frontend:
   themes: !include themes.yaml
-  javascript_version: latest
 
 system_health:
 mobile_app:
@@ -42,8 +41,8 @@ updater:
    include_used_components: true
 
 discovery:
-  ignore:
-    - yeelight
+#   ignore:
+#     - yeelight
     
 config:
 ios:
@@ -167,25 +166,31 @@ media_player:
   - platform: spotify
     client_id: !secret spotifyid
     client_secret: !secret spotifysecret
+  - platform: philips_android_tv
+    name: Philips TV
+    host: !secret philipsTV_host
+    mac: !secret philipsTV_mac
+    username: !secret philipsTV_username
+    password: !secret philipsTV_password
 
 yeelight:
-  devices:
-    192.168.1.200:
-      name: HallwayCeiling
-      model: color2
-      save_on_change: true
-    192.168.1.201:
-      name: Livingroom
-      model: color2
-      save_on_change: true
-    192.168.1.203:
-      name: Bedroom
-      model: color1
-      save_on_change: true
-    192.168.1.204:
-      name: Toilet
-      model: color1
-      save_on_change: true
+  # devices:
+  #   192.168.1.200:
+  #     name: HallwayCeiling
+  #     model: color2
+  #     save_on_change: true
+  #   192.168.1.201:
+  #     name: Livingroom
+  #     model: color2
+  #     save_on_change: true
+  #   192.168.1.203:
+  #     name: Bedroom
+  #     model: color1
+  #     save_on_change: true
+  #   192.168.1.204:
+  #     name: Toilet
+  #     model: color1
+  #     save_on_change: true
   custom_effects:
     - name: 'Wakeuplight'
       flow_params:
@@ -211,6 +216,11 @@ light:
   - platform: switch
     name: Terrarium Light
     entity_id: switch.terrarium_switch
+  - platform: philips_ambilight
+    name: Ambilight
+    host: !secret philipsTV_host
+    username: !secret philipsTV_username
+    password: !secret philipsTV_password
 
 hacs:
   token: 248eb171ef27e307ad3e1adbe19d02b9d7c074c9
@@ -247,7 +257,7 @@ notify:
 switch:
   - platform: circadian_lighting
     lights_ct:
-      - light.livingroom
+      - light.yeelight_color2_04cf8c774c12
       - light.livingroom_spot1_light
       - light.livingroom_spot2_light
       - light.livingroom_spot3_light
@@ -267,12 +277,6 @@ switch:
           'JgBWAJeSFBEUERQ1FDYUERQ2FBEUERQRFBEUNhQ2FBETNhQRFBEUERQ2FDYUNhQ1FREUERMSEzYUERQRFBEUERQ2FDYUNhQABgaXkhQ2FAAMX5aTFDYUAA0FAAA='
         command_off:
           'JgBWAJeSFBEUERQ1FDYUERQ2FBEUERQRFBEUNhQ2FBETNhQRFBEUERQ2FDYUNhQ1FREUERMSEzYUERQRFBEUERQ2FDYUNhQABgaXkhQ2FAAMX5aTFDYUAA0FAAA='
-      tv_samsung:
-        friendly_name: "Samsung TV"
-        command_on:
-          'JgBGAJaTFDYVNxQ2FRIVERUSFREVEhU1FjYVNhUSFBIVEhQSFRISOBYSFBIVNhU2FRIVERU3FBEWNhU2FRIUEhU3FDYVEhUADQUAAA=='
-        command_off:
-          'JgBGAJSWEzcUOBQ3FBIUERQTEhIUExI4EzkTNxUSExIUEhMSFBIUERQTExEVNxQ3FBITEhQ4EzcUOBM3FBITEhQ4EzcVEhMADQUAAA==' 
       vacuum:
         friendly_name: Deebot Vacuum Cleaner
         command_on:

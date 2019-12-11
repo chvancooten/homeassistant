@@ -193,7 +193,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "switch.tv_samsung",
+                                            "entity": "media_player.philips_tv",
                                             "style": {
                                                 "left": "24%",
                                                 "top": "14%"
@@ -202,7 +202,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.livingroom",
+                                            "entity": "light.yeelight_color2_04cf8c774c12",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "30%"
@@ -265,7 +265,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.toilet",
+                                            "entity": "light.yeelight_color1_7811dca81915",
                                             "style": {
                                                 "left": "58.5%",
                                                 "top": "12%"
@@ -283,7 +283,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.hallwayceiling",
+                                            "entity": "light.yeelight_color2_04cf8c774e9b",
                                             "style": {
                                                 "left": "80%",
                                                 "top": "37%"
@@ -310,7 +310,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.bedroom",
+                                            "entity": "light.yeelight_color1_7c49eb100731",
                                             "style": {
                                                 "left": "78%",
                                                 "top": "69%"
@@ -368,7 +368,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.livingroom",
+                                            "entity": "light.yeelight_color2_04cf8c774c12",
                                             "name": "Ceiling"
                                         },
                                         {
@@ -385,7 +385,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.bedroom",
+                                            "entity": "light.yeelight_color1_7c49eb100731",
                                             "name": "Ceiling"
                                         },
                                         {
@@ -393,7 +393,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.hallwayceiling",
+                                            "entity": "light.yeelight_color2_04cf8c774e9b",
                                             "name": "Ceiling"
                                         },
                                         {
@@ -405,7 +405,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.toilet",
+                                            "entity": "light.yeelight_color1_7811dca81915",
                                             "name": "Toilet"
                                         }
                                     ],
@@ -543,16 +543,16 @@
                         },
                         {
                             "artwork": "cover",
-                            "entity": "media_player.chromecas",
+                            "entity": "media_player.tonecas",
                             "power_color": true,
                             "show_progress": true,
                             "type": "custom:mini-media-player"
                         },
                         {
-                            "artwork": "cover",
-                            "entity": "media_player.tonecas",
+                            "artwork": "full-cover-fit",
+                            "entity": "media_player.philips_tv",
                             "power_color": true,
-                            "show_progress": true,
+                            "show_source": "small",
                             "type": "custom:mini-media-player"
                         },
                         {
@@ -578,15 +578,6 @@
                         },
                         {
                             "entities": [
-                                {
-                                    "entity": "switch.tv_samsung"
-                                },
-                                {
-                                    "entity": "script.tv_hdmi1"
-                                },
-                                {
-                                    "entity": "script.tv_hdmi2"
-                                },
                                 {
                                     "entity": "switch.soundbar"
                                 },
@@ -722,8 +713,14 @@
                                 {
                                     "entity": "binary_sensor.motionsensor_toilet_occupancy",
                                     "name": "Toilet"
+                                },
+                                {
+                                    "entity": "binary_sensor.yicam_motion",
+                                    "name": "YiCam"
                                 }
                             ],
+                            "hours_to_show": 24,
+                            "refresh_interval": 0,
                             "title": "Motion history",
                             "type": "history-graph"
                         },
@@ -749,9 +746,6 @@
                                 },
                                 {
                                     "entity": "sensor.memory_use_percent"
-                                },
-                                {
-                                    "entity": "sensor.disk_use_percent_data"
                                 },
                                 {
                                     "entity": "sensor.disk_use_percent_config"

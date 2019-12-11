@@ -17,8 +17,8 @@ class partyMode(hass.Hass):
             media_content_id="http://192.168.1.100:8123/local/audio/running.mp3")
         self.call_service("light/turn_on", entity_id="light.nanoleaf", brightness=255, effect="80s Burst Synth")
         time.sleep(1.6)
-        self.call_service("light/turn_on", entity_id="light.livingroom", brightness=255, effect="Strobe color")
-        self.call_service("light/turn_on", entity_id="light.toilet", brightness=255, effect="Strobe color")
+        self.call_service("light/turn_on", entity_id="light.yeelight_color2_04cf8c774c12", brightness=255, effect="Strobe color")
+        self.call_service("light/turn_on", entity_id="light.yeelight_color1_7811dca81915", brightness=255, effect="Strobe color")
         while self.get_state("input_boolean.party_mode") == "on":
             self.turn_off("light.livingroom_spot4")
             self.turn_on("switch.terrariumlight")

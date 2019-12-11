@@ -3,7 +3,7 @@
   entities:
     input_select.scene: Morning
     switch.circadian_lighting_circadian_lighting: off
-    light.livingroom: off
+    light.yeelight_color2_04cf8c774c12: off
     light.nanoleaf: off
     light.living_room_spots:
       state: on
@@ -15,7 +15,7 @@
   entities: 
     input_select.scene: Day
     switch.circadian_lighting_circadian_lighting: off
-    light.livingroom:
+    light.yeelight_color2_04cf8c774c12:
       state: on
       color_temp: 290
       brightness: 255
@@ -24,8 +24,8 @@
       state: on
       brightness: 255
       effect: 'Rain'
-    light.bedroom: off
-    light.toilet: off
+    light.yeelight_color1_7c49eb100731: off
+    light.yeelight_color1_7811dca81915: off
     light.living_room_spots: off
     light.terrarium_light: off
       
@@ -33,7 +33,7 @@
   entities: 
     input_select.scene: Evening
     switch.circadian_lighting_circadian_lighting: on
-    light.livingroom:
+    light.yeelight_color2_04cf8c774c12:
       state: on
       color_temp: 350
       brightness: 180
@@ -58,7 +58,7 @@
 - name: Atmospheric mode
   entities: 
     switch.circadian_lighting_circadian_lighting: off
-    light.livingroom:
+    light.yeelight_color2_04cf8c774c12:
       state: on
       color_name: orange
       brightness: 3
