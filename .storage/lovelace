@@ -310,6 +310,15 @@
                                             "type": "state-icon"
                                         },
                                         {
+                                            "entity": "binary_sensor.frontdoor",
+                                            "style": {
+                                                "left": "93%",
+                                                "top": "37%"
+                                            },
+                                            "title": "Front door",
+                                            "type": "state-icon"
+                                        },
+                                        {
                                             "entity": "light.yeelight_color1_7c49eb100731",
                                             "style": {
                                                 "left": "78%",
