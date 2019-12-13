@@ -41,8 +41,8 @@ updater:
    include_used_components: true
 
 discovery:
-#   ignore:
-#     - yeelight
+  ignore:
+    - yeelight
     
 config:
 ios:
@@ -174,23 +174,23 @@ media_player:
     password: !secret philipsTV_password
 
 yeelight:
-  # devices:
-  #   192.168.1.200:
-  #     name: HallwayCeiling
-  #     model: color2
-  #     save_on_change: true
-  #   192.168.1.201:
-  #     name: Livingroom
-  #     model: color2
-  #     save_on_change: true
-  #   192.168.1.203:
-  #     name: Bedroom
-  #     model: color1
-  #     save_on_change: true
-  #   192.168.1.204:
-  #     name: Toilet
-  #     model: color1
-  #     save_on_change: true
+  devices:
+    192.168.1.201:
+      name: HallwayCeiling
+      model: color2
+      save_on_change: true
+    192.168.1.200:
+      name: Livingroom
+      model: color2
+      save_on_change: true
+    192.168.1.203:
+      name: Bedroom
+      model: color1
+      save_on_change: true
+    192.168.1.204:
+      name: Toilet
+      model: color1
+      save_on_change: true
   custom_effects:
     - name: 'Wakeuplight'
       flow_params:
@@ -257,7 +257,7 @@ notify:
 switch:
   - platform: circadian_lighting
     lights_ct:
-      - light.yeelight_color2_04cf8c774c12
+      - light.livingroom
       - light.livingroom_spot1_light
       - light.livingroom_spot2_light
       - light.livingroom_spot3_light

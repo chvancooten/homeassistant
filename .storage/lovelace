@@ -202,7 +202,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.yeelight_color2_04cf8c774c12",
+                                            "entity": "light.livingroom",
                                             "style": {
                                                 "left": "30%",
                                                 "top": "30%"
@@ -265,7 +265,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.yeelight_color1_7811dca81915",
+                                            "entity": "light.toilet",
                                             "style": {
                                                 "left": "58.5%",
                                                 "top": "12%"
@@ -283,7 +283,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.yeelight_color2_04cf8c774e9b",
+                                            "entity": "light.hallwayceiling",
                                             "style": {
                                                 "left": "80%",
                                                 "top": "37%"
@@ -319,7 +319,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "light.yeelight_color1_7c49eb100731",
+                                            "entity": "light.bedroom",
                                             "style": {
                                                 "left": "78%",
                                                 "top": "69%"
@@ -377,7 +377,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.yeelight_color2_04cf8c774c12",
+                                            "entity": "light.livingroom",
                                             "name": "Ceiling"
                                         },
                                         {
@@ -394,7 +394,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.yeelight_color1_7c49eb100731",
+                                            "entity": "light.bedroom",
                                             "name": "Ceiling"
                                         },
                                         {
@@ -402,7 +402,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.yeelight_color2_04cf8c774e9b",
+                                            "entity": "light.hallwayceiling",
                                             "name": "Ceiling"
                                         },
                                         {
@@ -414,7 +414,7 @@
                                             "type": "section"
                                         },
                                         {
-                                            "entity": "light.yeelight_color1_7811dca81915",
+                                            "entity": "light.toilet",
                                             "name": "Toilet"
                                         }
                                     ],
