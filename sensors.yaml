@@ -25,7 +25,7 @@
 
 # - platform: rest
 #   name: Next alarm
-#   resource: http://192.168.1.150:8008/setup/assistant/alarms
+#   resource: http://192.168.1.XXX:8008/setup/assistant/alarms
 #   value_template: >
 #     {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
 #     {% if alarms[0] is defined %}
