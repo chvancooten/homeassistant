@@ -157,14 +157,14 @@
                                             "type": "entity-button"
                                         },
                                         {
-                                            "entity": "group.all_lights",
+                                            "entity": "light.livingroom",
                                             "icon": "mdi:lightbulb-outline",
                                             "name": "Off",
                                             "tap_action": {
                                                 "action": "call-service",
                                                 "service": "light.turn_off",
                                                 "service_data": {
-                                                    "entity_id": "group.all_lights"
+                                                    "entity_id": "all"
                                                 }
                                             },
                                             "type": "entity-button"

@@ -52,7 +52,15 @@
   entities:
     input_select.scene: Night
     switch.circadian_lighting_circadian_lighting: off
-    group.all_lights: off
+    switch.circadian_lighting_circadian_lighting: off
+    light.livingroom: off
+    light.nanoleaf: off
+    light.bedroom: off
+    light.toilet: off
+    light.living_room_spots: off
+    light.terrarium_light: off
+    light.hallwayceiling: off
+    light.hallwaystanding_light: off
 
 #Extra scenes (activate manually)
 - name: Atmospheric mode
