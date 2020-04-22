@@ -32,7 +32,7 @@
 - name: Evening
   entities: 
     input_select.scene: Evening
-    switch.circadian_lighting_circadian_lighting: on
+    switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
       color_temp: 350

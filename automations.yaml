@@ -212,55 +212,44 @@
 
 
 ###
-### UPDATE!!
+### UPDATE BELOW AUTOMATIONS
 ###
-- alias: Switch audio to TV
-  id: automation_switchaudiotoTV
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: 'media_player.chromecas'
-    to: 'playing'
-  condition:
-  - condition: template
-    value_template: "{{ state_attr('media_player.chromecas', 'app_name') != 'Backdrop' }}"
-  - condition: state
-    entity_id: 'media_player.tonecas'
-    state: 'playing'
-  action:
-  - service: media_player.media_stop
-    entity_id: 'media_player.tonecas'
-  - service: script.soundbar_next_source
+# - alias: Switch audio to TV
+#   id: automation_switchaudiotoTV
+#   initial_state: 'on'
+#   trigger:
+#   - platform: state
+#     entity_id: 'media_player.chromecas'
+#     to: 'playing'
+#   condition:
+#   - condition: template
+#     value_template: "{{ state_attr('media_player.chromecas', 'app_name') != 'Backdrop' }}"
+#   - condition: state
+#     entity_id: 'media_player.tonecas'
+#     state: 'playing'
+#   action:
+#   - service: media_player.media_stop
+#     entity_id: 'media_player.tonecas'
+#   - service: script.soundbar_next_source
 
-- alias: Switch audio to soundbar
-  id: automation_switchaudiotoSB
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: 'media_player.tonecas'
-    to: 'playing'
-  condition:
-    # Only trigger if the chromecast is not playing AND the tv is on, to prevent input switching when only pausing music
-    condition: and
-    conditions:
-    - condition: template
-      value_template: "{{ not is_state('media_player.chromecas', 'playing') }}"
-    - condition: state
-      entity_id: 'switch.tv_samsung'
-      state: 'on'
-  action:
-  - service: script.soundbar_next_source
-
-- alias: Soundbar auto-on
-  id: automation_soundbaron
-  initial_state: 'on'
-  trigger:
-  - platform: state
-    entity_id: 'media_player.philips_tv'
-    from: 'off'
-  action:
-  - service: homeassistant.turn_on
-    entity_id: 'switch.soundbar'
+# - alias: Switch audio to soundbar
+#   id: automation_switchaudiotoSB
+#   initial_state: 'on'
+#   trigger:
+#   - platform: state
+#     entity_id: 'media_player.tonecas'
+#     to: 'playing'
+#   condition:
+#     # Only trigger if the chromecast is not playing AND the tv is on, to prevent input switching when only pausing music
+#     condition: and
+#     conditions:
+#     - condition: template
+#       value_template: "{{ not is_state('media_player.chromecas', 'playing') }}"
+#     - condition: state
+#       entity_id: 'switch.tv_samsung'
+#       state: 'on'
+#   action:
+#   - service: script.soundbar_next_source
  
 ### TIME BASED
 
