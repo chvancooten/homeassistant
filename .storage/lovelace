@@ -1,16 +1,6 @@
 {
     "data": {
         "config": {
-            "resources": [
-                {
-                    "type": "module",
-                    "url": "/local/mini-media-player-bundle.js?v=0.9.8"
-                },
-                {
-                    "type": "js",
-                    "url": "/local/picture-plant-card.js"
-                }
-            ],
             "title": "Home Cassistant",
             "views": [
                 {
