@@ -63,7 +63,7 @@ tts:
   - platform: google_translate
     service_name: google_say
     cache: false
-    base_url: http://192.168.1.100:8123
+    base_url: http://192.168.2.100:8123
 
 input_select:
   scene:
@@ -173,21 +173,21 @@ media_player:
 
 yeelight:
   devices:
-    192.168.1.201:
-      name: HallwayCeiling
-      model: color2
-      save_on_change: true
-    192.168.1.200:
-      name: Livingroom
-      model: color2
-      save_on_change: true
-    192.168.1.203:
+    192.168.3.201:
       name: Bedroom
       model: color1
       save_on_change: true
-    192.168.1.204:
+    192.168.3.202:
       name: Toilet
       model: color1
+      save_on_change: true
+    192.168.3.203:
+      name: HallwayCeiling
+      model: color2
+      save_on_change: true
+    192.168.3.204:
+      name: Livingroom
+      model: color2
       save_on_change: true
   custom_effects:
     - name: 'Wakeuplight'
@@ -201,7 +201,7 @@ yeelight:
 
 light:
   - platform: nanoleaf
-    host: 192.168.1.205
+    host: 192.168.3.205
     token: !secret nanoleaftoken
   - platform: mqtt
     schema: json
@@ -264,7 +264,7 @@ switch:
     lights_brightness:
       - light.nanoleaf
   - platform: broadlink
-    host: 192.168.1.202
+    host: 192.168.3.200
     mac: '78:0F:77:5A:B5:02'
     friendly_name: Universal Remote
     type: rm_mini
