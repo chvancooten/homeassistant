@@ -110,7 +110,6 @@
 # - id: automation_telegram_power
 #   alias: 'Telegram - Report power use'
 #   initial_state: 'on'
-#   hide_entity: true
 #   trigger:
 #     platform: event
 #     event_type: telegram_command
@@ -125,7 +124,6 @@
 - id: automation_telegram_lightsoff
   alias: 'Telegram - Turn off lights inline'
   initial_state: 'on'
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -148,7 +146,6 @@
 - id: automation_telegram_ignore
   alias: 'Telegram - Ignore alert inline'
   initial_state: 'on'
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_callback
@@ -168,7 +165,6 @@
 - id: automation_telegram_snap
   alias: 'Telegram - Camera snapshot'
   initial_state: 'on'
-  hide_entity: true
   trigger:
     platform: event
     event_type: telegram_command

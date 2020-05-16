@@ -14,13 +14,11 @@ system_health:
 mobile_app:
   
 http:
-  base_url: !secret baseurl
   ip_ban_enabled: True
   login_attempts_threshold: 5
 
 recorder:
   purge_keep_days: 3
-  purge_interval: 1
   exclude:
     domains:
       - automation
@@ -29,7 +27,7 @@ recorder:
       - zone
 
 influxdb:
-  host: a0d7b954-influxdb
+  host: 192.168.2.100
   port: 8086
   database: homeassistant
   username: homeassistant
@@ -80,11 +78,6 @@ input_boolean:
     name: "Party Mode!"
     initial: off
     icon: mdi:balloon
-
-clean_up_snapshots_service:
-  host: https://homecas.vancooten.com
-  token: !secret hass_token
-  number_of_snapshots_to_keep: 3
 
 input_number:
   max_sun_elevation_decrease:
@@ -160,10 +153,12 @@ device_tracker:
     track_new_devices: false
     consider_home: 300
 
+spotify:
+  client_id: !secret spotifyid
+  client_secret: !secret spotifysecret
+
 media_player:
-  - platform: spotify
-    client_id: !secret spotifyid
-    client_secret: !secret spotifysecret
+
   - platform: philips_android_tv
     name: Philips TV
     host: !secret philipsTV_host
@@ -219,12 +214,6 @@ light:
     host: !secret philipsTV_host
     username: !secret philipsTV_username
     password: !secret philipsTV_password
-
-hacs:
-  token: 248eb171ef27e307ad3e1adbe19d02b9d7c074c9
-  appdaemon: True
-  python_script: True
-  theme: True
 
 circadian_lighting:
   min_colortemp: 2250

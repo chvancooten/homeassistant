@@ -38,7 +38,7 @@ soundbar_next_source:
   sequence:
   - service: broadlink.send
     data:
-      host: '192.168.1.202'
+      host: '192.168.3.200'
       packet:
       ## Switch between optical 1 and 2
       - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
@@ -50,7 +50,7 @@ soundbar_vol_up:
   sequence:
   - service: broadlink.send
     data:
-      host: '192.168.1.202'
+      host: '192.168.3.200'
       packet:
       - 'JgBOAJSVExITEhM3EjcTEhM3ExITEhMSExITNxM3ExITNxMSEhITNxM3EzcTEhM3ExIUERMSExITEhMSEzcSExI3EzcTNxMABgiUlRM3EwANBQAAAAAAAAAAAAA='
 
@@ -59,6 +59,6 @@ soundbar_vol_down:
   sequence:
   - service: broadlink.send
     data:
-      host: '192.168.1.202'
+      host: '192.168.3.200'
       packet:
       - 'JgBOAJSVExITEhM3EjcTEhM3ExITEhMSExITNxM3ExITNxMSEhMSEhQ2EzcTEhM3ExITEhMSEzcTEhMSEzcTEhI3EzcTNxMABgiUlRM3EwANBQAAAAAAAAAAAAA='

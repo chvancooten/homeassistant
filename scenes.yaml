@@ -52,7 +52,6 @@
   entities:
     input_select.scene: Night
     switch.circadian_lighting_circadian_lighting: off
-    switch.circadian_lighting_circadian_lighting: off
     light.livingroom: off
     light.nanoleaf: off
     light.bedroom: off
