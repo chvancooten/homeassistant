@@ -76,7 +76,7 @@
     #   icon_template: 'mdi:alarm'
 
     totalpowerconsumption:
-      value_template: '{{ ( states("sensor.power_consumption_low")|float ) + ( states("sensor.power_consumption_normal")|float ) }}'
+      value_template: '{{ ( states("sensor.energy_consumption_tarif_1")|float ) + ( states("sensor.energy_consumption_tarif_2")|float )|round(2) }}'
       friendly_name: Total power consumption
       unit_of_measurement: 'kWh'
       icon_template: 'mdi:power-socket-eu'

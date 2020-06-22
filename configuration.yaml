@@ -148,17 +148,12 @@ zone:
 device_tracker:
   - platform: bluetooth_tracker
     track_new_devices: false
-  - platform: nmap_tracker
-    hosts: 192.168.1.101-255
-    track_new_devices: false
-    consider_home: 300
 
 spotify:
   client_id: !secret spotifyid
   client_secret: !secret spotifysecret
 
 media_player:
-
   - platform: philips_android_tv
     name: Philips TV
     host: !secret philipsTV_host

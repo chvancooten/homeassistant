@@ -641,10 +641,7 @@
                                     "entity": "sensor.power_consumption"
                                 },
                                 {
-                                    "entity": "sensor.power_consumption_normal"
-                                },
-                                {
-                                    "entity": "sensor.power_consumption_low"
+                                    "entity": "sensor.totalpowerconsumption"
                                 },
                                 {
                                     "entity": "sensor.power_tariff"
