@@ -449,6 +449,19 @@
                                 {
                                     "entities": [
                                         {
+                                            "entity": "automation.wakeup_light"
+                                        },
+                                        {
+                                            "entity": "sensor.next_alarm_human"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "title": "Wakeup Light",
+                                    "type": "entities"
+                                },
+                                {
+                                    "entities": [
+                                        {
                                             "entity": "switch.circadian_lighting_circadian_lighting"
                                         },
                                         {

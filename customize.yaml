@@ -145,3 +145,5 @@ binary_sensor.0x00158d0004230430_contact:
   friendly_name: Voordeur Dicht
 media_player.philips_tv:
   icon: mdi:television
+automation.wakeup_light:
+  icon: mdi:weather-sunset
