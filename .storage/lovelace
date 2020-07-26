@@ -507,36 +507,42 @@
                         {
                             "artwork": "cover",
                             "entity": "media_player.spotify",
-                            "media_buttons": [
-                                {
-                                    "name": "Release Radar",
-                                    "type": "playlist",
-                                    "url": "spotify:user:spotify:playlist:37i9dQZEVXbt00olLhj6c6"
-                                },
-                                {
-                                    "name": "Discover Weekly",
-                                    "type": "playlist",
-                                    "url": "spotify:user:spotify:playlist:37i9dQZEVXcQg2aDzCNHrV"
-                                },
-                                {
-                                    "name": "Peaceful Piano",
-                                    "type": "playlist",
-                                    "url": "spotify:user:spotify:playlist:37i9dQZF1DX4sWSpwq3LiO"
-                                },
-                                {
-                                    "name": "Jazz Vibes",
-                                    "type": "playlist",
-                                    "url": "spotify:user:spotify:playlist:37i9dQZF1DX0SM0LYsmbMT"
-                                },
-                                {
-                                    "name": "Background & Chill",
-                                    "type": "playlist",
-                                    "url": "spotify:user:chvancooten:playlist:3iMf0W5ZWN7yEBpzKO9gTv"
-                                }
-                            ],
+                            "hide": {
+                                "progress": false,
+                                "shuffle": false,
+                                "volume": true
+                            },
                             "power_color": true,
-                            "show_progress": true,
-                            "show_shuffle": true,
+                            "shortcuts": {
+                                "buttons": [
+                                    {
+                                        "id": "spotify:user:spotify:playlist:37i9dQZEVXbt00olLhj6c6",
+                                        "name": "\ud83d\udcbf Release Radar",
+                                        "type": "playlist"
+                                    },
+                                    {
+                                        "id": "spotify:user:spotify:playlist:37i9dQZEVXcQg2aDzCNHrV",
+                                        "name": "\ud83d\udcc5 Discover Weekly",
+                                        "type": "playlist"
+                                    },
+                                    {
+                                        "id": "spotify:user:spotify:playlist:37i9dQZF1DX4sWSpwq3LiO",
+                                        "name": "\ud83c\udfb9 Peaceful Piano",
+                                        "type": "playlist"
+                                    },
+                                    {
+                                        "id": "spotify:user:spotify:playlist:37i9dQZF1DX0SM0LYsmbMT",
+                                        "name": "\ud83c\udfb8 Jazz Vibes",
+                                        "type": "playlist"
+                                    },
+                                    {
+                                        "id": "spotify:user:chvancooten:playlist:3iMf0W5ZWN7yEBpzKO9gTv",
+                                        "name": "\ud83d\udcfb Background & Chill",
+                                        "type": "playlist"
+                                    }
+                                ],
+                                "columns": 2
+                            },
                             "show_source": "full",
                             "type": "custom:mini-media-player"
                         },
@@ -669,34 +675,57 @@
                             "type": "glance"
                         },
                         {
-                            "entities": [
+                            "cards": [
                                 {
-                                    "entity": "sensor.climatesensor_temperature",
-                                    "name": "Inside temperature"
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.climatesensor_temperature",
+                                            "name": "INSIDE"
+                                        },
+                                        {
+                                            "entity": "sensor.buienradar_temperature",
+                                            "name": "OUTSIDE"
+                                        }
+                                    ],
+                                    "icon": "mdi:thermometer",
+                                    "name": "Temperature",
+                                    "points_per_hour": 4,
+                                    "type": "custom:mini-graph-card"
                                 },
                                 {
-                                    "entity": "sensor.buienradar_temperature",
-                                    "name": "Outside temperature"
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.climatesensor_pressure",
+                                            "name": "INSIDE"
+                                        },
+                                        {
+                                            "entity": "sensor.buienradar_pressure",
+                                            "name": "OUTSIDE"
+                                        }
+                                    ],
+                                    "icon": "mdi:gauge",
+                                    "name": "Pressure",
+                                    "points_per_hour": 4,
+                                    "type": "custom:mini-graph-card"
                                 },
                                 {
-                                    "entity": "sensor.climatesensor_pressure",
-                                    "name": "Inside pressure"
-                                },
-                                {
-                                    "entity": "sensor.buienradar_pressure",
-                                    "name": "Outside pressure"
-                                },
-                                {
-                                    "entity": "sensor.climatesensor_humidity",
-                                    "name": "Inside humidity"
-                                },
-                                {
-                                    "entity": "sensor.buienradar_humidity",
-                                    "name": "Outside humidity"
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.climatesensor_humidity",
+                                            "name": "INSIDE"
+                                        },
+                                        {
+                                            "entity": "sensor.buienradar_humidity",
+                                            "name": "OUTSIDE"
+                                        }
+                                    ],
+                                    "icon": "mdi:water",
+                                    "name": "Humidity",
+                                    "points_per_hour": 4,
+                                    "type": "custom:mini-graph-card"
                                 }
                             ],
-                            "title": "Climate history",
-                            "type": "history-graph"
+                            "type": "vertical-stack"
                         },
                         {
                             "entities": [
@@ -743,6 +772,9 @@
                                 },
                                 {
                                     "entity": "sensor.disk_use_percent_config"
+                                },
+                                {
+                                    "entity": "sensor.disk_use_percent_data"
                                 },
                                 {
                                     "entity": "sensor.last_boot"

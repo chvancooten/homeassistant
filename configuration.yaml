@@ -10,6 +10,12 @@ homeassistant:
 frontend:
   themes: !include themes.yaml
 
+panel_iframe:
+  grafana:
+    title: 'Grafana'
+    icon: mdi:monitor-dashboard
+    url: 'https://grafana.home/d/X-6T2Ymgz/dash?orgId=1&refresh=10s&from=now-24h&to=now&kiosk'
+
 system_health:
 mobile_app:
   
@@ -265,8 +271,3 @@ switch:
           'JgBQAAABKpEVEBQRFBEUEBUQFRAUERQRFDUVNRQ1FTUVNRQ1FTUUNRUQFTUUERQ1FRAVEBQRFBAVNRUQFDUVEBU1FDUVNRU1FAAFJgABKkgVAA0FAAAAAAAAAAA='
         command_off:
           'JgBQAAABKZIUERQRFBEUEBUQFBEUERQRFDUVNRQ1FTUUNhQ1FTUUNRUQFTUUNRU1FBEUERQQFRAVNRQRFBAVEBU1FDUVNRQ2FAAFJgABKkgVAA0FAAAAAAAAAAA='
-
-
-## TODO - fix output of grafana files
-#shell_command:
-  #grafana_get_energy_graph: !secret grafanacommand
