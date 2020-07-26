@@ -813,6 +813,9 @@
                             "entities": [
                                 {
                                     "entity": "binary_sensor.rclone_backup"
+                                },
+                                {
+                                    "entity": "binary_sensor.google_home_api_key_grabber"
                                 }
                             ],
                             "title": "Health",

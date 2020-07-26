@@ -25,7 +25,7 @@
 
 # - platform: rest
 #   name: Next alarm
-#   resource: http://192.168.1.XXX:8008/setup/assistant/alarms
+#   resource: http://192.168.1.203:8443/setup/assistant/alarms
 #   value_template: >
 #     {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
 #     {% if alarms[0] is defined %}
@@ -33,6 +33,17 @@
 #     {% else %}
 #       None
 #     {% endif %}
+
+- platform: command_line
+  command: "curl --insecure --header \"cast-local-authorization-token: {{ state_attr('input_text.google_tokens', 'token_HomeCas junior') }}\" https://192.168.1.203:8443/setup/assistant/alarms"
+  name: Next Alarm
+  value_template: >
+    {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
+    {% if alarms[0] is defined %}
+      {{ alarms[0].fire_time }}
+    {% else %}
+      None
+    {% endif %}
 
 - platform: systemmonitor
   resources:
@@ -63,17 +74,17 @@
 
 - platform: template
   sensors:
-    # next_alarm_human:
-    #   value_template: >
-    #     {% if states('sensor.next_alarm') == "None" %}
-    #       No alarm set
-    #     {% elif states('sensor.next_alarm') == "unavailable" or states('sensor.next_alarm') == "unknown" %}
-    #       Google Home unavailable
-    #     {% else %}
-    #       {{ (states('sensor.next_alarm')|int/1000)|timestamp_custom('%A %H:%M') }}
-    #     {% endif %}
-    #   friendly_name: Next alarm
-    #   icon_template: 'mdi:alarm'
+    next_alarm_human:
+      value_template: >
+        {% if states('sensor.next_alarm') == "None" %}
+          No alarm set
+        {% elif states('sensor.next_alarm') == "unavailable" or states('sensor.next_alarm') == "unknown" %}
+          Google Home unavailable
+        {% else %}
+          {{ (states('sensor.next_alarm')|int/1000)|timestamp_custom('%A %H:%M') }}
+        {% endif %}
+      friendly_name: Next alarm
+      icon_template: 'mdi:alarm'
 
     totalpowerconsumption:
       value_template: '{{ ( states("sensor.energy_consumption_tarif_1")|float ) + ( states("sensor.energy_consumption_tarif_2")|float )|round(2) }}'
