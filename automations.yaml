@@ -11,27 +11,6 @@
       name: Light - Navy Blue
     service: frontend.set_theme
 
-### BACKUP
-
-- alias: Daily full backup
-  id: automation_backup
-  initial_state: 'on'
-  trigger:
-    platform: time
-    at: '3:00:00'
-  action:
-  - service: hassio.snapshot_full
-    data_template:
-      name: Automated Backup {{ now().strftime('%Y-%m-%d') }}
-
-- alias: Daily snapshot clean up
-  initial_state: 'on'
-  trigger: 
-    platform: time
-    at: '03:30:00'
-  action:
-    - service: clean_up_snapshots_service.clean_up
-
 ### SCENES
 
 - id: automation_sceneselect
