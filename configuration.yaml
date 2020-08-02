@@ -8,7 +8,7 @@ homeassistant:
   customize: !include customize.yaml
 
 frontend:
-  themes: !include themes.yaml
+  themes: !include_dir_merge_named themes
 
 panel_iframe:
   grafana:
@@ -166,6 +166,9 @@ media_player:
     mac: !secret philipsTV_mac
     username: !secret philipsTV_username
     password: !secret philipsTV_password
+
+pi_hole:
+  - host: !secret pihole_host
 
 yeelight:
   devices:

@@ -167,8 +167,8 @@
                                         {
                                             "entity": "switch.soundbar",
                                             "style": {
-                                                "left": "24%",
-                                                "top": "25%"
+                                                "left": "39%",
+                                                "top": "20%"
                                             },
                                             "title": "Soundbar",
                                             "type": "state-icon"
@@ -176,8 +176,8 @@
                                         {
                                             "entity": "light.terrarium_light",
                                             "style": {
-                                                "left": "18%",
-                                                "top": "13%"
+                                                "left": "20%",
+                                                "top": "83%"
                                             },
                                             "title": "Terrarium",
                                             "type": "state-icon"
@@ -185,8 +185,8 @@
                                         {
                                             "entity": "media_player.philips_tv",
                                             "style": {
-                                                "left": "24%",
-                                                "top": "14%"
+                                                "left": "44%",
+                                                "top": "20%"
                                             },
                                             "title": "TV",
                                             "type": "state-icon"
@@ -243,15 +243,6 @@
                                                 "top": "74%"
                                             },
                                             "title": "Living room spot 1",
-                                            "type": "state-icon"
-                                        },
-                                        {
-                                            "entity": "switch.vacuum",
-                                            "style": {
-                                                "left": "21%",
-                                                "top": "84%"
-                                            },
-                                            "title": "Deebot",
                                             "type": "state-icon"
                                         },
                                         {
@@ -320,8 +311,8 @@
                                         {
                                             "entity": "sensor.climatesensor_temperature",
                                             "style": {
-                                                "left": "40%",
-                                                "top": "14%"
+                                                "left": "23%",
+                                                "top": "13%"
                                             },
                                             "title": "Inside temperature",
                                             "type": "state-label"
@@ -330,7 +321,7 @@
                                             "entity": "sensor.buienradar_temperature",
                                             "style": {
                                                 "left": "6.5%",
-                                                "top": "14%"
+                                                "top": "13%"
                                             },
                                             "title": "Outside temperature",
                                             "type": "state-label"
@@ -339,7 +330,7 @@
                                             "entity": "sensor.waqi_de_jongweg_utrecht",
                                             "style": {
                                                 "left": "6.5%",
-                                                "top": "21%"
+                                                "top": "20%"
                                             },
                                             "title": "Air quality",
                                             "type": "state-label"
@@ -859,6 +850,44 @@
                             "show_state": true,
                             "title": "Zigbee sensor battery levels",
                             "type": "glance"
+                        },
+                        {
+                            "columns": 3,
+                            "entities": [
+                                {
+                                    "entity": "binary_sensor.pi_hole"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_ads_percentage_blocked_today",
+                                    "name": "Blocked Today"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_dns_unique_clients",
+                                    "name": "Unique Clients"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_dns_queries_cached",
+                                    "name": "DNS Cached"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_dns_queries_forwarded",
+                                    "name": "DNS Forwarded"
+                                },
+                                {
+                                    "entity": "sensor.pi_hole_ads_blocked_today",
+                                    "name": "Ads Blocked"
+                                }
+                            ],
+                            "show_icon": true,
+                            "show_name": true,
+                            "show_state": true,
+                            "type": "glance"
+                        },
+                        {
+                            "entity": "sensor.shodan_sensor",
+                            "icon": "mdi:radar",
+                            "name": "Shodan",
+                            "type": "sensor"
                         }
                     ],
                     "icon": "mdi:chip",

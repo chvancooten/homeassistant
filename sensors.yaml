@@ -7,6 +7,10 @@
   port: /dev/ttyUSB0
   dsmr_version: 5
 
+- platform: shodan
+  api_key: !secret shodan_api_key
+  query: !secret shodan_query
+
 # - platform: miflora
 #   mac: C4:7C:8D:6A:6E:1F
 #   name: Dieffenbachia
