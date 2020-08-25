@@ -27,17 +27,6 @@
   stations:
   - 'de Jongweg, Utrecht'
 
-# - platform: rest
-#   name: Next alarm
-#   resource: http://192.168.1.203:8443/setup/assistant/alarms
-#   value_template: >
-#     {% set alarms = value_json.alarm|sort(attribute='fire_time') %}
-#     {% if alarms[0] is defined %}
-#       {{ alarms[0].fire_time }}
-#     {% else %}
-#       None
-#     {% endif %}
-
 - platform: command_line
   command: "curl --insecure --header \"cast-local-authorization-token: {{ state_attr('input_text.google_tokens', 'token_HomeCas junior') }}\" https://192.168.1.203:8443/setup/assistant/alarms"
   name: Next Alarm

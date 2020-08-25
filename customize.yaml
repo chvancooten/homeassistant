@@ -147,3 +147,6 @@ media_player.philips_tv:
   icon: mdi:television
 automation.wakeup_light:
   icon: mdi:weather-sunset
+device_tracker.iphone_cas:
+  entity_picture: /local/cas.jpg
+  name: iPhone Cas (Router)

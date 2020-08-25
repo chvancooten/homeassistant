@@ -1,5 +1,3 @@
-### STARTUP
-
 - alias: Set theme at startup
   id: automation_startup_theme
   initial_state: 'on'
@@ -10,9 +8,6 @@
   - data:
       name: Light - Navy Blue
     service: frontend.set_theme
-
-### SCENES
-
 - id: automation_sceneselect
   alias: Scene select update
   initial_state: 'on'
@@ -23,27 +18,23 @@
     service: scene.turn_on
     data_template:
       entity_id: scene.{{trigger.to_state.state}}
-
 - id: automation_eveningscene
   alias: Automatic evening scene
   initial_state: 'on'
   trigger:
     platform: state
-    entity_id: 'sensor.time_of_day'
-    to: 'Early evening'
+    entity_id: sensor.time_of_day
+    to: Early evening
   condition:
     condition: state
-    entity_id: 'group.everyone'
-    state: 'home'
+    entity_id: group.everyone
+    state: home
   action:
     service: scene.turn_on
     data:
       entity_id: scene.evening
-
-### TELEGRAM INTERACTIONS
-
 - id: automation_telegram_mss
-  alias: 'Telegram - Motion Sensor Security'
+  alias: Telegram - Motion Sensor Security
   initial_state: 'on'
   trigger:
   - platform: state
@@ -51,277 +42,127 @@
     to: 'on'
   condition:
   - condition: state
-    entity_id: 'group.everyone'
-    state: 'not_home'
+    entity_id: group.everyone
+    state: not_home
   - condition: template
-    value_template: '{{ ((as_timestamp(now()) - as_timestamp(states.automation.telegram_motion_sensor_security.attributes["last_triggered"]))/60)|round > 60 }}'
+    value_template: '{{ ((as_timestamp(now()) - as_timestamp(states.automation.telegram_motion_sensor_security.attributes["last_triggered"]))/60)|round
+      > 60 }}'
   action:
   - service: telegram_bot.send_photo
     data:
-      caption: "Alert: Motion sensor was triggered but no one is home!"
+      caption: 'Alert: Motion sensor was triggered but no one is home!'
       disable_notification: false
-      url: "http://192.168.1.207:8080/cgi-bin/snapshot.sh"
-      username: !secret yicam_user
-      password: !secret yicam_pass
-
+      url: http://192.168.1.207:8080/cgi-bin/snapshot.sh
+      username: cas
+      password: wTHAideaWmAhORaNiCOsphIlYbOrDAtc
 - id: automation_telegram_lightsonnotify
-  alias: 'Telegram - Forgotten lights notify'
+  alias: Telegram - Forgotten lights notify
   initial_state: 'on'
   trigger:
     platform: state
-    entity_id: 'group.everyone'
-    to: 'not_home'
-    for: 
+    entity_id: group.everyone
+    to: not_home
+    for:
       seconds: 300
   condition:
     condition: state
-    entity_id: 'group.all_lights'
+    entity_id: group.all_lights
     state: 'on'
   action:
     service: telegram_bot.send_message
     data:
-      title: '🚨 *Alert* 🚨'
-      message: "No one is home but not all lights are off!"
+      title: 🚨 *Alert* 🚨
+      message: No one is home but not all lights are off!
       disable_notification: false
-      inline_keyboard: 
-      - 'Turn off the lights:/turnofflights, Ignore:/ignore'
-
-# - id: automation_telegram_power
-#   alias: 'Telegram - Report power use'
-#   initial_state: 'on'
-#   trigger:
-#     platform: event
-#     event_type: telegram_command
-#     event_data:
-#       command: '/power'
-#   action:
-#     - service: telegram_bot.send_photo
-#       data_template:
-#         url: 'https://homecas.vancooten.com/api/hassio_ingress/-K0r1D-orJUOQhZLZW8ZvpbXkk2-OvFYxESWLHXMNOI/render/d-solo/X-6T2Ymgz/dash?orgId=1&refresh=30s&from=1573945200000&to=1574023489245&panelId=14&width=1000&height=500&tz=Europe%2FAmsterdam'
-#         caption: 'This is what the scouter says about your power level.'
-
+      inline_keyboard:
+      - Turn off the lights:/turnofflights, Ignore:/ignore
 - id: automation_telegram_lightsoff
-  alias: 'Telegram - Turn off lights inline'
+  alias: Telegram - Turn off lights inline
   initial_state: 'on'
   trigger:
     platform: event
     event_type: telegram_callback
     event_data:
-      data: '/turnofflights'
+      data: /turnofflights
   action:
-    - service: telegram_bot.answer_callback_query
-      data_template:
-        callback_query_id: '{{ trigger.event.data.id }}'
-        message: 'Turning off all lights...'
-    - service: light.turn_off
-      data:
-        entity_id: group.all_lights
-    - service: telegram_bot.edit_replymarkup
-      data_template:
-        message_id: 'last'
-        chat_id: '{{ trigger.event.data.chat_id }}'
-        inline_keyboard: []
-
+  - service: telegram_bot.answer_callback_query
+    data_template:
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: Turning off all lights...
+  - service: light.turn_off
+    data:
+      entity_id: group.all_lights
+  - service: telegram_bot.edit_replymarkup
+    data_template:
+      message_id: last
+      chat_id: '{{ trigger.event.data.chat_id }}'
+      inline_keyboard: []
 - id: automation_telegram_ignore
-  alias: 'Telegram - Ignore alert inline'
+  alias: Telegram - Ignore alert inline
   initial_state: 'on'
   trigger:
     platform: event
     event_type: telegram_callback
     event_data:
-      data: '/ignore'
+      data: /ignore
   action:
-    - service: telegram_bot.answer_callback_query
-      data_template:
-        callback_query_id: '{{ trigger.event.data.id }}'
-        message: '👍'
-    - service: telegram_bot.edit_replymarkup
-      data_template:
-        message_id: 'last'
-        chat_id: '{{ trigger.event.data.chat_id }}'
-        inline_keyboard: []
-
+  - service: telegram_bot.answer_callback_query
+    data_template:
+      callback_query_id: '{{ trigger.event.data.id }}'
+      message: 👍
+  - service: telegram_bot.edit_replymarkup
+    data_template:
+      message_id: last
+      chat_id: '{{ trigger.event.data.chat_id }}'
+      inline_keyboard: []
 - id: automation_telegram_snap
-  alias: 'Telegram - Camera snapshot'
+  alias: Telegram - Camera snapshot
   initial_state: 'on'
   trigger:
     platform: event
     event_type: telegram_command
     event_data:
-      data: '/snap'
+      data: /snap
   action:
   - service: telegram_bot.send_photo
     data:
       disable_notification: false
-      url: "http://192.168.1.207:8080/cgi-bin/snapshot.sh"
-      username: !secret yicam_user
-      password: !secret yicam_pass
-
-### INPUT BASED
-
-# - alias: Switch to TV
-#   id: automation_switchtoTV
-#   initial_state: 'on'
-#   trigger:
-#   - platform: state
-#     entity_id: 'media_player.chromecas'
-#     to: 'playing'
-#   condition:
-#   - condition: template
-#     value_template: "{{ state_attr('media_player.chromecas', 'app_name') != 'Backdrop' }}"
-#   action:
-#   - service: script.tv_hdmi2
-
-# - alias: Switch to Playstation
-#   id: automation_switchtoPS
-#   initial_state: 'on'
-#   trigger:
-#   - platform: state
-#     entity_id: 'media_player.playstation_4'
-#     to: 'home'
-#   action:
-#   - service: switch.turn_on
-#     entity_id: switch.tv_samsung
-#   - delay: '00:00:05'
-#   - service: script.tv_hdmi1
-
-
-###
-### UPDATE BELOW AUTOMATIONS
-###
-# - alias: Switch audio to TV
-#   id: automation_switchaudiotoTV
-#   initial_state: 'on'
-#   trigger:
-#   - platform: state
-#     entity_id: 'media_player.chromecas'
-#     to: 'playing'
-#   condition:
-#   - condition: template
-#     value_template: "{{ state_attr('media_player.chromecas', 'app_name') != 'Backdrop' }}"
-#   - condition: state
-#     entity_id: 'media_player.tonecas'
-#     state: 'playing'
-#   action:
-#   - service: media_player.media_stop
-#     entity_id: 'media_player.tonecas'
-#   - service: script.soundbar_next_source
-
-# - alias: Switch audio to soundbar
-#   id: automation_switchaudiotoSB
-#   initial_state: 'on'
-#   trigger:
-#   - platform: state
-#     entity_id: 'media_player.tonecas'
-#     to: 'playing'
-#   condition:
-#     # Only trigger if the chromecast is not playing AND the tv is on, to prevent input switching when only pausing music
-#     condition: and
-#     conditions:
-#     - condition: template
-#       value_template: "{{ not is_state('media_player.chromecas', 'playing') }}"
-#     - condition: state
-#       entity_id: 'switch.tv_samsung'
-#       state: 'on'
-#   action:
-#   - service: script.soundbar_next_source
- 
-### TIME BASED
-
+      url: http://192.168.1.207:8080/cgi-bin/snapshot.sh
+      username: cas
+      password: wTHAideaWmAhORaNiCOsphIlYbOrDAtc
 - alias: Wakeup Light
   id: automation_wakeuplight
   initial_state: 'on'
   trigger:
   - platform: state
-    entity_id: 'binary_sensor.next_alarm_within15min'
+    entity_id: binary_sensor.next_alarm_within15min
     to: 'on'
   condition:
   - condition: state
-    entity_id: 'light.bedroom'
+    entity_id: light.bedroom
     state: 'off'
   action:
-    - service: light.turn_on
-      data:
-        entity_id: light.bedroom
-        effect: Wakeuplight
-
-### PRESENCE DETECTION
-
-#credits Vic
-# - id: automation_plantmonitor
-#   alias: Plant monitor
-#   initial_state: 'on'
-#   trigger:
-#   - platform: state
-#     entity_id: group.tracker_cas
-#     to: home
-#     for: 00:10
-#   condition:
-#   - condition: state
-#     entity_id: plant.dieffenbachia
-#     state: problem
-#   action:
-#   - service: notify.notify
-#     data:
-#       message: '{{ state_attr(''plant.dieffenbachia'', ''problem'')  }}'
-#       title: "\U0001F331\U0001F614 De Dieffenbachia voelt zich ongelukkig :("
-#   - service: tts.google_say
-#     data_template:
-#       message: 'Warning: Your plant is unhappy. {{ states.plant.dieffenbachia.attributes.problem }}'
-#       entity_id: media_player.homecas  
-
-# - alias: DebbyDetectie
-#   id: automation_debbydetectie
-#   initial_state: 'off'
-#   trigger:
-#   - platform: state
-#     entity_id: 'group.tracker_debby'
-#     to: 'home'
-#   condition:
-#   - condition: state
-#     entity_id: 'group.tracker_cas'
-#     state: 'not_home'
-#   action:
-#   - service: notify.ios_iphone_cas
-#     data:
-#       title: "DebbyDetectie alert"
-#       message: "Debby is thuis!"
-#   - service: homeassistant.turn_off
-#     entity_id: automation.debbydetectie
-
-# - alias: DebbyDetectie Enable
-#   id: automation_debbydetectieenable
-#   initial_state: 'on'
-#   trigger:
-#   - platform: state
-#     entity_id: group.tracker_debby
-#     to: 'not_home'
-#     for:
-#       hours: 4
-#   action:
-#   - service: homeassistant.turn_on
-#     entity_id: automation.debbydetectie
-
+  - service: light.turn_on
+    data:
+      entity_id: light.bedroom
+      effect: Wakeuplight
 - alias: Welcome home
   id: automation_welcomehome
   initial_state: 'off'
   trigger:
-  # Trigger on bluetooth to get closest to the actual 'home-entry'
   - platform: state
     entity_id: device_tracker.iphone_cas_bt, device_tracker.galaxys8_debby_bt
-    to: 'home'
-    for: 
-      seconds: 30 
+    to: home
+    for:
+      seconds: 30
   action:
-  # Get the first word of the friendly name of the person arriving ('Cas' rather than 'Cas BT')
   - service: tts.google_say
     entity_id: media_player.homecas
     data_template:
-      message: >
-        'Welcome home, {{ trigger.from_state.attributes.friendly_name.split(' ', 1)[0] }}'
+      message: '''Welcome home, {{ trigger.from_state.attributes.friendly_name.split(''
+        '', 1)[0] }}''
 
-### MOTION SENSING
-
+        '
 - alias: Hallway motion light (on)
   id: automation_motionlighton_hallway
   initial_state: 'on'
@@ -336,13 +177,16 @@
   action:
   - service: light.turn_on
     data_template:
-      entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling {% else %} light.hallwayceiling, light.hallwaystanding_light {% endif %}'
-      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1 {% endif %}'
-      brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100 {% endif %}'
-      kelvin: '{% if is_state("input_select.scene", "Night") %} 1500 {% else %} 2700 {% endif %}'
+      entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling
+        {% else %} light.hallwayceiling, light.hallwaystanding_light {% endif %}'
+      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1
+        {% endif %}'
+      brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100
+        {% endif %}'
+      kelvin: '{% if is_state("input_select.scene", "Night") %} 1500 {% else %} 2700
+        {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.hallway_motion_light_off
-
 - alias: Hallway motion light (off)
   id: automation_motionlightoff_hallway
   initial_state: 'off'
@@ -355,11 +199,11 @@
   action:
   - service: light.turn_off
     data_template:
-      entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling {% else %} light.hallwayceiling, light.hallwaystanding_light {% endif %}'
+      entity_id: '{% if is_state("input_select.scene", "Night") %} light.hallwayceiling
+        {% else %} light.hallwayceiling, light.hallwaystanding_light {% endif %}'
       transition: 2
   - service: homeassistant.turn_off
     entity_id: automation.hallway_motion_light_off
-
 - alias: Toilet motion light (on)
   id: automation_motionlighton_toilet
   initial_state: 'on'
@@ -375,12 +219,14 @@
   - service: light.turn_on
     data_template:
       entity_id: light.toilet
-      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1 {% endif %}'
-      brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100 {% endif %}'
-      kelvin: '{% if is_state("input_select.scene", "Night") %} 1500 {% else %} 2700 {% endif %}'
+      transition: '{% if is_state("input_select.scene", "Night") %} 3 {% else %} 1
+        {% endif %}'
+      brightness: '{% if is_state("input_select.scene", "Night") %} 1 {% else %} 100
+        {% endif %}'
+      kelvin: '{% if is_state("input_select.scene", "Night") %} 1500 {% else %} 2700
+        {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.toilet_motion_light_off
-
 - alias: Toilet motion light (off)
   id: automation_motionlightoff_toilet
   initial_state: 'off'
@@ -397,9 +243,6 @@
       transition: 2
   - service: homeassistant.turn_off
     entity_id: automation.toilet_motion_light_off
-
-### BUTTONS
-
 - alias: Scene next button
   id: automation_button_scenenext
   initial_state: 'on'
@@ -408,12 +251,11 @@
     topic: zigbee2mqtt/xiaomibutton
   condition:
   - condition: template
-    value_template: '{{ trigger.payload_json.click == "single" }}' # or trigger.payload_json.action == "shake" }}'
+    value_template: '{{ trigger.payload_json.click == "single" }}'
   action:
   - service: input_select.select_next
     data_template:
       entity_id: input_select.scene
-
 - alias: Scene previous button
   id: automation_button_sceneprev
   initial_state: 'on'
@@ -422,12 +264,11 @@
     topic: zigbee2mqtt/xiaomibutton
   condition:
   - condition: template
-    value_template: '{{ trigger.payload_json.click == "double" }}' # or trigger.payload_json.action == "shake" }}'
+    value_template: '{{ trigger.payload_json.click == "double" }}'
   action:
   - service: input_select.select_previous
     data_template:
       entity_id: input_select.scene
-
 - alias: Living room light switch
   id: automation_livingroom_lightswitch
   initial_state: 'on'
@@ -436,12 +277,14 @@
     topic: zigbee2mqtt/xiaomiswitch1
   condition:
   - condition: template
-    value_template: '{{ trigger.payload_json.click == "left" or trigger.payload_json.click == "right" }}'
+    value_template: '{{ trigger.payload_json.click == "left" or trigger.payload_json.click
+      == "right" }}'
   action:
   - service: light.toggle
     data_template:
-      entity_id: '{% if trigger.payload_json.click == "right" %} light.living_room_spots {% elif trigger.payload_json.click == "left" %} light.livingroom {% endif %}'
-
+      entity_id: '{% if trigger.payload_json.click == "right" %} light.living_room_spots
+        {% elif trigger.payload_json.click == "left" %} light.livingroom {% endif
+        %}'
 - alias: Bedroom light switch left
   id: automation_bedroom_lightswitchleft
   initial_state: 'on'
@@ -455,7 +298,6 @@
   - service: light.toggle
     data:
       entity_id: light.bedroom
-
 - alias: Bedroom light switch right
   id: automation_bedroom_lightswitchright
   initial_state: 'on'
@@ -472,7 +314,6 @@
       transition: 1
       kelvin: 2700
       brightness_pct: 80
-
 - alias: Bedroom light switch both
   id: automation_bedroom_lightswitchboth
   initial_state: 'on'
@@ -486,3 +327,19 @@
   - service: input_select.select_next
     data_template:
       entity_id: input_select.scene
+- id: '1597038859483'
+  alias: Vakantie Security
+  description: ''
+  trigger:
+  - device_id: f3a72c9e8ec246538669a7d3e6fd7baf
+    domain: binary_sensor
+    entity_id: binary_sensor.motionsensor_hallway_occupancy
+    platform: device
+    type: motion
+  condition: []
+  action:
+  - data:
+      message: Someone entered the house 👀
+      title: Security Alert
+    service: notify.mobile_app_iphone
+  mode: single

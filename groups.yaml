@@ -9,8 +9,8 @@ tracker_cas:
   name: Cas
   entities:
   - device_tracker.a_phone
+  - device_tracker.iphone_cas
   - device_tracker.iphone_cas_bt
-  - device_tracker.iphone_cas_wifi
 
 everyone:
   name: Everyone

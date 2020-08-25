@@ -32,33 +32,35 @@ set_scene:
             scene.morning
           {% endif %}
 
-### IR
-soundbar_next_source:
-  alias: Soundbar next source
-  sequence:
-  - service: broadlink.send
-    data:
-      host: '192.168.3.200'
-      packet:
-      ## Switch between optical 1 and 2
-      - 'JgBOAJWTFBEUERQ2FDYUERQ1FRAUERQRFBEUNhQ2FBEUNhQRExEUERQ2FDYUERQ2FDYUERM2FDYUERQRFDYUERQRFDUVERMABgeUlBQ2FAANBQAAAAAAAAAAAAA='
-      ## ALTERNATIVELY: Switch through all inputs
-      #- 'JgBGAJWTFBEUERQ2FDYUERQ1FRAVEBUQFBEUNhQ2FBEUNhQRFBAVEBU1FRAUNhQRFBEUERQ2FDUVEBU1FBEUNhQ2FDYUERQADQUAAA=='
+### IR LEARNING
+# learn_toggle_soundbar:
+#   sequence:
+#     - service: remote.learn_command
+#       data:
+#         entity_id: remote.rm_mini_3_remote
+#         device: soundbar
+#         command: power
 
-soundbar_vol_up:
-  alias: Soundbar volume up
-  sequence:
-  - service: broadlink.send
-    data:
-      host: '192.168.3.200'
-      packet:
-      - 'JgBOAJSVExITEhM3EjcTEhM3ExITEhMSExITNxM3ExITNxMSEhITNxM3EzcTEhM3ExIUERMSExITEhMSEzcSExI3EzcTNxMABgiUlRM3EwANBQAAAAAAAAAAAAA='
+# learn_nextsource_soundbar:
+#   sequence:
+#     - service: remote.learn_command
+#       data:
+#         entity_id: remote.rm_mini_3_remote
+#         device: soundbar
+#         command: source
 
-soundbar_vol_down:
-  alias: Soundbar volume down
-  sequence:
-  - service: broadlink.send
-    data:
-      host: '192.168.3.200'
-      packet:
-      - 'JgBOAJSVExITEhM3EjcTEhM3ExITEhMSExITNxM3ExITNxMSEhMSEhQ2EzcTEhM3ExITEhMSEzcTEhMSEzcTEhI3EzcTNxMABgiUlRM3EwANBQAAAAAAAAAAAAA='
+# learn_volup_soundbar:
+#   sequence:
+#     - service: remote.learn_command
+#       data:
+#         entity_id: remote.rm_mini_3_remote
+#         device: soundbar
+#         command: volup
+
+# learn_voldown_soundbar:
+#   sequence:
+#     - service: remote.learn_command
+#       data:
+#         entity_id: remote.rm_mini_3_remote
+#         device: soundbar
+#         command: voldown

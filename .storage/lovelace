@@ -165,13 +165,22 @@
                                 {
                                     "elements": [
                                         {
-                                            "entity": "switch.soundbar",
+                                            "icon": "mdi:speaker",
                                             "style": {
                                                 "left": "39%",
                                                 "top": "20%"
                                             },
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "remote.send_command",
+                                                "service_data": {
+                                                    "command": "power",
+                                                    "device": "soundbar",
+                                                    "entity_id": "remote.rm_mini_3_remote"
+                                                }
+                                            },
                                             "title": "Soundbar",
-                                            "type": "state-icon"
+                                            "type": "icon"
                                         },
                                         {
                                             "entity": "light.terrarium_light",
@@ -336,7 +345,7 @@
                                             "type": "state-label"
                                         }
                                     ],
-                                    "image": "/local/floorplan_gs.jpg",
+                                    "image": "/local/floorplan_gs_inv.jpg",
                                     "type": "picture-elements"
                                 }
                             ],
@@ -584,23 +593,98 @@
                             "type": "entities"
                         },
                         {
-                            "entities": [
+                            "cards": [
                                 {
-                                    "entity": "switch.soundbar"
+                                    "hold_action": {
+                                        "action": "none"
+                                    },
+                                    "icon": "mdi:power",
+                                    "icon_height": "100px",
+                                    "name": "Soundbar Power",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "show_state": false,
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "remote.send_command",
+                                        "service_data": {
+                                            "command": "power",
+                                            "device": "soundbar",
+                                            "entity_id": "remote.rm_mini_3_remote"
+                                        }
+                                    },
+                                    "type": "button"
                                 },
                                 {
-                                    "entity": "script.soundbar_next_source"
+                                    "hold_action": {
+                                        "action": "none"
+                                    },
+                                    "icon": "mdi:video-input-hdmi",
+                                    "icon_height": "100px",
+                                    "name": "Soundbar Input",
+                                    "show_icon": true,
+                                    "show_name": true,
+                                    "show_state": false,
+                                    "tap_action": {
+                                        "action": "call-service",
+                                        "service": "remote.send_command",
+                                        "service_data": {
+                                            "command": "source",
+                                            "device": "soundbar",
+                                            "entity_id": "remote.rm_mini_3_remote"
+                                        }
+                                    },
+                                    "type": "button"
                                 },
                                 {
-                                    "entity": "script.soundbar_vol_up"
-                                },
-                                {
-                                    "entity": "script.soundbar_vol_down"
+                                    "cards": [
+                                        {
+                                            "hold_action": {
+                                                "action": "none"
+                                            },
+                                            "icon": "mdi:plus",
+                                            "icon_height": "100px",
+                                            "name": "Volume Up",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "show_state": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "remote.send_command",
+                                                "service_data": {
+                                                    "command": "volup",
+                                                    "device": "soundbar",
+                                                    "entity_id": "remote.rm_mini_3_remote"
+                                                }
+                                            },
+                                            "type": "button"
+                                        },
+                                        {
+                                            "hold_action": {
+                                                "action": "none"
+                                            },
+                                            "icon": "mdi:minus",
+                                            "icon_height": "100px",
+                                            "name": "Volume Down",
+                                            "show_icon": true,
+                                            "show_name": true,
+                                            "show_state": false,
+                                            "tap_action": {
+                                                "action": "call-service",
+                                                "service": "remote.send_command",
+                                                "service_data": {
+                                                    "command": "voldown",
+                                                    "device": "soundbar",
+                                                    "entity_id": "remote.rm_mini_3_remote"
+                                                }
+                                            },
+                                            "type": "button"
+                                        }
+                                    ],
+                                    "type": "vertical-stack"
                                 }
                             ],
-                            "theme": "Backend-selected",
-                            "title": "Devices",
-                            "type": "entities"
+                            "type": "horizontal-stack"
                         }
                     ],
                     "icon": "mdi:play-box-outline",
