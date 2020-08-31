@@ -717,9 +717,6 @@
                                     "entity": "binary_sensor.frontdoor"
                                 },
                                 {
-                                    "entity": "binary_sensor.yicam_motion"
-                                },
-                                {
                                     "entity": "binary_sensor.motionsensor_hallway_occupancy"
                                 },
                                 {
@@ -824,10 +821,6 @@
                                 {
                                     "entity": "binary_sensor.motionsensor_toilet_occupancy",
                                     "name": "Toilet"
-                                },
-                                {
-                                    "entity": "binary_sensor.yicam_motion",
-                                    "name": "YiCam"
                                 }
                             ],
                             "hours_to_show": 24,

@@ -13,9 +13,9 @@
         {% if states('sensor.next_alarm') == "None" or states('sensor.next_alarm') == "unavailable" or states('sensor.next_alarm') == "unknown" %}
           False
         {% else %}
-          {{ (states('sensor.next_alarm')|int/1000) - as_timestamp(now()) < 900 }}
+          {{ (states('sensor.next_alarm') | int / 1000) - (as_timestamp(states('sensor.date') ~ ' ' ~ states('sensor.time')) | int) < 990 }}
         {% endif %}
       friendly_name: Next alarm within 15 minutes
       icon_template: 'mdi:alarm'
-      entity_id: sensor.time
-
+      delay_on:
+        seconds: 90
