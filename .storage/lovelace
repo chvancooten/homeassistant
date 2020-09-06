@@ -519,7 +519,7 @@
                     "cards": [
                         {
                             "artwork": "cover",
-                            "entity": "media_player.spotify",
+                            "entity": "media_player.spotify_cas_van_cooten",
                             "hide": {
                                 "progress": false,
                                 "shuffle": false,
@@ -610,7 +610,7 @@
                                         "service_data": {
                                             "command": "power",
                                             "device": "soundbar",
-                                            "entity_id": "remote.rm_mini_3_remote"
+                                            "entity_id": "remote.broadlink"
                                         }
                                     },
                                     "type": "button"
@@ -631,7 +631,7 @@
                                         "service_data": {
                                             "command": "source",
                                             "device": "soundbar",
-                                            "entity_id": "remote.rm_mini_3_remote"
+                                            "entity_id": "remote.broadlink"
                                         }
                                     },
                                     "type": "button"
@@ -654,7 +654,7 @@
                                                 "service_data": {
                                                     "command": "volup",
                                                     "device": "soundbar",
-                                                    "entity_id": "remote.rm_mini_3_remote"
+                                                    "entity_id": "remote.broadlink"
                                                 }
                                             },
                                             "type": "button"
@@ -675,7 +675,7 @@
                                                 "service_data": {
                                                     "command": "voldown",
                                                     "device": "soundbar",
-                                                    "entity_id": "remote.rm_mini_3_remote"
+                                                    "entity_id": "remote.broadlink"
                                                 }
                                             },
                                             "type": "button"

@@ -256,3 +256,8 @@ switch:
       - light.living_room_spots
     lights_brightness:
       - light.nanoleaf
+
+remote:
+  - platform: broadlink
+    host: '192.168.3.200'
+    mac: '78:0F:77:5A:B5:02'
