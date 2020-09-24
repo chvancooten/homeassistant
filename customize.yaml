@@ -150,3 +150,8 @@ automation.wakeup_light:
 device_tracker.iphone_cas:
   entity_picture: /local/cas.jpg
   name: iPhone Cas (Router)
+person.debby:
+  entity_picture: /local/debby.jpg
+device_tracker.unifi_94_58_cb_c1_ce_33_default: {}
+person.cas:
+  entity_picture: /local/cas.jpg

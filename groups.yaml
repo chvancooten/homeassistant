@@ -1,17 +1,3 @@
-tracker_debby:
-  name: Debby
-  entities:
-  - device_tracker.telefoon_debby_bt
-  - device_tracker.telefoon_debby
-  - device_tracker.laptop_debby
-
-tracker_cas:
-  name: Cas
-  entities:
-  - device_tracker.a_phone
-  - device_tracker.iphone_cas
-  - device_tracker.iphone_cas_bt
-
 everyone:
   name: Everyone
   entities:

@@ -696,10 +696,10 @@
                         {
                             "entities": [
                                 {
-                                    "entity": "group.tracker_cas"
+                                    "entity": "person.cas"
                                 },
                                 {
-                                    "entity": "group.tracker_debby"
+                                    "entity": "person.debby"
                                 },
                                 {
                                     "entity": "device_tracker.laptop_cas"

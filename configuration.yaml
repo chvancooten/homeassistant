@@ -44,9 +44,9 @@ influxdb:
 updater:
    include_used_components: true
 
-discovery:
-  ignore:
-    - yeelight
+# discovery:
+#   ignore:
+#     - yeelight
     
 config:
 ios:
