@@ -1,5 +1,5 @@
 everyone:
   name: Everyone
   entities:
-  - group.tracker_debby
-  - group.tracker_cas
+  - person.tracker_debby
+  - person.tracker_cas
