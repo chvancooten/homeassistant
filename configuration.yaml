@@ -7,6 +7,15 @@ homeassistant:
   time_zone: CET
   customize: !include customize.yaml
 
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 192.168.1.100
+      trusted_users:
+        192.168.1.100: 37bf771339ed4f46870e3d6f9e050228
+      allow_bypass_login: true
+    - type: homeassistant
+
 frontend:
   themes: !include_dir_merge_named themes
 
@@ -44,10 +53,6 @@ influxdb:
 updater:
    include_used_components: true
 
-# discovery:
-#   ignore:
-#     - yeelight
-    
 config:
 ios:
 history:
@@ -166,6 +171,10 @@ media_player:
     mac: !secret philipsTV_mac
     username: !secret philipsTV_username
     password: !secret philipsTV_password
+
+spotcast:
+  sp_dc: !secret spotify_dc
+  sp_key: !secret spotify_key
 
 pi_hole:
   - host: !secret pihole_host

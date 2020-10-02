@@ -11,69 +11,36 @@
       brightness: 200
     light.terrarium_light: off
 
-# - name: Day (old)
-#   entities: 
-#     input_select.scene: Day
-#     switch.circadian_lighting_circadian_lighting: off
-#     light.livingroom:
-#       state: on
-#       color_temp: 290
-#       brightness: 255
-#       transition: 1
-#     light.nanoleaf:
-#       state: on
-#       brightness: 255
-#       effect: 'Rain'
-#     light.bedroom: off
-#     light.toilet: off
-#     light.living_room_spots: off
-#     light.terrarium_light: off
-
 - name: Day
   entities: 
     input_select.scene: Day
     switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
-      color_temp: 290
+      color_temp: 300
       brightness: 255
       transition: 1
     light.nanoleaf:
       state: on
       brightness: 255
       effect: 'Rain'
-    light.bedroom: off
-    light.toilet: off
     light.livingroom_spot1_light:
       state: on
-      color_temp: 290
-      brightness: 150
+      color_temp: 325
+      brightness: 225
     light.livingroom_spot2_light:
       state: on
-      color_temp: 290
+      color_temp: 325
+      brightness: 200
+    light.livingroom_spot3_light:
+      state: on
+      color_temp: 325
+      brightness: 175
+    light.livingroom_spot4_light: 
+      state: on
+      color_temp: 325
       brightness: 150
-    light.livingroom_spot3_light: off
-    light.livingroom_spot4_light: off
     light.terrarium_light: off
-    
-# - name: Evening (old)
-#   entities: 
-#     input_select.scene: Evening
-#     switch.circadian_lighting_circadian_lighting: off
-#     light.livingroom:
-#       state: on
-#       color_temp: 350
-#       brightness: 180
-#       transition: 3
-#     light.living_room_spots:
-#       state: on
-#       color_temp: 400
-#       brightness: 150
-#     light.nanoleaf:
-#       state: on
-#       brightness: 200
-#       effect: 'Vintage Modern'
-#     light.terrarium_light: on
     
 - name: Evening
   entities: 
@@ -132,7 +99,28 @@
 - name: Cleaning mode
   entities:
     switch.circadian_lighting_circadian_lighting: off
-    group.all_lights:
+    light.living_room_spots:
       state: on
       color_temp: 270
       brightness: 255
+    light.livingroom:
+      state: on
+      color_temp: 270
+      brightness: 255
+    light.hallwayceiling:
+      state: on
+      color_temp: 270
+      brightness: 255
+    light.hallwaystanding_light:
+      state: on
+      color_temp: 270
+      brightness: 255
+    light.toilet:
+      state: on
+      color_temp: 270
+      brightness: 255
+    light.bedroom:
+      state: on
+      color_temp: 270
+      brightness: 255
+    light.terrarium_light: on

@@ -1,4 +1,6 @@
 {
+    "version": 1,
+    "key": "lovelace",
     "data": {
         "config": {
             "title": "Home Cassistant",
@@ -37,8 +39,8 @@
                                         "type": "glance"
                                     },
                                     "entities": [
-                                        "group.tracker_cas",
-                                        "group.tracker_debby"
+                                        "person.cas",
+                                        "person.debby"
                                     ],
                                     "show_empty": false,
                                     "state_filter": [
@@ -520,6 +522,7 @@
                         {
                             "artwork": "cover",
                             "entity": "media_player.spotify_cas_van_cooten",
+                            "info": "scroll",
                             "hide": {
                                 "progress": false,
                                 "shuffle": false,
@@ -552,6 +555,15 @@
                                         "id": "spotify:user:chvancooten:playlist:3iMf0W5ZWN7yEBpzKO9gTv",
                                         "name": "\ud83d\udcfb Background & Chill",
                                         "type": "playlist"
+                                    },
+                                    {
+                                        "name": "\u25b6 TRANSFER TO TONECAS",
+                                        "type": "service",
+                                        "id": "spotcast.start",
+                                        "data": {
+                                            "entity_id": "media_player.tonecas",
+                                            "force_playback": true
+                                        }
                                     }
                                 ],
                                 "columns": 2
@@ -610,7 +622,7 @@
                                         "service_data": {
                                             "command": "power",
                                             "device": "soundbar",
-                                            "entity_id": "remote.broadlink"
+                                            "entity_id": "remote.broadlink_remote"
                                         }
                                     },
                                     "type": "button"
@@ -631,7 +643,7 @@
                                         "service_data": {
                                             "command": "source",
                                             "device": "soundbar",
-                                            "entity_id": "remote.broadlink"
+                                            "entity_id": "remote.broadlink_remote"
                                         }
                                     },
                                     "type": "button"
@@ -654,7 +666,7 @@
                                                 "service_data": {
                                                     "command": "volup",
                                                     "device": "soundbar",
-                                                    "entity_id": "remote.broadlink"
+                                                    "entity_id": "remote.broadlink_remote"
                                                 }
                                             },
                                             "type": "button"
@@ -675,7 +687,7 @@
                                                 "service_data": {
                                                     "command": "voldown",
                                                     "device": "soundbar",
-                                                    "entity_id": "remote.broadlink"
+                                                    "entity_id": "remote.broadlink_remote"
                                                 }
                                             },
                                             "type": "button"
@@ -973,7 +985,5 @@
                 }
             ]
         }
-    },
-    "key": "lovelace",
-    "version": 1
+    }
 }
