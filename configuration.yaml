@@ -101,8 +101,8 @@ input_number:
     unit_of_measurement: "%"
   morning_threshold:
     icon: mdi:tune
-    max: 10
-    min: -10
+    max: 100
+    min: -100
     mode: box
     name: Activate Morning when elevation reaches
     step: 0.5
