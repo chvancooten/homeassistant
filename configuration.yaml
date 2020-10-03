@@ -109,32 +109,32 @@ input_number:
     unit_of_measurement: "°"
   day_threshold:
     icon: mdi:tune
-    max: 10
-    min: -10
+    max: 100
+    min: -100
     mode: box
     name: Activate Day when elevation reaches
     step: 0.5
     unit_of_measurement: "°"
   afternoon_threshold:
     icon: mdi:tune
-    max: 10
-    min: -10
+    max: 100
+    min: -100
     mode: box
     name: Activate Afternoon when elevation drops below
     step: 0.5
     unit_of_measurement: "°"
   early_evening_threshold:
     icon: mdi:tune
-    max: 10
-    min: -10
+    max: 100
+    min: -100
     mode: box
     name: Activate Early evening when elevation drops below
     step: 0.5
     unit_of_measurement: "°"
   evening_threshold:
     icon: mdi:tune
-    max: 10
-    min: -10
+    max: 100
+    min: -100
     mode: box
     name: Activate Evening when elevation drops below
     step: 0.5

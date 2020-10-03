@@ -20,19 +20,20 @@
       entity_id: scene.{{trigger.to_state.state}}
 - id: automation_eveningscene
   alias: Automatic evening scene
-  initial_state: 'on'
   trigger:
-    platform: state
+  - platform: state
     entity_id: sensor.time_of_day
-    to: Early evening
+    to: Evening
   condition:
-    condition: state
+  - condition: state
     entity_id: group.everyone
     state: home
   action:
-    service: scene.turn_on
+  - service: scene.turn_on
     data:
       entity_id: scene.evening
+  initial_state: 'on'
+  mode: single
 - id: automation_telegram_mss
   alias: Telegram - Motion Sensor Security
   initial_state: 'on'
