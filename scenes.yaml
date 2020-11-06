@@ -48,13 +48,25 @@
     switch.circadian_lighting_circadian_lighting: off
     light.livingroom:
       state: on
-      color_temp: 350
-      brightness: 180
+      color_temp: 370
+      brightness: 65
       transition: 3
-    light.living_room_spots:
+    light.livingroom_spot1_light:
+      state: on
+      color_temp: 375
+      brightness: 175
+    light.livingroom_spot2_light:
+      state: on
+      color_temp: 375
+      brightness: 175
+    light.livingroom_spot3_light:
       state: on
       color_temp: 400
       brightness: 150
+    light.livingroom_spot4_light: 
+      state: on
+      color_temp: 350
+      brightness: 175
     light.nanoleaf:
       state: on
       brightness: 200

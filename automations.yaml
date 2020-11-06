@@ -344,3 +344,43 @@
       title: Security Alert
     service: notify.mobile_app_iphone
   mode: single
+- id: '1603048240409'
+  alias: IOS Widget - Set Scene
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionID: C83408B8-ABF2-485F-B977-B47D374BE58B
+  condition: []
+  action:
+  - service: script.set_scene
+    data: {}
+  mode: single
+- id: '1603048305311'
+  alias: IOS Widget - Reset Scene
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionID: 3266D340-A610-40B2-A932-71A392CB9981
+  condition: []
+  action:
+  - service: script.reset_scene
+    data: {}
+  mode: single
+- id: '1603048329895'
+  alias: IOS Widget - All lights off
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.action_fired
+    event_data:
+      actionID: 2CC23350-60EB-49B6-A3FB-2E91E3068D69
+  condition: []
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: all
+  mode: single
