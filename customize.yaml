@@ -155,3 +155,6 @@ person.debby:
 device_tracker.unifi_94_58_cb_c1_ce_33_default: {}
 person.cas:
   entity_picture: /local/cas.jpg
+switch.desk:
+  friendly_name: Desk
+  icon: mdi:desk

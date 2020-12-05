@@ -10,6 +10,9 @@
       color_temp: 350
       brightness: 200
     light.terrarium_light: off
+    ### TEMPORARY
+    automation.hallway_motion_light_on: on
+    ### END TEMPORARY
 
 - name: Day
   entities: 
@@ -41,6 +44,9 @@
       color_temp: 325
       brightness: 150
     light.terrarium_light: off
+    ### TEMPORARY
+    automation.hallway_motion_light_on: on
+    ### END TEMPORARY
     
 - name: Evening
   entities: 
@@ -72,6 +78,9 @@
       brightness: 200
       effect: 'Vintage Modern'
     light.terrarium_light: on
+    ### TEMPORARY
+    automation.hallway_motion_light_on: on
+    ### END TEMPORARY
 
 - name: Night
   entities:
@@ -85,6 +94,9 @@
     light.terrarium_light: off
     light.hallwayceiling: off
     light.hallwaystanding_light: off
+    ### TEMPORARY
+    automation.hallway_motion_light_on: off
+    ### END TEMPORARY
 
 #Extra scenes (activate manually)
 - name: Atmospheric mode

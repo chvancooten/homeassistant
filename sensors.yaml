@@ -11,15 +11,6 @@
   api_key: !secret shodan_api_key
   query: !secret shodan_query
 
-# - platform: miflora
-#   mac: C4:7C:8D:6A:6E:1F
-#   name: Dieffenbachia
-#   median: 1
-# - platform: miflora
-#   mac: C4:7C:8D:6A:84:01
-#   name: Backup Miflora
-#   median: 1
-
 - platform: waqi
   token: !secret aqitoken
   locations:

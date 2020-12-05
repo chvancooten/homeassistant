@@ -187,10 +187,19 @@
                                         {
                                             "entity": "light.terrarium_light",
                                             "style": {
-                                                "left": "20%",
+                                                "left": "19%",
                                                 "top": "83%"
                                             },
                                             "title": "Terrarium",
+                                            "type": "state-icon"
+                                        },
+                                        {
+                                            "entity": "switch.desk",
+                                            "style": {
+                                                "left": "24%",
+                                                "top": "83%"
+                                            },
+                                            "title": "Desk",
                                             "type": "state-icon"
                                         },
                                         {

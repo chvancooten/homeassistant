@@ -161,9 +161,7 @@
     entity_id: media_player.homecas
     data_template:
       message: '''Welcome home, {{ trigger.from_state.attributes.friendly_name.split(''
-        '', 1)[0] }}''
-
-        '
+        '', 1)[0] }}'''
 - alias: Hallway motion light (on)
   id: automation_motionlighton_hallway
   initial_state: 'on'

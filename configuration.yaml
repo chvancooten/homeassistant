@@ -8,12 +8,6 @@ homeassistant:
   customize: !include customize.yaml
 
   auth_providers:
-    - type: trusted_networks
-      trusted_networks:
-        - 192.168.1.100
-      trusted_users:
-        192.168.1.100: 37bf771339ed4f46870e3d6f9e050228
-      allow_bypass_login: true
     - type: homeassistant
 
 frontend:
@@ -23,7 +17,7 @@ panel_iframe:
   grafana:
     title: 'Grafana'
     icon: mdi:monitor-dashboard
-    url: 'https://grafana.home/d/X-6T2Ymgz/dash?orgId=1&refresh=10s&from=now-24h&to=now&kiosk'
+    url: !secret grafanaurl
 
 system_health:
 mobile_app:
@@ -254,6 +248,12 @@ notify:
     platform: telegram
     chat_id: !secret telegram_chat_id
 
+rest_command:
+  desk_sitting:
+    url: !secret deskSitEndpoint
+  desk_standing:
+    url: !secret deskStandEndpoint
+
 switch:
   - platform: circadian_lighting
     lights_ct:
@@ -265,6 +265,13 @@ switch:
       - light.living_room_spots
     lights_brightness:
       - light.nanoleaf
+  - platform: template
+    switches:
+      desk:
+        turn_on:
+          service: rest_command.desk_standing
+        turn_off:
+          service: rest_command.desk_sitting
 
 remote:
   - platform: broadlink
