@@ -194,7 +194,7 @@
                                             "type": "state-icon"
                                         },
                                         {
-                                            "entity": "switch.desk",
+                                            "entity": "switch.standing_desk",
                                             "style": {
                                                 "left": "24%",
                                                 "top": "83%"
@@ -358,6 +358,19 @@
                                     ],
                                     "image": "/local/floorplan_gs_inv.jpg",
                                     "type": "picture-elements"
+                                },
+                                {
+                                    "type": "entities",
+                                    "entities": [
+                                        {
+                                            "entity": "sensor.desk_height"
+                                        },
+                                        {
+                                            "entity": "switch.standing_desk"
+                                        }
+                                    ],
+                                    "show_header_toggle": false,
+                                    "state_color": false
                                 }
                             ],
                             "type": "vertical-stack"

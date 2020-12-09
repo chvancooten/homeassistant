@@ -11,6 +11,15 @@
   api_key: !secret shodan_api_key
   query: !secret shodan_query
 
+- platform: rest
+  resource: !secret deskEndpoint
+  name: Desk Height
+  timeout: 20
+  unit_of_measurement: cm
+  value_template: "{{ value_json.height / 10 }}"
+  json_attributes:
+    - position
+
 - platform: waqi
   token: !secret aqitoken
   locations:
