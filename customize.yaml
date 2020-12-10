@@ -157,3 +157,4 @@ person.cas:
   entity_picture: /local/cas.jpg
 sensor.desk_height:
   icon: hass:ruler
+  device_class: power

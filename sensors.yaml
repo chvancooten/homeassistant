@@ -11,15 +11,6 @@
   api_key: !secret shodan_api_key
   query: !secret shodan_query
 
-- platform: rest
-  resource: !secret deskEndpoint
-  name: Desk Height
-  timeout: 20
-  unit_of_measurement: cm
-  value_template: "{{ value_json.height / 10 }}"
-  json_attributes:
-    - position
-
 - platform: waqi
   token: !secret aqitoken
   locations:
@@ -65,8 +56,27 @@
   monitored_conditions:
     - cloud_cover
 
+- platform: rest
+  resource: !secret deskEndpoint
+  name: Desk Height (Rest)
+  timeout: 20
+  unit_of_measurement: cm
+  value_template: "{{ value_json.height / 10 }}"
+  json_attributes:
+    - position
+
 - platform: template
   sensors:
+    desk_height:
+      friendly_name: Desk Height
+      unit_of_measurement: cm
+      value_template: >-
+        {% if states('sensor.desk_height_rest') == 'unknown' %}
+          {{ states('sensor.desk_height') }}
+        {% else %}
+          {{ states('sensor.desk_height_rest') }}
+        {% endif %}
+
     next_alarm_human:
       value_template: >
         {% if states('sensor.next_alarm') == "None" %}
