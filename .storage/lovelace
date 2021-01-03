@@ -621,6 +621,9 @@
                                 },
                                 {
                                     "entity": "media_player.homecas_junior"
+                                },
+                                {
+                                    "entity": "media_player.nesthub2514"
                                 }
                             ],
                             "title": "Assistants",

@@ -6,7 +6,7 @@
     event: start
   action:
   - data:
-      name: Light - Navy Blue
+      name: Google Dark Theme
     service: frontend.set_theme
 - id: automation_sceneselect
   alias: Scene select update
@@ -268,22 +268,6 @@
   - service: input_select.select_previous
     data_template:
       entity_id: input_select.scene
-- alias: Living room light switch
-  id: automation_livingroom_lightswitch
-  initial_state: 'on'
-  trigger:
-  - platform: mqtt
-    topic: zigbee2mqtt/xiaomiswitch1
-  condition:
-  - condition: template
-    value_template: '{{ trigger.payload_json.click == "left" or trigger.payload_json.click
-      == "right" }}'
-  action:
-  - service: light.toggle
-    data_template:
-      entity_id: '{% if trigger.payload_json.click == "right" %} light.living_room_spots
-        {% elif trigger.payload_json.click == "left" %} light.livingroom {% endif
-        %}'
 - alias: Bedroom light switch left
   id: automation_bedroom_lightswitchleft
   initial_state: 'on'
@@ -381,4 +365,33 @@
   - service: light.turn_off
     data:
       entity_id: all
+  mode: single
+- id: '1609687295267'
+  alias: Hallway light switch - left
+  description: Turn on scene for current time of day
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 9ae497027bb045759565fe574bd5f6a2
+    type: click
+    subtype: left
+    discovery_id: 0x00158d00026ba566 click_left
+  condition: []
+  action:
+  - service: script.set_scene
+    data: {}
+  mode: single
+- id: '1609687471687'
+  alias: Hallway light switch - left
+  description: Trigger 'leaving' scene
+  trigger:
+  - platform: device
+    domain: mqtt
+    device_id: 9ae497027bb045759565fe574bd5f6a2
+    type: click
+    subtype: right
+    discovery_id: 0x00158d00026ba566 click_right
+  condition: []
+  action:
+  - scene: scene.leaving
   mode: single
