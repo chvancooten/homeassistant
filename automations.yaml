@@ -58,30 +58,29 @@
       password: wTHAideaWmAhORaNiCOsphIlYbOrDAtc
 - id: automation_telegram_lightsonnotify
   alias: Telegram - Forgotten lights notify
-  initial_state: 'on'
   trigger:
-    platform: state
+  - platform: state
     entity_id: group.everyone
     to: not_home
-    for:
-      seconds: 300
+    for: 0:30:00
   condition:
-    condition: state
-    entity_id: group.all_lights
+  - condition: state
+    entity_id: light.livingroom
     state: 'on'
   action:
-    service: telegram_bot.send_message
+  - service: telegram_bot.send_message
     data:
       title: 🚨 *Alert* 🚨
       message: No one is home but not all lights are off!
       disable_notification: false
       inline_keyboard:
       - Turn off the lights:/turnofflights, Ignore:/ignore
+  initial_state: 'on'
+  mode: single
 - id: automation_telegram_lightsoff
   alias: Telegram - Turn off lights inline
-  initial_state: 'on'
   trigger:
-    platform: event
+  - platform: event
     event_type: telegram_callback
     event_data:
       data: /turnofflights
@@ -92,12 +91,14 @@
       message: Turning off all lights...
   - service: light.turn_off
     data:
-      entity_id: group.all_lights
+      entity_id: all
   - service: telegram_bot.edit_replymarkup
     data_template:
       message_id: last
       chat_id: '{{ trigger.event.data.chat_id }}'
       inline_keyboard: []
+  initial_state: 'on'
+  mode: single
 - id: automation_telegram_ignore
   alias: Telegram - Ignore alert inline
   initial_state: 'on'
@@ -162,9 +163,8 @@
     data_template:
       message: '''Welcome home, {{ trigger.from_state.attributes.friendly_name.split(''
         '', 1)[0] }}'''
-- alias: Hallway motion light (on)
-  id: automation_motionlighton_hallway
-  initial_state: 'on'
+- id: automation_motionlighton_hallway
+  alias: Hallway motion light (on)
   trigger:
   - platform: state
     entity_id: binary_sensor.motionsensor_hallway_occupancy
@@ -186,15 +186,21 @@
         {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.hallway_motion_light_off
-- alias: Hallway motion light (off)
-  id: automation_motionlightoff_hallway
-  initial_state: 'off'
+  initial_state: 'on'
+  mode: single
+- id: automation_motionlightoff_hallway
+  alias: Hallway motion light (off)
   trigger:
-  - platform: state
+  - type: no_motion
+    platform: device
+    device_id: f3a72c9e8ec246538669a7d3e6fd7baf
     entity_id: binary_sensor.motionsensor_hallway_occupancy
-    to: 'off'
+    domain: binary_sensor
     for:
+      hours: 0
       minutes: 2
+      seconds: 0
+      milliseconds: 0
   action:
   - service: light.turn_off
     data_template:
@@ -203,9 +209,10 @@
       transition: 2
   - service: homeassistant.turn_off
     entity_id: automation.hallway_motion_light_off
-- alias: Toilet motion light (on)
-  id: automation_motionlighton_toilet
-  initial_state: 'on'
+  initial_state: 'off'
+  mode: single
+- id: automation_motionlighton_toilet
+  alias: Toilet motion light (on)
   trigger:
   - platform: state
     entity_id: binary_sensor.motionsensor_toilet_occupancy
@@ -226,22 +233,30 @@
         {% endif %}'
   - service: homeassistant.turn_on
     entity_id: automation.toilet_motion_light_off
-- alias: Toilet motion light (off)
-  id: automation_motionlightoff_toilet
-  initial_state: 'off'
+  initial_state: 'on'
+  mode: single
+- id: automation_motionlightoff_toilet
+  alias: Toilet motion light (off)
   trigger:
-  - platform: state
+  - type: no_motion
+    platform: device
+    device_id: a59e86e901c04421a0997e830bde3898
     entity_id: binary_sensor.motionsensor_toilet_occupancy
-    to: 'off'
+    domain: binary_sensor
     for:
-      minutes: 1.5
+      hours: 0
+      minutes: 2
+      seconds: 0
+      milliseconds: 0
   action:
-  - service: light.turn_off
-    data:
-      entity_id: light.toilet
-      transition: 2
+  - type: turn_off
+    device_id: 865f1c4704df11ebb35763b9d8bfadba
+    entity_id: light.toilet
+    domain: light
   - service: homeassistant.turn_off
     entity_id: automation.toilet_motion_light_off
+  initial_state: 'off'
+  mode: single
 - alias: Scene next button
   id: automation_button_scenenext
   initial_state: 'on'
@@ -382,7 +397,7 @@
     data: {}
   mode: single
 - id: '1609687471687'
-  alias: Hallway light switch - left
+  alias: Hallway light switch - right
   description: Trigger 'leaving' scene
   trigger:
   - platform: device

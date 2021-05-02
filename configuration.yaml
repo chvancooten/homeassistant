@@ -203,7 +203,7 @@ yeelight:
 
 light:
   - platform: nanoleaf
-    host: 192.168.3.205
+    host: 192.168.1.205
     token: !secret nanoleaftoken
   - platform: mqtt
     schema: json
