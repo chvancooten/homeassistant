@@ -249,10 +249,11 @@
       seconds: 0
       milliseconds: 0
   action:
-  - type: turn_off
-    device_id: 865f1c4704df11ebb35763b9d8bfadba
-    entity_id: light.toilet
-    domain: light
+  - service: light.turn_off
+    target:
+      device_id: 865f1c4704df11ebb35763b9d8bfadba
+    data:
+      transition: 2
   - service: homeassistant.turn_off
     entity_id: automation.toilet_motion_light_off
   initial_state: 'off'

@@ -24,7 +24,9 @@ mobile_app:
   
 http:
   ip_ban_enabled: True
-  login_attempts_threshold: 5
+  login_attempts_threshold: 3
+  use_x_forwarded_for: True
+  trusted_proxies: 172.16.0.0/12
 
 recorder:
   purge_keep_days: 3
@@ -158,14 +160,6 @@ spotify:
   client_id: !secret spotifyid
   client_secret: !secret spotifysecret
 
-media_player:
-  - platform: philips_android_tv
-    name: Philips TV
-    host: !secret philipsTV_host
-    mac: !secret philipsTV_mac
-    username: !secret philipsTV_username
-    password: !secret philipsTV_password
-
 spotcast:
   sp_dc: !secret spotify_dc
   sp_key: !secret spotify_key
@@ -216,26 +210,10 @@ light:
   - platform: switch
     name: Terrarium Light
     entity_id: switch.terrarium_switch
-  - platform: philips_ambilight
-    name: Ambilight
-    host: !secret philipsTV_host
-    username: !secret philipsTV_username
-    password: !secret philipsTV_password
 
 circadian_lighting:
   min_colortemp: 2250
   max_colortemp: 5000
-
-# stream:
-# camera:
-#   - platform: generic
-#     name: YiCam
-#     still_image_url: "http://192.168.1.55:8080/cgi-bin/snapshot.sh"
-#     framerate: 1
-#     #stream_source: !secret yicam_stream
-#     verify_ssl: false
-#     username: !secret yicam_user
-#     password: !secret yicam_pass
 
 telegram_bot:
   - platform: polling
