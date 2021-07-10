@@ -3,10 +3,6 @@
     - 'time'
     - 'date'
 
-- platform: dsmr
-  port: /dev/ttyUSB0
-  dsmr_version: 5
-
 - platform: shodan
   api_key: !secret shodan_api_key
   query: !secret shodan_query
@@ -39,17 +35,6 @@
   - type: load_5m
   - type: processor_use
   - type: last_boot
-  
-- platform: waze_travel_time
-  origin: !secret homeaddr
-  destination: !secret workaddr
-  region: 'EU'
-  name: "Work commute"
-- platform: waze_travel_time
-  origin: !secret workaddr
-  destination: !secret homeaddr
-  region: 'EU'
-  name: "Home commute"
 
 - platform: darksky
   api_key: !secret dark_sky_api_key

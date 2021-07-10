@@ -722,6 +722,14 @@
                                 }
                             ],
                             "type": "horizontal-stack"
+                        },
+                        {
+                            "type": "entities",
+                            "entities": [
+                                "media_player.samsung_tv_3",
+                                "light.samsung_tv",
+                                "remote.samsung_tv"
+                            ]
                         }
                     ],
                     "icon": "mdi:play-box-outline",
